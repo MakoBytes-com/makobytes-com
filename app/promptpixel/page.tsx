@@ -131,7 +131,7 @@ export default function PromptPixelPage() {
             </a>
           </div>
           <TrackLink
-            href="#download"
+            href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
             type="click_download"
             meta={{ source: "nav" }}
             className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
@@ -172,7 +172,7 @@ export default function PromptPixelPage() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <TrackLink
-                href="#download"
+                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
                 type="click_download"
                 meta={{ source: "hero" }}
                 className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
@@ -482,7 +482,7 @@ export default function PromptPixelPage() {
 
               <a
                 id="download"
-                href="#download"
+                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
                 className="mt-10 flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-4 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
               >
                 Download free for Windows
@@ -542,9 +542,10 @@ export default function PromptPixelPage() {
                 </ul>
 
                 <TrackLink
-                  href="#buy"
+                  href="https://buy.polar.sh/polar_cl_E6KR5AWAR8BFjXmIIcO9JPaydeVcNXVhdOx4V4JO1yc"
                   type="click_buy"
                   meta={{ source: "pricing_card" }}
+                  newTab
                   className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
                 >
                   Buy Pro — $25
@@ -677,7 +678,7 @@ export default function PromptPixelPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <TrackLink
-              href="#download"
+              href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
               type="click_download"
               meta={{ source: "final_cta" }}
               className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
