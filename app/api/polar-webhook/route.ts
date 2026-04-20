@@ -25,7 +25,8 @@ export async function POST(req: NextRequest) {
 
   let event: any;
   try {
-    const wh = new Webhook(secret);
+    const normalized = secret.startsWith("polar_whs_") ? secret.slice("polar_whs_".length) : secret;
+    const wh = new Webhook(normalized);
     event = wh.verify(rawBody, headers);
   } catch (err) {
     console.error("[/api/polar-webhook] signature verification failed", err);
