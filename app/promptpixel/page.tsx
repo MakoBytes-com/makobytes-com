@@ -728,7 +728,7 @@ export default function PromptPixelPage() {
             </div>
           </div>
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-white/30 md:flex-row">
-            <div>© 2026 makobytes · v2.0.0-alpha · built by makologics</div>
+            <div>© 2026 makobytes · v2.0.0-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-white">makologics</a></div>
             <div className="flex gap-4">
               <Link href="/privacy" className="transition hover:text-white">
                 privacy
