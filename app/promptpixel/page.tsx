@@ -67,7 +67,7 @@ export default function PromptPixelPage() {
             url: "https://makobytes.com/promptpixel",
             applicationCategory: "ProductivityApplication",
             operatingSystem: "Windows 10, Windows 11",
-            softwareVersion: "2.0.0-alpha",
+            softwareVersion: "2.0.1-alpha",
             author: {
               "@type": "Organization",
               name: "MakoBytes",
@@ -131,7 +131,7 @@ export default function PromptPixelPage() {
             </a>
           </div>
           <TrackLink
-            href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
+            href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
             type="click_download"
             meta={{ source: "nav" }}
             className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
@@ -154,7 +154,7 @@ export default function PromptPixelPage() {
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
               <span className="mono-tag text-white/80">
-                v2.0.0-alpha · windows · macos coming soon
+                v2.0.1-alpha · windows · macos coming soon
               </span>
             </div>
 
@@ -172,7 +172,7 @@ export default function PromptPixelPage() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <TrackLink
-                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
+                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
                 type="click_download"
                 meta={{ source: "hero" }}
                 className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
@@ -317,12 +317,17 @@ export default function PromptPixelPage() {
               {
                 Icon: Keyboard,
                 title: "Custom hotkeys",
-                body: "Bind any combo for fullscreen capture and a separate one for region capture. Reserved keys (Ctrl+V, etc.) are blocked so you can't break Windows.",
+                body: "Bind any combo for fullscreen, region, low-res, or markup capture. Reserved keys (Ctrl+V, etc.) are blocked so you can't break Windows.",
               },
               {
                 Icon: Camera,
-                title: "Two capture modes",
-                body: "Full screen with one keypress, or a dim-the-screen drag-rectangle for just the part you want.",
+                title: "Four capture modes",
+                body: "Fullscreen, drag-a-region, AI-friendly low-res region (Ctrl+Shift+Alt+L), or capture-then-mark-up (Ctrl+Shift+Alt+E).",
+              },
+              {
+                Icon: Wand2,
+                title: "Markup editor",
+                body: "Annotate captures with arrow, rectangle, text, highlighter, pen, and blur (for redacting passwords or PII). Save to file, or send straight to your AI chat.",
               },
               {
                 Icon: Wand2,
@@ -337,7 +342,7 @@ export default function PromptPixelPage() {
               {
                 Icon: History,
                 title: "Recent captures",
-                body: "Your last 3 captures stay in the tray menu so you can re-paste them later. Pro raises the cap to 50.",
+                body: "Your last 20 captures stay in a clickable grid — view, edit, copy, or delete each one. Pro raises the cap to 50.",
               },
               {
                 Icon: Lock,
@@ -455,15 +460,17 @@ export default function PromptPixelPage() {
                 <span className="text-white/50">forever</span>
               </div>
               <p className="mt-4 text-sm text-white/60">
-                The whole core product. No trial, no nag screen, no expiry.
+                Includes a 14-day Pro trial on every fresh install. After the trial, Free keeps working — no nag screen, no expiry.
               </p>
 
               <ul className="mt-8 space-y-3 text-sm">
                 {[
                   "Fullscreen + region capture hotkeys",
+                  "Low-res region capture (AI-friendly)",
+                  "Markup editor (arrow, text, highlighter, blur)",
                   "Custom auto-type prompt after paste",
                   "Capture feedback (sound, toast, confirm)",
-                  "Recent captures (3)",
+                  "Recent captures (20)",
                   "Tray-resident, lightweight",
                   "Windows 10/11 native",
                 ].map((item) => (
@@ -482,7 +489,7 @@ export default function PromptPixelPage() {
 
               <a
                 id="download"
-                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
+                href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
                 className="mt-10 flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-4 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
               >
                 Download free for Windows
@@ -511,12 +518,13 @@ export default function PromptPixelPage() {
                 </div>
                 <p className="mt-4 text-sm text-white/60">
                   Buy once. Own this version forever. Updates included for 12
-                  months.
+                  months. Try every Pro feature free for 14 days first — every install starts with a full Pro trial.
                 </p>
 
                 <ul className="mt-8 space-y-3 text-sm">
                   {[
                     "Everything in Free",
+                    "14-day full-Pro trial on first install",
                     "Prompt Picker (Ctrl+Alt+P)",
                     "Auto-Save Backups",
                     "OCR text extraction (Ctrl+Alt+T)",
@@ -612,7 +620,11 @@ export default function PromptPixelPage() {
             {[
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you the full core workflow — hotkey-driven screenshot capture, one auto-type default prompt, region selection, capture history of 3, and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (Ctrl+Alt+P opens a popup of your saved prompts), Auto-Save Backups (every screenshot saved as a timestamped PNG to a folder you choose), OCR text extraction (Ctrl+Alt+T), Voice to Prompt (Ctrl+Alt+V), and Multi-Target Hotkeys (bind hotkeys to specific pre-set prompts). Pro also raises the recent-captures cap from 3 to 50. Free works forever with no nags.",
+                a: "Free gives you the full core workflow — hotkey-driven screenshot capture (fullscreen, region, low-res region, markup-then-send), one auto-type default prompt, capture history of 20, the markup editor (arrow / text / highlighter / blur), and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (Ctrl+Alt+P), Auto-Save Backups, OCR text extraction (Ctrl+Alt+T), Voice to Prompt (Ctrl+Alt+V), and Multi-Target Hotkeys. Pro also raises the recent-captures cap to 50. Every fresh install gets a 14-day Pro trial, then settles into Free — no nag screen, nothing locks.",
+              },
+              {
+                q: "Is there a free trial of Pro?",
+                a: "Yes — every fresh install starts with a 14-day full Pro trial. You get every Pro feature unlocked for two weeks: Prompt Picker, OCR, Voice to Prompt, Multi-Target Hotkeys, and Auto-Save Backups. After 14 days, the app reverts to the Free tier and the Pro features show a one-time tray notice. No nag popups, no countdown badges, no time bombs — Free keeps working exactly as before. Buy a license whenever you want to unlock Pro again.",
               },
               {
                 q: "Does it actually work with ChatGPT, Claude, etc?",
@@ -623,8 +635,8 @@ export default function PromptPixelPage() {
                 a: "Never. PromptPixel uses Windows-native APIs for capture, OCR, and voice. Nothing touches the network. No telemetry, no analytics, no account required. The only network call ever made is by the AI chat you paste into — and that's your call, not ours.",
               },
               {
-                q: "What's the default hotkey?",
-                a: "Ctrl + Alt + S for fullscreen capture and Ctrl + Shift + Alt + S for region capture. Both are fully customizable in settings. Pro adds Ctrl + Alt + T for OCR, Ctrl + Alt + V for voice prompt, and you can bind your own multi-target hotkeys.",
+                q: "What are the default hotkeys?",
+                a: "Free hotkeys: Ctrl+Alt+S for fullscreen capture, Ctrl+Shift+Alt+S for region capture, Ctrl+Shift+Alt+L for low-res region capture (downscaled for AI chats that struggle with large images), and Ctrl+Shift+Alt+E for capture-then-markup (drag a region, annotate with arrow/text/highlighter/blur, then send). Pro hotkeys: Ctrl+Alt+P for Prompt Picker, Ctrl+Alt+T for OCR, Ctrl+Alt+V for voice prompt, plus your own Multi-Target hotkeys. All are customizable in Settings.",
               },
               {
                 q: "Which operating systems are supported?",
@@ -678,7 +690,7 @@ export default function PromptPixelPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <TrackLink
-              href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel.exe"
+              href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
               type="click_download"
               meta={{ source: "final_cta" }}
               className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
@@ -728,7 +740,7 @@ export default function PromptPixelPage() {
             </div>
           </div>
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-white/30 md:flex-row">
-            <div>© 2026 makobytes · v2.0.0-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-white">makologics</a></div>
+            <div>© 2026 makobytes · v2.0.1-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-white">makologics</a></div>
             <div className="flex gap-4">
               <Link href="/privacy" className="transition hover:text-white">
                 privacy
