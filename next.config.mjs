@@ -1,6 +1,6 @@
 // Content Security Policy — shipped Report-Only first so violations log to
 // DevTools without breaking the site. Flip the header key below from
-// "Content-Security-Policy-Report-Only" to "Content-Security-Policy" once
+// "Content-Security-Policy" to "Content-Security-Policy" once
 // the audit confirms a clean console. Spline (3D scene) and Unsplash (hero
 // images) are explicitly allowed — they're already in images.remotePatterns.
 const csp = [
@@ -28,7 +28,7 @@ const SECURITY_HEADERS = [
     key: "Permissions-Policy",
     value: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
   },
-  { key: "Content-Security-Policy-Report-Only", value: csp },
+  { key: "Content-Security-Policy", value: csp },
 ];
 
 /** @type {import('next').NextConfig} */
