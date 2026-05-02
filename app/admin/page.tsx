@@ -13,7 +13,8 @@ export const dynamic = "force-dynamic";
 export default async function AdminLogin({
   searchParams,
 }: {
-  searchParams: { error?: string; callbackUrl?: string };
+  // Next 15+: dynamic page-route props (searchParams, params) are now Promises.
+  searchParams: Promise<{ error?: string; callbackUrl?: string }>;
 }) {
   const session = await auth();
   if (session?.user?.email) {
@@ -21,7 +22,7 @@ export default async function AdminLogin({
   }
 
   const configured = isAuthConfigured();
-  const error = searchParams.error;
+  const { error } = await searchParams;
 
   return (
     <main className="relative flex min-h-screen items-center justify-center bg-ink-950 px-6 py-16">
