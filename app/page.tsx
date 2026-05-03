@@ -257,79 +257,79 @@ export default function MakoBytesHub() {
       </nav>
 
       {/* ───── HERO ───── */}
-      <section id="hero" className="relative">
-        {/* Hero banner — contained card sitting under the nav (not full-bleed),
-            cinematic 21:9 aspect to keep it from dominating the viewport. */}
-        <div className="relative pt-20 pb-2 sm:pt-24">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="relative w-full aspect-[21/9] overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(0,97,170,0.12)] border border-[#dbdbdb] bg-[#f8f9fb]">
-              <Image
-                src="/images/hero.webp"
-                alt="MakoBytes — premium desktop software studio for AI power users. Analytics dashboard mockup on a curved monitor."
-                fill
-                priority
-                sizes="(min-width: 1280px) 1280px, 100vw"
-                className="object-cover"
-              />
+      <section
+        id="hero"
+        className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-28"
+      >
+        {/* Background hero image — anchored right, gradient-faded to white on the
+            left so the text overlay stays legible at every viewport width. */}
+        <div className="pointer-events-none absolute inset-0">
+          <Image
+            src="/images/hero.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          {/* Left-fade gradient — heavier on mobile (hides the image behind the
+              text), lighter on desktop (lets the monitor breathe through). */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/60 sm:from-white sm:via-white/85 sm:to-transparent" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
+              <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
+              <span className="mono-tag text-[#555555]">
+                makobytes · desktop studio
+              </span>
+            </div>
+
+            <h1 className="mt-8 text-5xl font-black leading-[0.95] tracking-tight text-[#333333] sm:text-6xl lg:text-7xl">
+              <span className="text-gradient">Lightweight tools</span>
+              <br />
+              <span className="text-gradient">for AI power users.</span>
+            </h1>
+
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-[#555555] sm:text-xl">
+              MakoBytes builds fast, private, one-time-purchase desktop apps that
+              plug into the way you already work. No subscriptions. No bloat. No
+              BS.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <a
+                href="#apps"
+                className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold"
+              >
+                Browse the catalog
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#philosophy"
+                className="flex items-center gap-2 rounded-xl border border-[#dbdbdb] bg-white px-6 py-3.5 font-semibold text-[#555555] transition hover:border-[#777777] hover:text-[#333333]"
+              >
+                What we believe
+              </a>
+            </div>
+
+            <div className="mono-tag mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[#777777]">
+              <span className="flex items-center gap-1.5">
+                <Lock className="h-3.5 w-3.5 text-[#0061aa]" />
+                on-device
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Zap className="h-3.5 w-3.5 text-[#0061aa]" />
+                under 40mb
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 text-[#0061aa]" />
+                one-time purchase
+              </span>
             </div>
           </div>
-        </div>
-
-        <div className="relative overflow-hidden pt-16 pb-20 sm:pt-20 sm:pb-28">
-          <div className="pointer-events-none absolute inset-0 grid-overlay opacity-50" />
-          <div className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#0061aa]/[0.07] blur-[180px]" />
-
-          <div className="relative mx-auto max-w-5xl px-6 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
-            <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
-            <span className="mono-tag text-[#555555]">
-              makobytes · desktop studio
-            </span>
-          </div>
-
-          <h1 className="mt-8 text-5xl font-black leading-[0.95] tracking-tight text-[#333333] sm:text-7xl lg:text-8xl">
-            <span className="text-gradient">Lightweight tools</span>
-            <br />
-            <span className="text-gradient">for AI power users.</span>
-          </h1>
-
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[#555555] sm:text-xl">
-            MakoBytes builds fast, private, one-time-purchase desktop apps that
-            plug into the way you already work. No subscriptions. No bloat. No
-            BS.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#apps"
-              className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold"
-            >
-              Browse the catalog
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#philosophy"
-              className="flex items-center gap-2 rounded-xl border border-[#dbdbdb] bg-white px-6 py-3.5 font-semibold text-[#555555] transition hover:border-[#777777] hover:text-[#333333]"
-            >
-              What we believe
-            </a>
-          </div>
-
-          <div className="mono-tag mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[#777777]">
-            <span className="flex items-center gap-1.5">
-              <Lock className="h-3.5 w-3.5 text-[#0061aa]" />
-              on-device
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Zap className="h-3.5 w-3.5 text-[#0061aa]" />
-              under 40mb
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-[#0061aa]" />
-              one-time purchase
-            </span>
-          </div>
-        </div>
         </div>
       </section>
 
