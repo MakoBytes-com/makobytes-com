@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="relative min-h-screen bg-ink-950 text-white">
-      <div className="pointer-events-none fixed inset-0 grid-overlay opacity-20" />
+    <main className="relative min-h-screen bg-white text-[#333333]">
+      <div className="pointer-events-none fixed inset-0 grid-overlay opacity-40" />
 
-      <nav className="border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
+      <nav className="border-b border-[#dbdbdb]/50 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
+            className="flex items-center gap-2 text-sm text-[#777777] transition hover:text-[#333333]"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             MakoBytes
@@ -25,17 +25,17 @@ export default function PrivacyPage() {
       </nav>
 
       <div className="relative mx-auto max-w-4xl px-6 py-16">
-        <div className="mono-tag mb-4 text-glow-cyan">// privacy</div>
-        <h1 className="mb-8 text-4xl font-black tracking-tight text-gradient">
-          Privacy Policy
+        <div className="mono-tag mb-4 text-[#0061aa]">// privacy</div>
+        <h1 className="mb-8 text-4xl font-black tracking-tight">
+          <span className="text-gradient">Privacy Policy</span>
         </h1>
-        <p className="mono-tag mb-12 text-white/40">
+        <p className="mono-tag mb-12 text-[#999999]">
           Last updated: April 9, 2026
         </p>
 
-        <div className="prose-dark space-y-8 text-white/70">
+        <div className="space-y-8 text-[#555555]">
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">Overview</h2>
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">Overview</h2>
             <p className="leading-relaxed">
               MakoBytes builds desktop software that runs entirely on your
               machine. We believe your data is yours. This policy explains what
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">
               PromptPixel Desktop App
             </h2>
             <p className="leading-relaxed">
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">
               MakoBytes Website (makobytes.com)
             </h2>
             <p className="leading-relaxed">
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">
               Purchases and Payments
             </h2>
             <p className="leading-relaxed">
@@ -87,14 +87,14 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">
               Your Rights
             </h2>
             <p className="leading-relaxed">
               You can request deletion of any data we hold about you by emailing{" "}
               <a
                 href="mailto:hello@makobytes.com"
-                className="text-glow-cyan transition hover:text-white"
+                className="text-[#0061aa] transition hover:text-[#004d88]"
               >
                 hello@makobytes.com
               </a>
@@ -104,12 +104,12 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-bold text-white">Contact</h2>
+            <h2 className="mb-4 text-xl font-bold text-[#333333]">Contact</h2>
             <p className="leading-relaxed">
               Questions about this policy? Email{" "}
               <a
                 href="mailto:hello@makobytes.com"
-                className="text-glow-cyan transition hover:text-white"
+                className="text-[#0061aa] transition hover:text-[#004d88]"
               >
                 hello@makobytes.com
               </a>

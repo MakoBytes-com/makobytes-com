@@ -32,22 +32,43 @@ const config: Config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        ink: {
-          950: "#05050a",
-          900: "#0a0a0f",
-          800: "#0f0f18",
-          700: "#16161f",
-          600: "#1d1d28",
-          500: "#2a2a38",
+        // Bulldog brand-blue scale — primary navy palette mirrored from makobot.com
+        brand: {
+          50: "#e6f0f9",
+          100: "#cce1f3",
+          200: "#99c3e7",
+          300: "#66a5db",
+          400: "#3387cf",
+          500: "#006fb9",
+          600: "#0061aa",
+          700: "#004d88",
+          800: "#003966",
+          900: "#002643",
+          950: "#001321",
         },
+        // Legacy `ink-*` scale repurposed for the light theme — values shift from
+        // the old dark cinematic palette to a navy-greyscale that reads on white.
+        ink: {
+          50: "#f8f9fb",
+          100: "#eef2f7",
+          200: "#dbdbdb",
+          300: "#c1c5cd",
+          400: "#999999",
+          500: "#777777",
+          600: "#555555",
+          700: "#406f7b",
+          800: "#333333",
+          900: "#1a1a1a",
+          950: "#0d0d0d",
+        },
+        // Legacy `glow-*` keys retained for markup compatibility but recolored
+        // into the navy palette so any leftover class references stay on-theme.
         glow: {
-          cyan: "#22d3ee",
-          // "violet" key kept for class-name compatibility, but recolored to
-          // electric blue per Russell's "no purple" feedback.
-          violet: "#3b82f6",
-          blue: "#3b82f6",
-          magenta: "#ec4899",
-          lime: "#a3e635",
+          cyan: "#0061aa",
+          violet: "#0061aa",
+          blue: "#0061aa",
+          magenta: "#406f7b",
+          lime: "#04bf6c",
         },
       },
       borderRadius: {
@@ -72,17 +93,12 @@ const config: Config = {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(60px)" },
         },
-        scan: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100vh)" },
-        },
       },
       animation: {
         "fade-up": "fade-up 0.8s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         shimmer: "shimmer 3s linear infinite",
         "grid-flow": "grid-flow 20s linear infinite",
-        scan: "scan 8s linear infinite",
       },
     },
   },

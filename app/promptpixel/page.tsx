@@ -13,7 +13,6 @@ import {
   Lock,
   Zap,
   Plus,
-  Eye,
   Wand2,
   MousePointerClick,
   Crown,
@@ -40,12 +39,10 @@ export const metadata: Metadata = {
   },
 };
 
-// ───── brand mark ─────
-function BrandMark({ className = "" }: { className?: string }) {
+// ───── brand mark — small navy/white camera mark ─────
+function BrandMark() {
   return (
-    <div
-      className={`relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-glow-blue via-glow-cyan to-glow-magenta ${className}`}
-    >
+    <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-[#0061aa] shadow-[0_4px_12px_rgba(0,97,170,0.3)]">
       <Camera className="h-4 w-4 text-white" strokeWidth={2.5} />
     </div>
   );
@@ -53,7 +50,7 @@ function BrandMark({ className = "" }: { className?: string }) {
 
 export default function PromptPixelPage() {
   return (
-    <main className="relative min-h-screen bg-ink-950 text-white">
+    <main className="relative min-h-screen bg-white text-[#333333]">
       <TrackPageView type="pageview_promptpixel" page="/promptpixel" />
       <script
         type="application/ld+json"
@@ -95,38 +92,38 @@ export default function PromptPixelPage() {
       />
 
       {/* ───── NAV ───── */}
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/70 backdrop-blur-xl">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#dbdbdb]/50 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link
             href="/"
             className="group flex items-center gap-2.5 whitespace-nowrap"
           >
             <BrandMark />
-            <span className="text-lg font-bold tracking-tight text-white">
+            <span className="text-lg font-bold tracking-tight text-[#333333]">
               PromptPixel
             </span>
-            <span className="mono-tag hidden text-[10px] text-white/40 sm:inline">
+            <span className="mono-tag hidden text-[10px] text-[#999999] sm:inline">
               by makobytes
             </span>
           </Link>
-          <div className="hidden items-center gap-8 text-sm text-white/70 md:flex">
+          <div className="hidden items-center gap-8 text-sm text-[#777777] md:flex">
             <Link
               href="/"
-              className="flex items-center gap-1.5 transition hover:text-white"
+              className="flex items-center gap-1.5 transition hover:text-[#333333]"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               MakoBytes
             </Link>
-            <a href="#how" className="transition hover:text-white">
+            <a href="#how" className="transition hover:text-[#333333]">
               How it works
             </a>
-            <a href="#features" className="transition hover:text-white">
+            <a href="#features" className="transition hover:text-[#333333]">
               Features
             </a>
-            <a href="#pricing" className="transition hover:text-white">
+            <a href="#pricing" className="transition hover:text-[#333333]">
               Pricing
             </a>
-            <a href="#faq" className="transition hover:text-white">
+            <a href="#faq" className="transition hover:text-[#333333]">
               FAQ
             </a>
           </div>
@@ -134,7 +131,7 @@ export default function PromptPixelPage() {
             href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
             type="click_download"
             meta={{ source: "nav" }}
-            className="btn-glow rounded-lg px-5 py-2 text-sm font-semibold text-white"
+            className="inline-flex items-center px-5 py-2 rounded-lg bg-[#0061aa] hover:bg-[#004d88] text-white text-sm font-semibold transition-colors"
           >
             Download free
           </TrackLink>
@@ -146,25 +143,26 @@ export default function PromptPixelPage() {
         id="top"
         className="relative min-h-screen w-full overflow-hidden pt-16"
       >
-        <div className="pointer-events-none absolute inset-0 z-0 grid-overlay opacity-40" />
+        <div className="pointer-events-none absolute inset-0 z-0 grid-overlay opacity-50" />
+        <div className="pointer-events-none absolute right-0 top-1/4 h-[600px] w-[600px] rounded-full bg-[#0061aa]/[0.08] blur-[160px]" />
 
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-8 px-6 py-16 lg:grid-cols-2 lg:gap-8 lg:py-0">
           {/* LEFT — text */}
           <div className="relative z-20 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-              <span className="mono-tag text-white/80">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
+              <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
+              <span className="mono-tag text-[#555555]">
                 v2.0.1-alpha · windows · macos coming soon
               </span>
             </div>
 
-            <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight text-[#333333] sm:text-6xl lg:text-7xl">
               <span className="text-gradient">One hotkey.</span>
               <br />
-              <span className="text-gradient-violet">Screenshot to AI.</span>
+              <span className="text-gradient">Screenshot to AI.</span>
             </h1>
 
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-[#555555] sm:text-lg">
               Press a key. PromptPixel captures your screen, pastes it
               straight into ChatGPT, Claude, or any AI chat — and types your
               prompt alongside it. Hands-free AI workflows.
@@ -175,36 +173,36 @@ export default function PromptPixelPage() {
                 href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
                 type="click_download"
                 meta={{ source: "hero" }}
-                className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white"
+                className="btn-glow flex items-center gap-2 rounded-xl px-6 py-3.5 font-semibold"
               >
                 Download free for Windows
                 <ArrowRight className="h-4 w-4" />
               </TrackLink>
               <a
                 href="#how"
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-6 py-3.5 font-semibold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
+                className="flex items-center gap-2 rounded-xl border border-[#dbdbdb] bg-white px-6 py-3.5 font-semibold text-[#555555] transition hover:border-[#777777] hover:text-[#333333]"
               >
                 How it works
               </a>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/40">
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-[#777777]">
               <span className="flex items-center gap-1.5">
-                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                <Check className="h-3.5 w-3.5 text-[#10B981]" strokeWidth={3} />
                 free forever
               </span>
               <span className="flex items-center gap-1.5">
-                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                <Check className="h-3.5 w-3.5 text-[#10B981]" strokeWidth={3} />
                 pro: $25 perpetual license
               </span>
               <span className="flex items-center gap-1.5">
-                <Check className="h-3.5 w-3.5 text-green-400" strokeWidth={3} />
+                <Check className="h-3.5 w-3.5 text-[#10B981]" strokeWidth={3} />
                 12 months of updates
               </span>
             </div>
           </div>
 
-          {/* RIGHT — auto-playing video-style demo of the real app */}
+          {/* RIGHT — auto-playing demo of the real app */}
           <div className="relative w-full">
             <PromptPixelDemo />
           </div>
@@ -212,12 +210,12 @@ export default function PromptPixelPage() {
       </section>
 
       {/* ───── TRUST ROW ───── */}
-      <section className="border-y border-white/5 bg-ink-900/50 py-16">
+      <section className="border-y border-[#dbdbdb]/50 bg-[#eef2f7] py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <p className="mono-tag mb-8 text-center text-white/40">
+          <p className="mono-tag mb-8 text-center text-[#777777]">
             works with every ai chat you already use
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 text-white/60 md:gap-14">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-[#555555] md:gap-14">
             {[
               "ChatGPT",
               "Claude",
@@ -228,7 +226,7 @@ export default function PromptPixelPage() {
             ].map((n) => (
               <span
                 key={n}
-                className="text-xl font-bold transition hover:text-white"
+                className="text-xl font-bold transition hover:text-[#0061aa]"
               >
                 {n}
               </span>
@@ -241,11 +239,11 @@ export default function PromptPixelPage() {
       <section id="how" className="relative scroll-mt-20 py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-20 text-center">
-            <div className="mono-tag mb-4 text-glow-cyan">// workflow</div>
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              From screen to AI in one keystroke.
+            <div className="mono-tag mb-4 text-[#0061aa]">// workflow</div>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
+              <span className="text-gradient">From screen to AI in one keystroke.</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-white/60">
+            <p className="mx-auto max-w-2xl text-lg text-[#555555]">
               Set it up once. Forget it forever. PromptPixel lives in your
               system tray and waits for your hotkey.
             </p>
@@ -259,11 +257,11 @@ export default function PromptPixelPage() {
                 body: (
                   <>
                     Open settings, pick a hotkey combo (default{" "}
-                    <span className="mono-tag text-glow-cyan">
+                    <span className="mono-tag text-[#0061aa]">
                       Ctrl + Alt + S
                     </span>
                     ), and write a default prompt PromptPixel will type for you
-                    — like <em>"explain this"</em> or <em>"what's wrong here?"</em>.
+                    — like <em>&quot;explain this&quot;</em> or <em>&quot;what&apos;s wrong here?&quot;</em>.
                   </>
                 ),
                 Icon: Keyboard,
@@ -281,13 +279,13 @@ export default function PromptPixelPage() {
                 Icon: Zap,
               },
             ].map(({ step, title, body, Icon }) => (
-              <div key={step} className="group glass rounded-2xl p-8">
-                <div className="mono-tag mb-6 text-glow-blue">{step}</div>
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-glow-blue/30 bg-gradient-to-br from-glow-blue/30 to-transparent">
-                  <Icon className="h-7 w-7 text-glow-blue" />
+              <div key={step} className="group feature-card p-8">
+                <div className="mono-tag mb-6 text-[#0061aa]">{step}</div>
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-[#0061aa]/20 bg-[#e6f0f9]">
+                  <Icon className="h-7 w-7 text-[#0061aa]" />
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-white">{title}</h3>
-                <p className="leading-relaxed text-white/60">{body}</p>
+                <h3 className="mb-3 text-2xl font-bold text-[#333333]">{title}</h3>
+                <p className="leading-relaxed text-[#555555]">{body}</p>
               </div>
             ))}
           </div>
@@ -297,16 +295,16 @@ export default function PromptPixelPage() {
       {/* ───── FREE FEATURES ───── */}
       <section
         id="features"
-        className="relative scroll-mt-20 overflow-hidden border-y border-white/5 bg-ink-900/40 py-32"
+        className="relative scroll-mt-20 overflow-hidden border-y border-[#dbdbdb]/50 bg-[#eef2f7] py-32"
       >
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-glow-blue/10 blur-[150px]" />
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#0061aa]/[0.08] blur-[150px]" />
         <div className="relative mx-auto max-w-6xl px-6">
           <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 text-glow-cyan">// free tier</div>
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Free, forever, no catch.
+            <div className="mono-tag mb-4 text-[#0061aa]">// free tier</div>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
+              <span className="text-gradient">Free, forever, no catch.</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-white/60">
+            <p className="mx-auto max-w-2xl text-lg text-[#555555]">
               Everything you need to wire AI chats into your day-to-day
               keyboard flow. The whole core product, free.
             </p>
@@ -350,12 +348,12 @@ export default function PromptPixelPage() {
                 body: "PromptPixel runs entirely on Windows-native APIs. No third-party services. No cloud calls. Your screen never leaves your PC.",
               },
             ].map(({ Icon, title, body }) => (
-              <div key={title} className="glass rounded-2xl p-7">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-glow-blue/20 to-glow-cyan/20">
-                  <Icon className="h-5 w-5 text-glow-cyan" />
+              <div key={title} className="feature-card p-7">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-[#0061aa]/20 bg-[#e6f0f9]">
+                  <Icon className="h-5 w-5 text-[#0061aa]" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
-                <p className="text-sm leading-relaxed text-white/60">{body}</p>
+                <h3 className="mb-2 text-xl font-bold text-[#333333]">{title}</h3>
+                <p className="text-sm leading-relaxed text-[#555555]">{body}</p>
               </div>
             ))}
           </div>
@@ -366,14 +364,14 @@ export default function PromptPixelPage() {
       <section className="relative py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 inline-flex items-center gap-1.5 text-glow-magenta">
+            <div className="mono-tag mb-4 inline-flex items-center gap-1.5 text-[#0061aa]">
               <Crown className="h-3.5 w-3.5" />
               // pro tier
             </div>
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Five power features. One Pro key.
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
+              <span className="text-gradient">Five power features. One Pro key.</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-white/60">
+            <p className="mx-auto max-w-2xl text-lg text-[#555555]">
               The features that turn PromptPixel from a hotkey into a full
               hands-free AI cockpit.
             </p>
@@ -414,18 +412,18 @@ export default function PromptPixelPage() {
             ].map(({ Icon, title, hotkey, body }) => (
               <div
                 key={title}
-                className="group relative glass rounded-2xl p-8"
+                className="group relative feature-card p-8"
               >
-                <div className="mono-tag absolute right-6 top-6 inline-flex items-center gap-1 rounded-full border border-glow-magenta/30 bg-glow-magenta/10 px-2.5 py-0.5 text-[10px] text-glow-magenta">
+                <div className="mono-tag absolute right-6 top-6 inline-flex items-center gap-1 rounded-full border border-[#0061aa]/30 bg-[#e6f0f9] px-2.5 py-0.5 text-[10px] text-[#0061aa]">
                   <Crown className="h-2.5 w-2.5" />
                   pro
                 </div>
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-glow-magenta/30 bg-gradient-to-br from-glow-magenta/30 to-transparent">
-                  <Icon className="h-7 w-7 text-glow-magenta" />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-[#0061aa]/20 bg-[#e6f0f9]">
+                  <Icon className="h-7 w-7 text-[#0061aa]" />
                 </div>
-                <h3 className="mb-2 text-2xl font-bold text-white">{title}</h3>
-                <div className="mono-tag mb-4 text-glow-cyan">{hotkey}</div>
-                <p className="leading-relaxed text-white/60">{body}</p>
+                <h3 className="mb-2 text-2xl font-bold text-[#333333]">{title}</h3>
+                <div className="mono-tag mb-4 text-[#0061aa]">{hotkey}</div>
+                <p className="leading-relaxed text-[#555555]">{body}</p>
               </div>
             ))}
           </div>
@@ -435,31 +433,31 @@ export default function PromptPixelPage() {
       {/* ───── PRICING ───── */}
       <section
         id="pricing"
-        className="relative scroll-mt-20 border-y border-white/5 bg-ink-900/40 py-32"
+        className="relative scroll-mt-20 border-y border-[#dbdbdb]/50 bg-[#eef2f7] py-32"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 text-glow-cyan">// pricing</div>
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-gradient sm:text-6xl">
-              Free or Pro. You pick.
+            <div className="mono-tag mb-4 text-[#0061aa]">// pricing</div>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
+              <span className="text-gradient">Free or Pro. You pick.</span>
             </h2>
-            <p className="text-lg text-white/60">
+            <p className="text-lg text-[#555555]">
               No subscriptions, ever. Pay once for Pro and own it forever.
             </p>
           </div>
 
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
             {/* FREE */}
-            <div className="glass rounded-2xl p-8 sm:p-10">
-              <div className="mono-tag mb-2 text-glow-cyan">
+            <div className="feature-card p-8 sm:p-10">
+              <div className="mono-tag mb-2 text-[#0061aa]">
                 // promptpixel_free
               </div>
-              <h3 className="text-2xl font-black text-white">Free</h3>
+              <h3 className="text-2xl font-black text-[#333333]">Free</h3>
               <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-5xl font-black text-white">$0</span>
-                <span className="text-white/50">forever</span>
+                <span className="text-5xl font-black text-[#333333]">$0</span>
+                <span className="text-[#777777]">forever</span>
               </div>
-              <p className="mt-4 text-sm text-white/60">
+              <p className="mt-4 text-sm text-[#555555]">
                 Includes a 14-day Pro trial on every fresh install. After the trial, Free keeps working — no nag screen, no expiry.
               </p>
 
@@ -476,10 +474,10 @@ export default function PromptPixelPage() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-3 text-white/80"
+                    className="flex items-center gap-3 text-[#333333]"
                   >
                     <Check
-                      className="h-4 w-4 flex-shrink-0 text-glow-cyan"
+                      className="h-4 w-4 flex-shrink-0 text-[#0061aa]"
                       strokeWidth={3}
                     />
                     {item}
@@ -490,7 +488,7 @@ export default function PromptPixelPage() {
               <a
                 id="download"
                 href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
-                className="mt-10 flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-4 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                className="mt-10 flex w-full items-center justify-center gap-2 rounded-xl border border-[#dbdbdb] bg-white py-4 font-semibold text-[#333333] transition hover:border-[#0061aa] hover:bg-[#f8f9fb]"
               >
                 Download free for Windows
                 <ArrowRight className="h-4 w-4" />
@@ -499,24 +497,24 @@ export default function PromptPixelPage() {
 
             {/* PRO */}
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-glow-blue via-glow-cyan to-glow-magenta opacity-30 blur-2xl" />
-              <div className="relative glass rounded-2xl p-8 sm:p-10">
+              <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-[#0061aa]/15 blur-2xl" />
+              <div className="relative feature-card border-[#0061aa]/40 p-8 sm:p-10">
                 <div className="mb-2 flex items-center justify-between">
-                  <div className="mono-tag inline-flex items-center gap-1 text-glow-magenta">
+                  <div className="mono-tag inline-flex items-center gap-1 text-[#0061aa]">
                     <Crown className="h-3 w-3" />
                     // promptpixel_pro
                   </div>
-                  <div className="mono-tag rounded-full border border-green-400/20 bg-green-400/10 px-3 py-0.5 text-green-400">
+                  <div className="mono-tag rounded-full border border-[#10B981]/30 bg-[#10B981]/10 px-3 py-0.5 text-[#10B981]">
                     best value
                   </div>
                 </div>
-                <h3 className="text-2xl font-black text-white">Pro</h3>
+                <h3 className="text-2xl font-black text-[#333333]">Pro</h3>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-5xl font-black text-white">$25</span>
-                  <span className="text-white/50 line-through">$49</span>
-                  <span className="ml-1 text-white/60">perpetual</span>
+                  <span className="text-5xl font-black text-[#333333]">$25</span>
+                  <span className="text-[#999999] line-through">$49</span>
+                  <span className="ml-1 text-[#555555]">perpetual</span>
                 </div>
-                <p className="mt-4 text-sm text-white/60">
+                <p className="mt-4 text-sm text-[#555555]">
                   Buy once. Own this version forever. Updates included for 12
                   months. Try every Pro feature free for 14 days first — every install starts with a full Pro trial.
                 </p>
@@ -538,10 +536,10 @@ export default function PromptPixelPage() {
                   ].map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-3 text-white/80"
+                      className="flex items-center gap-3 text-[#333333]"
                     >
                       <Check
-                        className="h-4 w-4 flex-shrink-0 text-glow-magenta"
+                        className="h-4 w-4 flex-shrink-0 text-[#0061aa]"
                         strokeWidth={3}
                       />
                       {item}
@@ -554,21 +552,21 @@ export default function PromptPixelPage() {
                   type="click_buy"
                   meta={{ source: "pricing_card" }}
                   newTab
-                  className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold text-white"
+                  className="btn-glow mt-10 flex w-full items-center justify-center gap-2 rounded-xl py-4 font-bold"
                 >
                   Buy Pro — $25
                   <ArrowRight className="h-5 w-5" />
                 </TrackLink>
-                <p className="mono-tag mt-3 text-center text-white/40">
+                <p className="mono-tag mt-3 text-center text-[#777777]">
                   perpetual license · 12 months of updates
                 </p>
-                <p className="mt-3 rounded-lg border border-white/5 bg-ink-950/50 p-3 text-center text-[11px] leading-relaxed text-white/50">
+                <p className="mt-3 rounded-lg border border-[#dbdbdb] bg-white p-3 text-center text-[11px] leading-relaxed text-[#555555]">
                   When your update period ends, your version of PromptPixel
                   keeps working{" "}
-                  <span className="text-white/80">forever</span> — every Pro
+                  <span className="text-[#333333] font-semibold">forever</span> — every Pro
                   feature, every hotkey, no expiry. Want new versions
                   afterwards? Renew updates for{" "}
-                  <span className="text-white/80">$15/year</span>. Your call.
+                  <span className="text-[#333333] font-semibold">$15/year</span>. Your call.
                 </p>
               </div>
             </div>
@@ -579,19 +577,19 @@ export default function PromptPixelPage() {
       {/* ───── PRIVACY CALLOUT ───── */}
       <section className="relative py-24">
         <div className="mx-auto max-w-4xl px-6">
-          <div className="glass rounded-2xl p-8 sm:p-12">
+          <div className="feature-card p-8 sm:p-12">
             <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-glow-blue/30 bg-gradient-to-br from-glow-blue/30 to-transparent">
-                <Lock className="h-8 w-8 text-glow-blue" />
+              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-[#0061aa]/20 bg-[#e6f0f9]">
+                <Lock className="h-8 w-8 text-[#0061aa]" />
               </div>
               <div>
-                <div className="mono-tag mb-2 text-glow-blue">
+                <div className="mono-tag mb-2 text-[#0061aa]">
                   // privacy by default
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
+                <h3 className="mb-3 text-2xl font-bold text-[#333333] sm:text-3xl">
                   Your screen never leaves your machine.
                 </h3>
-                <p className="leading-relaxed text-white/60">
+                <p className="leading-relaxed text-[#555555]">
                   PromptPixel uses Windows-native APIs for everything — capture,
                   OCR, and speech recognition. No third-party services. No cloud
                   uploads. No telemetry. No account required. The only thing
@@ -607,13 +605,13 @@ export default function PromptPixelPage() {
       {/* ───── FAQ ───── */}
       <section
         id="faq"
-        className="scroll-mt-20 border-y border-white/5 bg-ink-900/40 py-32"
+        className="scroll-mt-20 border-y border-[#dbdbdb]/50 bg-[#eef2f7] py-32"
       >
         <div className="mx-auto max-w-3xl px-6">
           <div className="mb-16 text-center">
-            <div className="mono-tag mb-4 text-glow-cyan">// faq</div>
-            <h2 className="text-4xl font-black tracking-tight text-gradient sm:text-5xl">
-              Questions?
+            <div className="mono-tag mb-4 text-[#0061aa]">// faq</div>
+            <h2 className="text-4xl font-black tracking-tight text-[#333333] sm:text-5xl">
+              <span className="text-gradient">Questions?</span>
             </h2>
           </div>
           <div className="space-y-4">
@@ -665,13 +663,13 @@ export default function PromptPixelPage() {
             ].map(({ q, a }) => (
               <details
                 key={q}
-                className="group glass cursor-pointer rounded-xl p-6"
+                className="group feature-card cursor-pointer p-6"
               >
-                <summary className="flex list-none items-center justify-between font-semibold text-white">
+                <summary className="flex list-none items-center justify-between font-semibold text-[#333333]">
                   {q}
-                  <Plus className="h-5 w-5 flex-shrink-0 text-glow-blue transition-transform group-open:rotate-45" />
+                  <Plus className="h-5 w-5 flex-shrink-0 text-[#0061aa] transition-transform group-open:rotate-45" />
                 </summary>
-                <p className="mt-4 leading-relaxed text-white/60">{a}</p>
+                <p className="mt-4 leading-relaxed text-[#555555]">{a}</p>
               </details>
             ))}
           </div>
@@ -680,12 +678,12 @@ export default function PromptPixelPage() {
 
       {/* ───── FINAL CTA ───── */}
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-glow-blue/10 to-transparent" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0061aa]/[0.08] blur-[150px]" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h2 className="mb-6 text-5xl font-black tracking-tight text-gradient sm:text-7xl">
-            Stop tabbing. Start shipping.
+          <h2 className="mb-6 text-5xl font-black tracking-tight text-[#333333] sm:text-7xl">
+            <span className="text-gradient">Stop tabbing. Start shipping.</span>
           </h2>
-          <p className="mb-10 text-xl text-white/60">
+          <p className="mb-10 text-xl text-[#555555]">
             Free for Windows. Pro is $25 once, never again.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -693,14 +691,14 @@ export default function PromptPixelPage() {
               href="https://github.com/MakoBytes-com/PromptPixel/releases/latest/download/PromptPixel-Setup.exe"
               type="click_download"
               meta={{ source: "final_cta" }}
-              className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold text-white"
+              className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold"
             >
               Download free
               <ArrowRight className="h-5 w-5" />
             </TrackLink>
             <a
               href="#pricing"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-ink-950/50 px-10 py-5 text-lg font-bold text-white/80 backdrop-blur-md transition hover:border-white/30 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#dbdbdb] bg-white px-10 py-5 text-lg font-bold text-[#555555] transition hover:border-[#777777] hover:text-[#333333]"
             >
               See Pro
             </a>
@@ -709,43 +707,43 @@ export default function PromptPixelPage() {
       </section>
 
       {/* ───── FOOTER ───── */}
-      <footer className="border-t border-white/5 bg-ink-950 py-12">
+      <footer className="border-t border-[#dbdbdb]/50 bg-[#f8f9fb] py-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <Link href="/" className="flex items-center gap-3">
               <BrandMark />
               <div>
-                <div className="font-bold text-white">PromptPixel</div>
-                <div className="mono-tag text-white/40">
+                <div className="font-bold text-[#333333]">PromptPixel</div>
+                <div className="mono-tag text-[#999999]">
                   a makobytes product
                 </div>
               </div>
             </Link>
-            <div className="flex items-center gap-8 text-sm text-white/60">
-              <Link href="/" className="transition hover:text-white">
+            <div className="flex items-center gap-8 text-sm text-[#777777]">
+              <Link href="/" className="transition hover:text-[#333333]">
                 MakoBytes
               </Link>
-              <a href="#how" className="transition hover:text-white">
+              <a href="#how" className="transition hover:text-[#333333]">
                 How it works
               </a>
-              <a href="#pricing" className="transition hover:text-white">
+              <a href="#pricing" className="transition hover:text-[#333333]">
                 Pricing
               </a>
               <a
                 href="mailto:hello@makobytes.com"
-                className="transition hover:text-white"
+                className="transition hover:text-[#333333]"
               >
                 Contact
               </a>
             </div>
           </div>
-          <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-white/30 md:flex-row">
-            <div>© 2026 makobytes · v2.0.1-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-white">makologics</a></div>
+          <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#dbdbdb]/50 pt-8 text-[#999999] md:flex-row">
+            <div>© 2026 makobytes · v2.0.1-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-[#0061aa]">makologics</a></div>
             <div className="flex gap-4">
-              <Link href="/privacy" className="transition hover:text-white">
+              <Link href="/privacy" className="transition hover:text-[#333333]">
                 privacy
               </Link>
-              <Link href="/terms" className="transition hover:text-white">
+              <Link href="/terms" className="transition hover:text-[#333333]">
                 terms
               </Link>
             </div>

@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05050a",
+  themeColor: "#0061aa",
   width: "device-width",
   initialScale: 1,
 };
@@ -78,9 +78,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
-        {children}
+    <html lang="en">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-white text-[#333333]`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-[#0061aa] focus:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0061aa]"
+        >
+          Skip to main content
+        </a>
+        <div id="main-content" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
       </body>
     </html>
   );

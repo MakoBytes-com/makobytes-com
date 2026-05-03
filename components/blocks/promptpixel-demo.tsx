@@ -239,22 +239,22 @@ export function PromptPixelDemo({ className }: { className?: string }) {
 
   return (
     <div className={`relative ${className ?? ""}`}>
-      {/* ambient glow behind the player */}
-      <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-glow-blue/25 via-transparent to-glow-cyan/25 blur-2xl" />
+      {/* ambient navy halo behind the player */}
+      <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[#0061aa]/15 blur-2xl" />
 
       <div className="circuit-border relative rounded-2xl">
-        <div className="rounded-2xl bg-ink-900/95 p-1 backdrop-blur-xl">
+        <div className="rounded-2xl bg-white p-1 shadow-[0_20px_60px_rgba(0,97,170,0.15)] border border-[#dbdbdb]">
           {/* window chrome */}
-          <div className="relative flex items-center gap-1.5 border-b border-white/5 px-4 py-3">
-            <div className="h-3 w-3 rounded-full bg-red-500/80" />
-            <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-            <div className="h-3 w-3 rounded-full bg-green-500/80" />
-            <div className="mono-tag ml-4 text-white/30">
-              promptpixel — v2.0.0-alpha · live demo
+          <div className="relative flex items-center gap-1.5 border-b border-[#dbdbdb] bg-[#f8f9fb] px-4 py-3 rounded-t-2xl">
+            <div className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <div className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <div className="h-3 w-3 rounded-full bg-[#28c840]" />
+            <div className="mono-tag ml-4 text-[#777777]">
+              promptpixel — v2.0.1-alpha · live demo
             </div>
-            <div className="ml-auto flex items-center gap-1.5 rounded-full bg-glow-blue/10 px-2.5 py-0.5">
-              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-glow-blue" />
-              <span className="mono-tag text-[10px] text-glow-blue">
+            <div className="ml-auto flex items-center gap-1.5 rounded-full bg-[#e6f0f9] px-2.5 py-0.5">
+              <div className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-[#0061aa]" />
+              <span className="mono-tag text-[10px] text-[#0061aa]">
                 {playing ? "playing" : "paused"}
               </span>
             </div>
@@ -265,9 +265,9 @@ export function PromptPixelDemo({ className }: { className?: string }) {
             type="button"
             onClick={togglePlay}
             aria-label={playing ? "Pause demo" : "Play demo"}
-            className="group relative block aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-ink-800 to-ink-900 sm:aspect-[16/13]"
+            className="group relative block aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-[#f8f9fb] to-[#eef2f7] sm:aspect-[16/13]"
           >
-            <div className="absolute inset-0 grid-overlay opacity-30" />
+            <div className="absolute inset-0 grid-overlay opacity-50" />
 
             {/* Ken Burns image stack — render every frame, fade only the active */}
             {FRAMES.map((f, i) => {
@@ -304,16 +304,16 @@ export function PromptPixelDemo({ className }: { className?: string }) {
             })}
 
             {/* Bottom gradient + caption overlay */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950 via-ink-950/85 to-transparent px-6 pb-6 pt-16">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent px-6 pb-6 pt-16">
               <div
                 key={`caption-${index}`}
                 className="animate-caption mx-auto max-w-xl"
               >
-                <div className="mono-tag text-glow-cyan">{frame.chapter}</div>
-                <div className="mt-1 text-xl font-bold text-white sm:text-2xl">
+                <div className="mono-tag text-[#0061aa]">{frame.chapter}</div>
+                <div className="mt-1 text-xl font-bold text-[#333333] sm:text-2xl">
                   {frame.title}
                 </div>
-                <div className="mt-1.5 text-sm leading-relaxed text-white/70 sm:text-base">
+                <div className="mt-1.5 text-sm leading-relaxed text-[#555555] sm:text-base">
                   {frame.subtitle}
                 </div>
               </div>
@@ -321,8 +321,8 @@ export function PromptPixelDemo({ className }: { className?: string }) {
 
             {/* Center play overlay (only visible when paused) */}
             {!playing && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink-950/30 backdrop-blur-[1px]">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-glow-blue/90 shadow-[0_0_60px_rgba(59,130,246,0.7)]">
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[1px]">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0061aa] shadow-[0_0_60px_rgba(0,97,170,0.5)]">
                   <Play
                     className="h-7 w-7 text-white"
                     fill="currentColor"
@@ -341,7 +341,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                   restart();
                 }}
                 aria-label="Restart demo"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dbdbdb] bg-white text-[#555555] shadow-sm transition hover:border-[#0061aa] hover:text-[#0061aa]"
               >
                 <RotateCcw className="h-4 w-4" />
               </button>
@@ -352,7 +352,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                   togglePlay();
                 }}
                 aria-label={playing ? "Pause" : "Play"}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-ink-950/80 text-white/70 backdrop-blur-md transition hover:border-glow-blue/50 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dbdbdb] bg-white text-[#555555] shadow-sm transition hover:border-[#0061aa] hover:text-[#0061aa]"
               >
                 {playing ? (
                   <Pause className="h-4 w-4" fill="currentColor" />
@@ -364,7 +364,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
           </button>
 
           {/* Frame chapter dots + progress bar */}
-          <div className="border-t border-white/5 bg-ink-950/60 px-4 py-3">
+          <div className="border-t border-[#dbdbdb] bg-[#f8f9fb] px-4 py-3 rounded-b-2xl">
             <div className="flex items-center gap-2">
               {FRAMES.map((_, i) => {
                 const isActive = i === index;
@@ -375,10 +375,10 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                     type="button"
                     onClick={() => goTo(i)}
                     aria-label={`Go to frame ${i + 1}`}
-                    className="group/dot relative h-2 sm:h-1 flex-1 overflow-hidden rounded-full bg-white/10 transition hover:bg-white/20"
+                    className="group/dot relative h-2 sm:h-1 flex-1 overflow-hidden rounded-full bg-[#dbdbdb] transition hover:bg-[#c1c5cd]"
                   >
                     <div
-                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-glow-blue to-glow-cyan"
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#0061aa] to-[#66a5db]"
                       style={{
                         width: isActive
                           ? `${progress * 100}%`
@@ -392,7 +392,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
                 );
               })}
             </div>
-            <div className="mono-tag mt-2 flex items-center justify-between text-[10px] text-white/30">
+            <div className="mono-tag mt-2 flex items-center justify-between text-[10px] text-[#999999]">
               <span>
                 {String(index + 1).padStart(2, "0")} /{" "}
                 {String(FRAMES.length).padStart(2, "0")}
