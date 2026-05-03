@@ -24,8 +24,9 @@ import { TrackPageView } from "@/components/admin/track-pageview";
 import { TrackLink } from "@/components/admin/track-link";
 
 export const metadata: Metadata = {
-  title:
-    "PromptPixel — One Hotkey. Screenshot to Any AI Chat. | MakoBytes",
+  // Layout's title.template appends "| MakoBytes" automatically — don't
+  // include it here or the rendered <title> doubles the suffix.
+  title: "PromptPixel — One Hotkey. Screenshot to Any AI Chat.",
   description:
     "Press a hotkey. Drop a screenshot into ChatGPT, Claude, or any AI chat — with your prompt auto-typed alongside it. Free Windows app. Pro unlocks OCR, voice prompts, and multi-target hotkeys.",
   alternates: { canonical: "https://makobytes.com/promptpixel" },

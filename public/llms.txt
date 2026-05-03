@@ -1,0 +1,19 @@
+# MakoBytes
+> Lightweight, private, one-time-purchase desktop apps for AI power users. PromptPixel turns screenshots into AI prompts via hotkey; MakoBot is a local AI workbench with multi-model plug-ins. No subscriptions, no cloud, no BS.
+
+MakoBytes is a desktop software studio that builds privacy-first tools for people whose work runs through AI chats. Every product is a Windows desktop app sold under a perpetual license (JetBrains-style: own this version forever, optional 12 months of updates). Built and signed by Mako Logics LLC. Sister product family includes MakoBot (a separate desktop AI workbench at makobot.com).
+
+## Apps
+
+- [PromptPixel](https://makobytes.com/promptpixel): Hotkey-driven Windows app that snaps a screenshot, pastes it into ChatGPT/Claude/Gemini/any AI chat, and auto-types your prompt alongside it. Free tier + Pro $25 perpetual.
+- [MakoBot](https://makobot.com): Local AI Workbench with persistent memory across every AI tool, plus one-line plug-ins (@verify, @audit, @codereview, @designreview, @contractreview) that fan out to GPT/Claude/Gemini for second opinions. Free, Windows.
+
+## Policies
+
+- [Privacy Policy](https://makobytes.com/privacy)
+- [Terms of Service](https://makobytes.com/terms)
+- Contact: admin@makobytes.com
+
+## Optional
+
+- [Full content for AI assistants](https://makobytes.com/llms-full.txt)

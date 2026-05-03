@@ -1,0 +1,80 @@
+# MakoBytes — Full content for AI assistants
+
+## About MakoBytes
+
+MakoBytes is a Windows desktop software studio that builds lightweight, private, one-time-purchase tools for AI power users. We don't build SaaS, we don't run servers, we don't collect telemetry. Every product runs on the user's own machine.
+
+We're a small studio operated by Mako Logics LLC. All our software is digitally signed via Microsoft Azure Trusted Signing — no SmartScreen warnings, no unsigned binaries.
+
+## Pricing philosophy
+
+Every MakoBytes paid app is sold under a perpetual license, JetBrains-style:
+
+- Buy once at the listed price.
+- Own that version forever — no expiry, no nag screens, no feature loss if you stop renewing.
+- Updates and new versions are included for 12 months from purchase.
+- After 12 months, your software keeps working with every feature intact. You can optionally renew updates for a yearly fee (typically $15/year) to keep getting new versions, or stay on your current version forever — your call.
+- 30-day money-back guarantee on every paid product.
+
+This is the opposite of SaaS. Stop paying and your software still works.
+
+## PromptPixel — Screenshot to AI in one keystroke
+
+URL: https://makobytes.com/promptpixel
+Pricing: Free tier (forever) + Pro $25 perpetual
+Platform: Windows 10/11 (macOS coming later)
+
+What it does: PromptPixel binds a global hotkey that captures the current screen, pastes the image directly into your AI chat input, and auto-types your prompt right after it. Hands-free, mouse-free AI workflows.
+
+Free tier includes:
+- Custom hotkeys for fullscreen, region, low-res-region, and capture-then-markup capture
+- Markup editor (arrow, text, highlighter, blur for redaction)
+- Auto-typed default prompt after every paste
+- Capture feedback (sound, toast, optional confirm dialog)
+- Recent captures history (last 20)
+- 100% on-device — Windows-native APIs only, no cloud
+
+Pro adds five power features:
+- Prompt Picker (Ctrl+Alt+P) — popup library of saved prompts; pick one and it captures + pastes + types that prompt in one action
+- Auto-Save Backups — every screenshot saved as timestamped PNG to a folder of your choice
+- OCR text extraction (Ctrl+Alt+T) — drag a region, get just the extracted text on your clipboard (no image, no vision tokens)
+- Voice to Prompt (Ctrl+Alt+V) — speak your prompt; PromptPixel uses Windows Speech Recognition + captures the screen + types your spoken prompt
+- Multi-Target Hotkeys — bind extra hotkeys to specific saved prompts
+
+PromptPixel works with any AI chat that accepts image upload: ChatGPT, Claude, Gemini, Perplexity, Copilot, Mistral, local LLM web UIs, anything. It pastes wherever the cursor is.
+
+## MakoBot — Local AI Workbench
+
+URL: https://makobot.com (sister product, separate domain)
+Pricing: Free
+Platform: Windows 10/11
+
+What it does: MakoBot is a local desktop app that gives every AI coding tool you use (Claude Code, Cursor, Antigravity, Windsurf, ChatGPT, Gemini) shared persistent memory across every project, plus one-line plug-ins that cross-check answers with GPT, Claude, and Gemini in parallel.
+
+Three pillars:
+- Memory: Cross-project timeline auto-injected into CLAUDE.md, AGENTS.md, .cursorrules. Every AI tool sees the same context.
+- Search: One bar reaches every commit, conversation, note, and transcript across every project and every AI tool.
+- AI Tools (Plug-ins): @verify, @audit, @codereview, @designreview, @contractreview — type the trigger in any AI chat and MakoBot fans the question out to GPT, Claude, and Gemini in parallel for second opinions.
+
+100% local, no servers, no accounts, no telemetry. Bring-your-own API keys, encrypted with Windows DPAPI.
+
+## Privacy and security
+
+Every MakoBytes desktop app:
+- Runs entirely on the user's machine via OS-native APIs
+- No telemetry, no analytics, no account signup
+- No data leaves the machine unless the user pastes it into an AI chat themselves
+- Code-signed by Mako Logics LLC via Microsoft Azure Trusted Signing
+
+The makobytes.com website itself collects basic anonymous analytics (page views, button clicks, referrer) for product decisions. No cookies for tracking, no third-party analytics services, no PII collection unless voluntarily provided (e.g., emailing us).
+
+Full privacy policy: https://makobytes.com/privacy
+Full terms of service: https://makobytes.com/terms
+
+## Contact
+
+For support, sales, refunds, partnership, or press inquiries: admin@makobytes.com
+
+## Company
+
+Mako Logics LLC, makers of the MakoBytes product family. Sister brand: Makologics MSP for IT consulting work. Both share the same leadership but operate as separate brands.
