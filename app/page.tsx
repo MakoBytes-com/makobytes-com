@@ -5,9 +5,9 @@ import { TrackPageView } from "@/components/admin/track-pageview";
 import { TrackLink } from "@/components/admin/track-link";
 import {
   ArrowRight,
+  Brain,
   Camera,
   Clock,
-  Library,
   Lock,
   Sparkles,
   Wrench,
@@ -81,16 +81,16 @@ const apps: MakoApp[] = [
     Icon: Camera,
   },
   {
-    slug: "aipromptshive",
-    name: "AI Prompt Hive",
-    tagline: "A marketplace for creative intelligence.",
+    slug: "makobot",
+    name: "MakoBot",
+    tagline: "Your local AI Workbench.",
     description:
-      "Save, organize, and share your best AI prompts in one place. Free prompt storage built for people who talk to AI all day.",
+      "Permanent memory across every AI tool you use, plus one-line plug-ins (@verify, @audit, @codereview) that cross-check answers with GPT, Claude, and Gemini. Windows, free, 100% local.",
     status: "available",
     price: "Free",
-    platform: "Web",
-    href: "https://aipromptshive.com",
-    Icon: Library,
+    platform: "Windows",
+    href: "https://makobot.com",
+    Icon: Brain,
   },
   {
     slug: "coming-soon-2",
