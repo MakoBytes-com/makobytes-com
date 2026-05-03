@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { TrackPageView } from "@/components/admin/track-pageview";
 import { TrackLink } from "@/components/admin/track-link";
@@ -256,11 +257,28 @@ export default function MakoBytesHub() {
       </nav>
 
       {/* ───── HERO ───── */}
-      <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-        <div className="pointer-events-none absolute inset-0 grid-overlay opacity-50" />
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#0061aa]/[0.07] blur-[180px]" />
+      <section id="hero" className="relative">
+        {/* Full-width 16:9 hero banner — sits edge-to-edge above the text content,
+            mirroring the makobot.com hero pattern. next/image handles AVIF/WebP
+            negotiation and responsive sizing automatically. */}
+        <div className="relative w-full pt-16">
+          <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#f8f9fb]">
+            <Image
+              src="/images/hero.webp"
+              alt="MakoBytes — premium desktop software studio for AI power users. Analytics dashboard mockup on a curved monitor."
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
 
-        <div className="relative mx-auto max-w-5xl px-6 text-center">
+        <div className="relative overflow-hidden pt-16 pb-20 sm:pt-20 sm:pb-28">
+          <div className="pointer-events-none absolute inset-0 grid-overlay opacity-50" />
+          <div className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#0061aa]/[0.07] blur-[180px]" />
+
+          <div className="relative mx-auto max-w-5xl px-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
             <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
             <span className="mono-tag text-[#555555]">
@@ -310,6 +328,7 @@ export default function MakoBytesHub() {
               one-time purchase
             </span>
           </div>
+        </div>
         </div>
       </section>
 
