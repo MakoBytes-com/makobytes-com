@@ -280,7 +280,7 @@ export default function MakoBytesHub() {
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="max-w-xl">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
               <span className="mono-tag text-[#555555]">
@@ -294,7 +294,7 @@ export default function MakoBytesHub() {
               <span className="text-gradient">for AI power users.</span>
             </h1>
 
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-[#555555] sm:text-xl">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#555555] sm:text-xl">
               MakoBytes builds fast, private, one-time-purchase desktop apps that
               plug into the way you already work. No subscriptions. No bloat. No
               BS.
