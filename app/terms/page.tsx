@@ -79,10 +79,10 @@ export default function TermsPage() {
               PromptPixel Pro comes with a 30-day money-back guarantee. If you
               are not satisfied, email{" "}
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="text-[#0061aa] transition hover:text-[#004d88]"
               >
-                hello@makobytes.com
+                admin@makobytes.com
               </a>{" "}
               within 30 days of purchase for a full refund. No forms, no
               questions.
@@ -127,10 +127,10 @@ export default function TermsPage() {
             <p className="leading-relaxed">
               Questions? Email{" "}
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="text-[#0061aa] transition hover:text-[#004d88]"
               >
-                hello@makobytes.com
+                admin@makobytes.com
               </a>
               .
             </p>

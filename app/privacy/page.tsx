@@ -93,10 +93,10 @@ export default function PrivacyPage() {
             <p className="leading-relaxed">
               You can request deletion of any data we hold about you by emailing{" "}
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="text-[#0061aa] transition hover:text-[#004d88]"
               >
-                hello@makobytes.com
+                admin@makobytes.com
               </a>
               . Since PromptPixel stores everything locally, there is nothing for
               us to delete on our end for the desktop app.
@@ -108,10 +108,10 @@ export default function PrivacyPage() {
             <p className="leading-relaxed">
               Questions about this policy? Email{" "}
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="text-[#0061aa] transition hover:text-[#004d88]"
               >
-                hello@makobytes.com
+                admin@makobytes.com
               </a>
               .
             </p>

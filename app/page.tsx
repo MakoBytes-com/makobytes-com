@@ -191,7 +191,7 @@ function AppCard({ app }: { app: MakoApp }) {
 
   return (
     <a
-      href="mailto:hello@makobytes.com?subject=Notify me when MakoBytes ships a new app"
+      href="mailto:admin@makobytes.com?subject=Notify me when MakoBytes ships a new app"
       className="block h-full"
     >
       {CardInner}
@@ -239,7 +239,7 @@ export default function MakoBytesHub() {
               Philosophy
             </a>
             <a
-              href="mailto:hello@makobytes.com"
+              href="mailto:admin@makobytes.com"
               className="transition hover:text-[#333333]"
             >
               Contact
@@ -454,7 +454,7 @@ export default function MakoBytesHub() {
                 PromptPixel
               </Link>
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="transition hover:text-[#333333]"
               >
                 Contact

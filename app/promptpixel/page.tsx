@@ -646,7 +646,7 @@ export default function PromptPixelPage() {
               },
               {
                 q: "What if Pro doesn't work for me?",
-                a: "30-day money-back guarantee, no forms, no questions. Email hello@makobytes.com and we refund you. Free stays free either way.",
+                a: "30-day money-back guarantee, no forms, no questions. Email admin@makobytes.com and we refund you. Free stays free either way.",
               },
               {
                 q: "How does the perpetual license work?",
@@ -730,7 +730,7 @@ export default function PromptPixelPage() {
                 Pricing
               </a>
               <a
-                href="mailto:hello@makobytes.com"
+                href="mailto:admin@makobytes.com"
                 className="transition hover:text-[#333333]"
               >
                 Contact
