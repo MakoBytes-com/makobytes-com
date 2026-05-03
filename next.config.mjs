@@ -7,7 +7,7 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://prod.spline.design https://images.unsplash.com",
+  "img-src 'self' data: blob: https://prod.spline.design https://images.unsplash.com https://*.googleusercontent.com",
   "font-src 'self' data:",
   "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live https://prod.spline.design wss://prod.spline.design",
   "media-src 'self'",
