@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { auth, signIn, isAuthConfigured } from "@/auth";
-import { AlertCircle, ChromeIcon } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Admin · MakoBytes",
@@ -13,7 +13,6 @@ export const dynamic = "force-dynamic";
 export default async function AdminLogin({
   searchParams,
 }: {
-  // Next 15+: dynamic page-route props (searchParams, params) are now Promises.
   searchParams: Promise<{ error?: string; callbackUrl?: string }>;
 }) {
   const session = await auth();
@@ -25,36 +24,36 @@ export default async function AdminLogin({
   const { error } = await searchParams;
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center bg-ink-950 px-6 py-16">
-      <div className="pointer-events-none absolute inset-0 grid-overlay opacity-30" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow-blue/10 blur-[150px]" />
+    <main className="relative flex min-h-screen items-center justify-center bg-white px-6 py-16 text-[#333333]">
+      <div className="pointer-events-none absolute inset-0 grid-overlay opacity-40" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0061aa]/[0.08] blur-[150px]" />
 
       <div className="relative w-full max-w-md">
-        <div className="glass rounded-2xl p-8 sm:p-10">
-          <div className="mono-tag mb-3 text-glow-cyan">// admin access</div>
-          <h1 className="text-3xl font-black tracking-tight text-white">
-            MakoBytes admin
+        <div className="feature-card p-8 sm:p-10">
+          <div className="mono-tag mb-3 text-[#0061aa]">// admin access</div>
+          <h1 className="text-3xl font-black tracking-tight">
+            <span className="text-gradient">MakoBytes admin</span>
           </h1>
-          <p className="mt-3 text-sm text-white/60">
+          <p className="mt-3 text-sm text-[#555555]">
             Internal dashboard. Sign in with an authorized Google account.
           </p>
 
           {!configured ? (
-            <div className="mt-6 rounded-lg border border-yellow-400/30 bg-yellow-400/10 p-4 text-sm leading-relaxed text-yellow-200/90">
-              <div className="mono-tag mb-1.5 text-yellow-400">
+            <div className="mt-6 rounded-lg border border-[#f59e0b]/40 bg-[#fef3c7] p-4 text-sm leading-relaxed text-[#92400e]">
+              <div className="mono-tag mb-1.5 text-[#b45309]">
                 // setup required
               </div>
               Google OAuth is not configured on this Vercel deployment. Set{" "}
-              <span className="mono-tag text-white">AUTH_GOOGLE_ID</span>,{" "}
-              <span className="mono-tag text-white">AUTH_GOOGLE_SECRET</span>,{" "}
-              <span className="mono-tag text-white">AUTH_SECRET</span>, and{" "}
-              <span className="mono-tag text-white">ADMIN_ALLOWED_EMAILS</span>{" "}
+              <span className="mono-tag text-[#333333]">AUTH_GOOGLE_ID</span>,{" "}
+              <span className="mono-tag text-[#333333]">AUTH_GOOGLE_SECRET</span>,{" "}
+              <span className="mono-tag text-[#333333]">AUTH_SECRET</span>, and{" "}
+              <span className="mono-tag text-[#333333]">ADMIN_ALLOWED_EMAILS</span>{" "}
               under Project Settings → Environment Variables, then redeploy.
             </div>
           ) : (
             <>
               {error && (
-                <div className="mt-6 flex items-start gap-2 rounded-lg border border-red-400/30 bg-red-400/10 p-3 text-sm text-red-300">
+                <div className="mt-6 flex items-start gap-2 rounded-lg border border-[#DC2626]/30 bg-[#fee2e2] p-3 text-sm text-[#991b1b]">
                   <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
                   <div>
                     {error === "AccessDenied" ? (
@@ -78,14 +77,14 @@ export default async function AdminLogin({
               >
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/5 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                  className="flex w-full items-center justify-center gap-3 rounded-xl border border-[#dbdbdb] bg-white py-3.5 font-semibold text-[#333333] transition hover:border-[#0061aa] hover:bg-[#f8f9fb]"
                 >
                   <GoogleIcon className="h-5 w-5" />
                   Sign in with Google
                 </button>
               </form>
 
-              <p className="mt-4 text-center text-[11px] leading-relaxed text-white/40">
+              <p className="mt-4 text-center text-[11px] leading-relaxed text-[#999999]">
                 Only Google accounts on the admin allowlist can sign in.
                 Everyone else is bounced.
               </p>
@@ -93,7 +92,7 @@ export default async function AdminLogin({
           )}
         </div>
 
-        <div className="mono-tag mt-6 text-center text-[10px] text-white/30">
+        <div className="mono-tag mt-6 text-center text-[10px] text-[#999999]">
           makobytes · admin v1
         </div>
       </div>

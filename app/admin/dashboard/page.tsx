@@ -87,44 +87,45 @@ export default async function AdminDashboard() {
   const funnelTop = funnelStops[0].value || 1;
 
   return (
-    <main className="relative min-h-screen bg-ink-950 text-white">
-      <div className="pointer-events-none fixed inset-0 grid-overlay opacity-20" />
-      <div className="pointer-events-none fixed left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-glow-blue/8 blur-[160px]" />
+    <main className="relative min-h-screen bg-white text-[#333333]">
+      <div className="pointer-events-none fixed inset-0 grid-overlay opacity-50" />
+      <div className="pointer-events-none fixed left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-[#0061aa]/[0.08] blur-[160px]" />
 
-      <nav className="relative border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
+      <nav className="relative border-b border-[#dbdbdb]/50 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
+              className="flex items-center gap-2 text-sm text-[#777777] transition hover:text-[#333333]"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               MakoBytes
             </Link>
-            <div className="h-4 w-px bg-white/10" />
-            <span className="font-bold tracking-tight text-white">
+            <div className="h-4 w-px bg-[#dbdbdb]" />
+            <span className="font-bold tracking-tight text-[#333333]">
               Admin Dashboard
             </span>
-            <span className="mono-tag rounded-full border border-glow-blue/30 bg-glow-blue/10 px-2 py-0.5 text-[10px] text-glow-blue">
+            <span className="mono-tag rounded-full border border-[#0061aa]/30 bg-[#e6f0f9] px-2 py-0.5 text-[10px] text-[#0061aa]">
               v1
             </span>
           </div>
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-2 sm:flex">
               {session.user.image && (
+                /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={session.user.image}
                   alt=""
-                  className="h-7 w-7 rounded-full border border-white/10"
+                  className="h-7 w-7 rounded-full border border-[#dbdbdb]"
                 />
               )}
-              <span className="mono-tag text-[11px] text-white/60">
+              <span className="mono-tag text-[11px] text-[#777777]">
                 {session.user.email}
               </span>
             </div>
             <a
               href="/admin/dashboard"
-              className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/60 transition hover:border-white/30 hover:text-white"
+              className="flex items-center gap-1.5 rounded-lg border border-[#dbdbdb] px-3 py-1.5 text-xs text-[#555555] transition hover:border-[#0061aa] hover:text-[#0061aa]"
             >
               <RefreshCw className="h-3 w-3" />
               Refresh
@@ -136,32 +137,30 @@ export default async function AdminDashboard() {
 
       <div className="relative mx-auto max-w-7xl px-6 py-10">
         {!configured && (
-          <div className="mb-8 rounded-2xl border border-yellow-400/30 bg-yellow-400/10 p-6">
-            <div className="mono-tag mb-2 text-yellow-400">// setup required</div>
-            <h2 className="mb-2 text-xl font-bold text-white">
+          <div className="mb-8 rounded-2xl border border-[#f59e0b]/40 bg-[#fef3c7] p-6">
+            <div className="mono-tag mb-2 text-[#b45309]">// setup required</div>
+            <h2 className="mb-2 text-xl font-bold text-[#333333]">
               Vercel KV not connected yet
             </h2>
-            <p className="text-sm leading-relaxed text-yellow-100/80">
+            <p className="text-sm leading-relaxed text-[#92400e]">
               All counters below will read zero until you create a Vercel KV
               database and connect it to this project. Go to{" "}
-              <span className="mono-tag text-white">
-                vercel.com/dashboard
-              </span>{" "}
+              <span className="mono-tag text-[#333333]">vercel.com/dashboard</span>{" "}
               → makobytes-com → Storage → Create Database → KV → Connect.
               Vercel will inject{" "}
-              <span className="mono-tag text-white">KV_REST_API_URL</span> and{" "}
-              <span className="mono-tag text-white">KV_REST_API_TOKEN</span>{" "}
+              <span className="mono-tag text-[#333333]">KV_REST_API_URL</span> and{" "}
+              <span className="mono-tag text-[#333333]">KV_REST_API_TOKEN</span>{" "}
               automatically. Then redeploy.
             </p>
           </div>
         )}
 
         <div className="mb-8">
-          <div className="mono-tag mb-2 text-glow-cyan">// overview</div>
-          <h1 className="text-4xl font-black tracking-tight text-gradient sm:text-5xl">
-            What's happening on the site
+          <div className="mono-tag mb-2 text-[#0061aa]">// overview</div>
+          <h1 className="text-4xl font-black tracking-tight sm:text-5xl">
+            <span className="text-gradient">What&apos;s happening on the site</span>
           </h1>
-          <p className="mt-2 text-white/60">
+          <p className="mt-2 text-[#555555]">
             Live analytics — refreshed every page load. {recentEvents.length}{" "}
             recent event{recentEvents.length === 1 ? "" : "s"} captured.
           </p>
@@ -198,10 +197,10 @@ export default async function AdminDashboard() {
           />
         </div>
 
-        <div className="mb-8 glass rounded-2xl p-6">
+        <div className="mb-8 feature-card p-6">
           <div className="mb-6">
-            <div className="mono-tag mb-1 text-glow-magenta">// funnel</div>
-            <h3 className="text-lg font-bold text-white">
+            <div className="mono-tag mb-1 text-[#0061aa]">// funnel</div>
+            <h3 className="text-lg font-bold text-[#333333]">
               Visit → product → download → buy
             </h3>
           </div>
@@ -209,23 +208,23 @@ export default async function AdminDashboard() {
             {funnelStops.map((stop, i) => {
               const pct = Math.round((stop.value / funnelTop) * 100);
               const colors = [
-                "from-glow-cyan to-glow-blue",
-                "from-glow-blue to-glow-cyan",
-                "from-green-400 to-glow-cyan",
-                "from-glow-magenta to-glow-blue",
+                "from-[#3387cf] to-[#0061aa]",
+                "from-[#0061aa] to-[#3387cf]",
+                "from-[#04bf6c] to-[#0061aa]",
+                "from-[#406f7b] to-[#0061aa]",
               ];
               return (
                 <div key={stop.label}>
                   <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className="text-white/70">{stop.label}</span>
+                    <span className="text-[#555555]">{stop.label}</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-bold text-white">
+                      <span className="font-bold text-[#333333]">
                         {stop.value.toLocaleString()}
                       </span>
-                      <span className="mono-tag text-white/40">{pct}%</span>
+                      <span className="mono-tag text-[#999999]">{pct}%</span>
                     </div>
                   </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-white/5">
+                  <div className="h-2 overflow-hidden rounded-full bg-[#eef2f7]">
                     <div
                       className={`h-full rounded-full bg-gradient-to-r ${colors[i]}`}
                       style={{ width: `${Math.max(pct, 2)}%` }}
@@ -243,12 +242,12 @@ export default async function AdminDashboard() {
               series={[
                 {
                   name: "page views",
-                  color: "#22d3ee",
+                  color: "#0061aa",
                   data: pageviewsTrend,
                 },
                 {
                   name: "downloads",
-                  color: "#a3e635",
+                  color: "#04bf6c",
                   data: downloadsTrend,
                 },
               ]}

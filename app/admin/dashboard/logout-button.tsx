@@ -11,7 +11,7 @@ export function LogoutButton() {
     >
       <button
         type="submit"
-        className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/60 transition hover:border-red-400/50 hover:text-red-300"
+        className="flex items-center gap-1.5 rounded-lg border border-[#dbdbdb] px-3 py-1.5 text-xs text-[#555555] transition hover:border-[#DC2626]/50 hover:text-[#DC2626]"
       >
         <LogOut className="h-3 w-3" />
         Sign out

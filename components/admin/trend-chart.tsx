@@ -32,17 +32,17 @@ export function TrendChart({ series }: { series: TrendSeries[] }) {
   });
 
   return (
-    <div className="glass rounded-2xl p-6">
+    <div className="feature-card p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <div className="mono-tag mb-1 text-glow-cyan">// trend</div>
-          <h3 className="text-lg font-bold text-white">Last 14 days</h3>
+          <div className="mono-tag mb-1 text-[#0061aa]">// trend</div>
+          <h3 className="text-lg font-bold text-[#333333]">Last 14 days</h3>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {series.map((s) => (
             <div
               key={s.name}
-              className="flex items-center gap-1.5 mono-tag text-white/60"
+              className="flex items-center gap-1.5 mono-tag text-[#555555]"
             >
               <span
                 className="h-2 w-2 rounded-full"
@@ -66,34 +66,36 @@ export function TrendChart({ series }: { series: TrendSeries[] }) {
                   x2="0"
                   y2="1"
                 >
-                  <stop offset="0%" stopColor={s.color} stopOpacity={0.4} />
+                  <stop offset="0%" stopColor={s.color} stopOpacity={0.35} />
                   <stop offset="100%" stopColor={s.color} stopOpacity={0} />
                 </linearGradient>
               ))}
             </defs>
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke="rgba(255,255,255,0.05)"
+              stroke="rgba(0, 97, 170, 0.08)"
             />
             <XAxis
               dataKey="date"
-              stroke="rgba(255,255,255,0.3)"
+              stroke="#777777"
               fontSize={11}
               tickFormatter={(v) => v.slice(5)}
             />
             <YAxis
-              stroke="rgba(255,255,255,0.3)"
+              stroke="#777777"
               fontSize={11}
               allowDecimals={false}
             />
             <Tooltip
               contentStyle={{
-                background: "#0a0a0f",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "#ffffff",
+                border: "1px solid #dbdbdb",
                 borderRadius: "0.5rem",
                 fontSize: "12px",
+                boxShadow: "0 4px 12px rgba(0, 97, 170, 0.10)",
               }}
-              labelStyle={{ color: "#fff" }}
+              labelStyle={{ color: "#333333" }}
+              itemStyle={{ color: "#555555" }}
             />
             {series.map((s, i) => (
               <Area
