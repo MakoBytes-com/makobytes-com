@@ -258,19 +258,20 @@ export default function MakoBytesHub() {
 
       {/* ───── HERO ───── */}
       <section id="hero" className="relative">
-        {/* Full-width 16:9 hero banner — sits edge-to-edge above the text content,
-            mirroring the makobot.com hero pattern. next/image handles AVIF/WebP
-            negotiation and responsive sizing automatically. */}
-        <div className="relative w-full pt-16">
-          <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#f8f9fb]">
-            <Image
-              src="/images/hero.webp"
-              alt="MakoBytes — premium desktop software studio for AI power users. Analytics dashboard mockup on a curved monitor."
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
+        {/* Hero banner — contained card sitting under the nav (not full-bleed),
+            cinematic 21:9 aspect to keep it from dominating the viewport. */}
+        <div className="relative pt-20 pb-2 sm:pt-24">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="relative w-full aspect-[21/9] overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(0,97,170,0.12)] border border-[#dbdbdb] bg-[#f8f9fb]">
+              <Image
+                src="/images/hero.webp"
+                alt="MakoBytes — premium desktop software studio for AI power users. Analytics dashboard mockup on a curved monitor."
+                fill
+                priority
+                sizes="(min-width: 1280px) 1280px, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 
