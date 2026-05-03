@@ -259,10 +259,12 @@ export default function MakoBytesHub() {
       {/* ───── HERO ───── */}
       <section
         id="hero"
-        className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-28"
+        className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 min-h-[600px] sm:min-h-[700px] lg:min-h-[820px]"
       >
-        {/* Background hero image — anchored right, gradient-faded to white on the
-            left so the text overlay stays legible at every viewport width. */}
+        {/* Background hero image — anchored right, contained so the full monitor +
+            keyboard + mouse setup is visible (no vertical crop). The section's
+            min-height gives the contained image plenty of room to render large.
+            On mobile a white gradient masks the image so text stays legible. */}
         <div className="pointer-events-none absolute inset-0">
           <Image
             src="/images/hero.webp"
@@ -271,11 +273,10 @@ export default function MakoBytesHub() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-right"
+            className="object-contain object-right"
           />
-          {/* Left-fade gradient — heavier on mobile (hides the image behind the
-              text), lighter on desktop (lets the monitor breathe through). */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/60 sm:from-white sm:via-white/85 sm:to-transparent" />
+          {/* Mobile-only fade — desktop relies on the image's built-in whitespace */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/60 sm:hidden" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6">
