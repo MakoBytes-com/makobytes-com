@@ -38,28 +38,28 @@ const FRAME_DURATION_MS = 5200;
 
 const FRAMES: Frame[] = [
   {
-    src: "/screenshots/tray-menu.png",
-    alt: "PromptPixel system tray menu",
-    chapter: "01 / lives in your tray",
-    title: "Always one keystroke away.",
+    src: "/screenshots/settings-hotkeys.png",
+    alt: "Settings — Hotkeys tab with all five configurable hotkey rows",
+    chapter: "01 / five configurable hotkeys",
+    title: "One key per workflow.",
     subtitle:
-      "PromptPixel runs from your system tray. Right-click the camera icon for capture, recent shots, or settings.",
+      "Capture → clipboard, Look — Region, Look — Full Screen, Markup, and Pick a prompt. Each remappable; reserved combos like Ctrl+V are blocked so nothing collides with Windows.",
     kenBurns: {
       fromScale: 1.0,
-      toScale: 1.06,
+      toScale: 1.05,
       fromX: 0,
-      toX: -1.5,
-      fromY: 0,
-      toY: -1.5,
+      toX: 0,
+      fromY: -1,
+      toY: 1.5,
     },
   },
   {
     src: "/screenshots/settings-capture.png",
-    alt: "Capture settings — fullscreen and region hotkeys",
-    chapter: "02 / your hotkey, your way",
-    title: "Bind any combo.",
+    alt: "Settings — Capture tab with monitor selection, image resolution cap, and history folder",
+    chapter: "02 / monitor + resolution + history",
+    title: "Pick the screen. Pick the size.",
     subtitle:
-      "Default Ctrl+Alt+S for fullscreen, Ctrl+Shift+Alt+S for region. Reserved keys are blocked so nothing collides with Windows.",
+      "Lock the look-full-screen hotkey to a specific monitor or follow the cursor. Cap image resolution so AI chats stay fast. Set your own history folder.",
     kenBurns: {
       fromScale: 1.04,
       toScale: 1.0,
@@ -70,44 +70,12 @@ const FRAMES: Frame[] = [
     },
   },
   {
-    src: "/screenshots/settings-capture.png",
-    alt: "Capture settings — auto-type prompt for AI chats",
-    chapter: "03 / auto-type your prompt",
-    title: "Type your prompt for you.",
+    src: "/screenshots/settings-prompts.png",
+    alt: "Settings — Prompts tab with a list of saved prompts and Add/Move/Remove buttons",
+    chapter: "03 / your prompt library",
+    title: "A library of questions, one click away.",
     subtitle:
-      "Set a default prompt once. Every capture pastes the image AND auto-types your prompt right after — perfect for AI chats.",
-    kenBurns: {
-      fromScale: 1.0,
-      toScale: 1.08,
-      fromX: 0,
-      toX: 0,
-      fromY: 4,
-      toY: 8,
-    },
-  },
-  {
-    src: "/screenshots/settings-feedback.png",
-    alt: "Feedback settings — sound, toast, capture history",
-    chapter: "04 / capture feedback",
-    title: "Know what just happened.",
-    subtitle:
-      "Soft confirmation sound, thumbnail toast, or a full preview-before-send dialog. Your last 50 captures stay in history.",
-    kenBurns: {
-      fromScale: 1.0,
-      toScale: 1.05,
-      fromX: 1.5,
-      toX: -1.5,
-      fromY: 0,
-      toY: 0,
-    },
-  },
-  {
-    src: "/screenshots/settings-prompt-picker.png",
-    alt: "Pro tab — Prompt Picker with saved prompts list",
-    chapter: "05 / pro: prompt picker",
-    title: "A library of prompts, one keystroke away.",
-    subtitle:
-      "Press Ctrl+Alt+P. A popup of your saved prompts opens. Pick one — PromptPixel captures the screen, pastes the image, and types that prompt. Add as many as you want.",
+      "Build a list of saved prompts the picker hotkey shows. \"What is this?\", \"Explain this\", \"Find the bug\" — drag a region, click one, the AI answers that exact question about your screen.",
     kenBurns: {
       fromScale: 1.0,
       toScale: 1.06,
@@ -118,51 +86,67 @@ const FRAMES: Frame[] = [
     },
   },
   {
-    src: "/screenshots/settings-pro.png",
-    alt: "Pro tab — OCR text extraction and voice prompt features",
-    chapter: "06 / pro: ocr + voice",
-    title: "Drag a box. Speak a prompt.",
+    src: "/screenshots/settings-ai.png",
+    alt: "Settings — AI tab with trigger phrase fields and the MCP audit log",
+    chapter: "04 / trigger phrases + audit log",
+    title: "Say it your way. Audit every look.",
     subtitle:
-      "OCR pulls just the text on your clipboard — no image, no vision tokens. Voice prompts capture the screen while you talk. Both fully on-device.",
+      "What gets typed into your AI chat after a hotkey is fully editable. The MCP audit log records every look() call (timestamp + image size) so you see exactly what got sent.",
     kenBurns: {
       fromScale: 1.0,
       toScale: 1.06,
       fromX: 0,
       toX: 0,
-      fromY: -3,
+      fromY: -2,
       toY: 3,
     },
   },
   {
-    src: "/screenshots/settings-pro-2.png",
-    alt: "Pro tab — Multi-target hotkeys for pre-set prompts",
-    chapter: "07 / pro: multi-target hotkeys",
-    title: "One hotkey, one workflow.",
+    src: "/screenshots/settings-setup.png",
+    alt: "Settings — Setup tab showing auto-configured AI clients and manual setup instructions",
+    chapter: "05 / zero-setup with three AI clients",
+    title: "Auto-configures with Claude Code, Claude Desktop, and Cursor.",
     subtitle:
-      "Bind extra hotkeys to specific prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. One keystroke, full hands-free.",
+      "First launch writes the bundled MCP server path into all three configs — no claude mcp add, no JSON to edit. Antigravity, Cline, Continue.dev get a one-time copy-paste path with per-client instructions.",
     kenBurns: {
       fromScale: 1.04,
       toScale: 1.0,
-      fromX: -2,
-      toX: 2,
+      fromX: 0,
+      toX: 0,
       fromY: 0,
-      toY: 0,
+      toY: 2,
     },
   },
   {
-    src: "/screenshots/settings-backups.png",
-    alt: "Pro tab — Auto-Save Backups settings",
-    chapter: "08 / pro: auto-save backups",
-    title: "Never lose a capture.",
+    src: "/screenshots/settings-license.png",
+    alt: "Settings — License tab with green ACTIVE Pro license banner",
+    chapter: "06 / pro: $25 one-time",
+    title: "Pay once. Own it forever.",
     subtitle:
-      "Every screenshot saved as a timestamped PNG to a folder you choose. Default: Pictures\\PromptPixel. Recover, browse, or share any past capture later.",
+      "Pro is a perpetual license, JetBrains-style. Every fresh install starts with a 14-day full Pro trial. After that, Free keeps working forever; Pro just unlocks the look hotkeys, MCP server, picker, and backups.",
+    kenBurns: {
+      fromScale: 1.0,
+      toScale: 1.05,
+      fromX: 0,
+      toX: 0,
+      fromY: 0,
+      toY: 2,
+    },
+  },
+  {
+    src: "/screenshots/settings-about.png",
+    alt: "Settings — About tab with version, links, and updater controls",
+    chapter: "07 / signed + auto-updating",
+    title: "Built by Mako Logics LLC. Always current.",
+    subtitle:
+      "Authenticode-signed installer (no SmartScreen warning). The app checks GitHub Releases once a day and offers updates in the tray. Open the debug log right from Settings if anything misbehaves.",
     kenBurns: {
       fromScale: 1.0,
       toScale: 1.06,
       fromX: 0,
       toX: 0,
       fromY: -2,
-      toY: 4,
+      toY: 3,
     },
   },
 ];
@@ -250,7 +234,7 @@ export function PromptPixelDemo({ className }: { className?: string }) {
             <div className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <div className="h-3 w-3 rounded-full bg-[#28c840]" />
             <div className="mono-tag ml-4 text-[#777777]">
-              promptpixel — v2.0.1-alpha · live demo
+              promptpixel — v3.0.4 · live demo
             </div>
             <div className="ml-auto flex items-center gap-1.5 rounded-full bg-[#e6f0f9] px-2.5 py-0.5">
               <div className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-[#0061aa]" />
