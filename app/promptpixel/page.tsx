@@ -26,16 +26,16 @@ import { TrackLink } from "@/components/admin/track-link";
 export const metadata: Metadata = {
   // Layout's title.template appends "| MakoBytes" automatically — don't
   // include it here or the rendered <title> doubles the suffix.
-  title: "PromptPixel — One Hotkey. Screenshot to Any AI Chat.",
+  title: "PromptPixel — Vision MCP for AI agents.",
   description:
-    "Press a hotkey. Drop a screenshot into ChatGPT, Claude, or any AI chat — with your prompt auto-typed alongside it. Free Windows app. Pro unlocks OCR, voice prompts, and multi-target hotkeys.",
+    "Hit a hotkey. Claude (or any MCP-aware AI) sees your screen and answers — no pasting, no clicking. Vision MCP for Windows. Free tier; Pro $25 one-time.",
   alternates: { canonical: "https://makobytes.com/promptpixel" },
   openGraph: {
     type: "website",
     url: "https://makobytes.com/promptpixel",
-    title: "PromptPixel — Screenshot to AI Chat in One Hotkey",
+    title: "PromptPixel — Give your AI eyes.",
     description:
-      "Hotkey-driven screenshot capture that pastes straight into any AI chat with your prompt. Free for Windows. Pro adds OCR, voice, and multi-target hotkeys.",
+      "PromptPixel ships an MCP server that lets Claude Code, Claude Desktop, Cursor, and other MCP-aware AIs see your screen on a hotkey. Auto-configured. No clipboard pasting.",
     siteName: "MakoBytes",
   },
 };
@@ -61,11 +61,11 @@ export default function PromptPixelPage() {
             "@type": "SoftwareApplication",
             name: "PromptPixel",
             description:
-              "Hotkey-driven Windows desktop app that captures a screenshot and pastes it directly into any AI chat with an auto-typed prompt. Free tier available, Pro unlocks OCR, voice prompts, and multi-target hotkeys.",
+              "Windows tray app + bundled MCP server. Hit a hotkey, your AI sees your screen and responds — Claude calls a look() tool that delivers the image into its reply. Auto-configures with Claude Code, Claude Desktop, and Cursor. Free tier; Pro $25 one-time.",
             url: "https://makobytes.com/promptpixel",
             applicationCategory: "ProductivityApplication",
             operatingSystem: "Windows 10, Windows 11",
-            softwareVersion: "2.0.1-alpha",
+            softwareVersion: "3.0.4",
             author: {
               "@type": "Organization",
               name: "MakoBytes",
@@ -153,20 +153,21 @@ export default function PromptPixelPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
               <span className="mono-tag text-[#555555]">
-                v2.0.1-alpha · windows · macos coming soon
+                v3.0.4 · windows · vision mcp
               </span>
             </div>
 
             <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight text-[#333333] sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">One hotkey.</span>
+              <span className="text-gradient">Give your AI</span>
               <br />
-              <span className="text-gradient">Screenshot to AI.</span>
+              <span className="text-gradient">eyes.</span>
             </h1>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-[#555555] sm:text-lg">
-              Press a key. PromptPixel captures your screen, pastes it
-              straight into ChatGPT, Claude, or any AI chat — and types your
-              prompt alongside it. Hands-free AI workflows.
+              Hit a hotkey. Claude calls a <span className="mono-tag text-[#0061aa]">look()</span> tool
+              and the image lands in its reply. No pasting, no clicking the chat,
+              no cursor focus. PromptPixel ships its own MCP server and
+              auto-configures with Claude Code, Claude Desktop, and Cursor.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -214,16 +215,16 @@ export default function PromptPixelPage() {
       <section className="border-y border-[#dbdbdb]/50 bg-[#eef2f7] py-16">
         <div className="mx-auto max-w-6xl px-6">
           <p className="mono-tag mb-8 text-center text-[#777777]">
-            works with every ai chat you already use
+            auto-configures with these mcp-aware ai clients
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 text-[#555555] md:gap-14">
             {[
-              "ChatGPT",
-              "Claude",
-              "Gemini",
-              "Perplexity",
-              "Copilot",
-              "Mistral",
+              "Claude Code",
+              "Claude Desktop",
+              "Cursor",
+              "Antigravity",
+              "Cline",
+              "Continue",
             ].map((n) => (
               <span
                 key={n}
@@ -242,11 +243,13 @@ export default function PromptPixelPage() {
           <div className="mb-20 text-center">
             <div className="mono-tag mb-4 text-[#0061aa]">// workflow</div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
-              <span className="text-gradient">From screen to AI in one keystroke.</span>
+              <span className="text-gradient">Install. Hit a hotkey. The AI sees.</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[#555555]">
-              Set it up once. Forget it forever. PromptPixel lives in your
-              system tray and waits for your hotkey.
+              Three steps total. One of them is <em>install</em>. PromptPixel
+              auto-registers its MCP server with your AI client on first launch
+              — no <span className="mono-tag text-[#0061aa]">claude mcp add</span> step,
+              no JSON to edit.
             </p>
           </div>
 
@@ -254,29 +257,37 @@ export default function PromptPixelPage() {
             {[
               {
                 step: "step_01",
-                title: "Bind your hotkey",
+                title: "Install PromptPixel",
+                body: "Run the signed installer. It places the tray app + the bundled MCP server on disk and writes the server path into Claude Code's, Claude Desktop's, and Cursor's MCP configs automatically. Open a new chat in any of them and the look() tool is just there.",
+                Icon: Save,
+              },
+              {
+                step: "step_02",
+                title: "Press a look hotkey",
                 body: (
                   <>
-                    Open settings, pick a hotkey combo (default{" "}
+                    From any app, anywhere on screen. Default{" "}
                     <span className="mono-tag text-[#0061aa]">
-                      Ctrl + Alt + S
-                    </span>
-                    ), and write a default prompt PromptPixel will type for you
-                    — like <em>&quot;explain this&quot;</em> or <em>&quot;what&apos;s wrong here?&quot;</em>.
+                      Ctrl + Shift + Alt + L
+                    </span>{" "}
+                    drags a region. <span className="mono-tag text-[#0061aa]">Ctrl + Alt + L</span>{" "}
+                    grabs the chosen monitor. PromptPixel finds your AI chat
+                    window, types a trigger phrase, presses Enter.
                   </>
                 ),
                 Icon: Keyboard,
               },
               {
-                step: "step_02",
-                title: "Click into your AI chat",
-                body: "Open ChatGPT, Claude, Gemini, whatever — and put your cursor in the message input. PromptPixel pastes wherever your cursor is, so it works in every web AI and most desktop ones too.",
-                Icon: MousePointerClick,
-              },
-              {
                 step: "step_03",
-                title: "Press the hotkey",
-                body: "PromptPixel snaps the screen, pastes the image into the chat input, and auto-types your prompt right after it. The AI sees image + prompt instantly. You didn't touch the mouse once.",
+                title: "The AI sees your screen",
+                body: (
+                  <>
+                    Claude calls the <span className="mono-tag text-[#0061aa]">look()</span>{" "}
+                    tool, the MCP server returns the image, and it lands in
+                    the reply. No pasting, no clipboard juggling, no cursor
+                    focus, no prep step.
+                  </>
+                ),
                 Icon: Zap,
               },
             ].map(({ step, title, body, Icon }) => (
@@ -306,8 +317,8 @@ export default function PromptPixelPage() {
               <span className="text-gradient">Free, forever, no catch.</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[#555555]">
-              Everything you need to wire AI chats into your day-to-day
-              keyboard flow. The whole core product, free.
+              The basic capture-to-clipboard workflow stays free for everyone.
+              The Vision MCP features are Pro — try them on a 14-day trial.
             </p>
           </div>
 
@@ -316,37 +327,32 @@ export default function PromptPixelPage() {
               {
                 Icon: Keyboard,
                 title: "Custom hotkeys",
-                body: "Bind any combo for fullscreen, region, low-res, or markup capture. Reserved keys (Ctrl+V, etc.) are blocked so you can't break Windows.",
+                body: "Bind any combo for capture-to-clipboard, region select, or markup. Reserved keys (Ctrl+V, etc.) are blocked so you can't break Windows.",
               },
               {
                 Icon: Camera,
-                title: "Four capture modes",
-                body: "Fullscreen, drag-a-region, AI-friendly low-res region (Ctrl+Shift+Alt+L), or capture-then-mark-up (Ctrl+Shift+Alt+E).",
+                title: "Capture → clipboard",
+                body: "Drag a region, image goes to your clipboard. Paste with Ctrl+V into anything — emails, docs, chats, Slack. Industry-standard snipping flow.",
               },
               {
                 Icon: Wand2,
                 title: "Markup editor",
-                body: "Annotate captures with arrow, rectangle, text, highlighter, pen, and blur (for redacting passwords or PII). Save to file, or send straight to your AI chat.",
+                body: "Annotate any capture with arrow, rectangle, text, highlighter, pen, and blur (for redacting passwords or PII). Save to file, or copy to clipboard.",
               },
               {
-                Icon: Wand2,
-                title: "Auto-type a default prompt",
-                body: "Set a prompt like 'explain this' once. Every capture pastes the image AND types your prompt right after — perfect for AI chats.",
-              },
-              {
-                Icon: Bell,
-                title: "Capture feedback",
-                body: "Soft confirmation sound, thumbnail toast preview, and an optional 'confirm before sending' dialog if you want a final check.",
+                Icon: LayoutList,
+                title: "Multi-monitor support",
+                body: "Pick which monitor look hotkeys capture, or follow the cursor. An Identify Monitors button flashes a giant number on each display so you know which is which.",
               },
               {
                 Icon: History,
-                title: "Recent captures",
-                body: "Your last 20 captures stay in a clickable grid — view, edit, copy, or delete each one. Pro raises the cap to 50.",
+                title: "Capture history",
+                body: "Your recent captures stay in a clickable grid — view, edit, copy, or delete. Free keeps the last 3; Pro raises the cap to 50.",
               },
               {
                 Icon: Lock,
                 title: "Stays on your machine",
-                body: "PromptPixel runs entirely on Windows-native APIs. No third-party services. No cloud calls. Your screen never leaves your PC.",
+                body: "PromptPixel uses Windows-native APIs and a local stdio MCP server — no third-party services, no cloud uploads, no telemetry. Your screen never leaves your PC.",
               },
             ].map(({ Icon, title, body }) => (
               <div key={title} className="feature-card p-7">
@@ -370,45 +376,51 @@ export default function PromptPixelPage() {
               // pro tier
             </div>
             <h2 className="mb-4 text-4xl font-black tracking-tight text-[#333333] sm:text-6xl">
-              <span className="text-gradient">Five power features. One Pro key.</span>
+              <span className="text-gradient">Vision MCP. One Pro key.</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[#555555]">
-              The features that turn PromptPixel from a hotkey into a full
-              hands-free AI cockpit.
+              Pro unlocks the parts that turn PromptPixel from a snipping tool
+              into a full vision pipeline for your AI agents.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                Icon: LayoutList,
-                title: "Prompt Picker",
-                hotkey: "Ctrl + Alt + P",
-                body: "Press the picker hotkey and a popup of your saved prompts appears. Pick one, and PromptPixel captures the screen, pastes it, and types your selected prompt — all in one action. Add as many prompts as you want, one per line. Ships with starter prompts like 'Explain this code', 'What's wrong here?', 'Translate to Spanish', and a dozen more.",
+                Icon: Zap,
+                title: "Look — Region",
+                hotkey: "Ctrl + Shift + Alt + L",
+                body: "Drag a box around what you want me to see. PromptPixel saves the image, finds your AI chat window, types a trigger phrase, presses Enter. Claude calls look() and the image lands in its reply. Zero clipboard pasting.",
               },
               {
-                Icon: Save,
-                title: "Auto-Save Backups",
-                hotkey: "always on",
-                body: "Every screenshot is saved as a timestamped PNG to a folder of your choice. Default goes to Pictures\\PromptPixel, or set your own backup folder. Useful when you want a permanent copy of everything you captured — recover, browse, or share later.",
+                Icon: Camera,
+                title: "Look — Full Screen",
+                hotkey: "Ctrl + Alt + L",
+                body: "Capture the chosen monitor and auto-push to your AI chat. Same auto-trigger as Look — Region but no drag step. Multi-monitor select lets you lock which display gets captured (or follow the cursor).",
+              },
+              {
+                Icon: Wand2,
+                title: "Markup → AI",
+                hotkey: "Ctrl + Shift + Alt + E",
+                body: "Drag a region, annotate with arrow / box / text / highlight / blur, click Send. The annotated image gets pushed to your AI like Look — Region. Free users keep markup-to-clipboard; Pro adds the AI push.",
+              },
+              {
+                Icon: LayoutList,
+                title: "Pick a prompt",
+                hotkey: "Ctrl + Alt + P",
+                body: "Drag a region, then a popup shows your saved prompts. Click one and that prompt becomes the question Claude answers — \"What's wrong here?\", \"Find the bug\", \"Describe what I'm looking at\", whatever you've configured.",
               },
               {
                 Icon: ScanText,
-                title: "OCR text extraction",
-                hotkey: "Ctrl + Alt + T",
-                body: "Drag a box around any text on screen. PromptPixel runs Windows OCR on just that region and drops the extracted TEXT on your clipboard — no image, no vision tokens. Great for code blocks, error messages, PDFs, and document text.",
+                title: "Configurable trigger phrases",
+                hotkey: "settings",
+                body: "What gets typed into your AI chat when a look hotkey fires is fully editable. Default forces Claude to call the look() tool; tune it for other models or workflows. The picker prefix is separately configurable.",
               },
               {
-                Icon: Mic,
-                title: "Voice to Prompt",
-                hotkey: "Ctrl + Alt + V",
-                body: "Press the hotkey and speak your prompt. PromptPixel listens with Windows speech recognition, captures the screen when you stop talking, pastes the image, and types your spoken prompt. Hands-free AI, fully local.",
-              },
-              {
-                Icon: Zap,
-                title: "Multi-Target Hotkeys",
-                hotkey: "Ctrl + Alt + 1/2/3…",
-                body: "Bind extra hotkeys to specific pre-set prompts. Ctrl+Alt+1 → 'Explain this code'. Ctrl+Alt+2 → 'What's wrong here?'. Ctrl+Alt+3 → 'Translate to English'. One keystroke, one workflow.",
+                Icon: Save,
+                title: "Auto-save backups",
+                hotkey: "always on",
+                body: "Every capture saved as a timestamped PNG to a folder of your choice. Default Pictures\\PromptPixel; pick your own. Separate from the rotating capture history (which Pro also raises from 3 to 50 items).",
               },
             ].map(({ Icon, title, hotkey, body }) => (
               <div
@@ -464,14 +476,13 @@ export default function PromptPixelPage() {
 
               <ul className="mt-8 space-y-3 text-sm">
                 {[
-                  "Fullscreen + region capture hotkeys",
-                  "Low-res region capture (AI-friendly)",
+                  "Capture region → clipboard hotkey",
                   "Markup editor (arrow, text, highlighter, blur)",
-                  "Custom auto-type prompt after paste",
-                  "Capture feedback (sound, toast, confirm)",
-                  "Recent captures (20)",
+                  "Multi-monitor select + Identify Monitors",
+                  "Capture history (last 3)",
                   "Tray-resident, lightweight",
-                  "Windows 10/11 native",
+                  "Auto-update from GitHub releases",
+                  "Windows 10/11 native, signed installer",
                 ].map((item) => (
                   <li
                     key={item}
@@ -524,12 +535,14 @@ export default function PromptPixelPage() {
                   {[
                     "Everything in Free",
                     "14-day full-Pro trial on first install",
-                    "Prompt Picker (Ctrl+Alt+P)",
-                    "Auto-Save Backups",
-                    "OCR text extraction (Ctrl+Alt+T)",
-                    "Voice to Prompt (Ctrl+Alt+V)",
-                    "Multi-Target Hotkeys",
-                    "Recent captures raised to 50",
+                    "Look — Region (Ctrl+Shift+Alt+L)",
+                    "Look — Full Screen (Ctrl+Alt+L)",
+                    "Markup → AI auto-push",
+                    "Pick a prompt (Ctrl+Alt+P)",
+                    "MCP server access",
+                    "Auto-save backups (folder you pick)",
+                    "Configurable trigger phrases",
+                    "Capture history raised to 50",
                     "Perpetual license — own this version forever",
                     "12 months of new versions + updates",
                     "Priority email support",
@@ -591,11 +604,12 @@ export default function PromptPixelPage() {
                   Your screen never leaves your machine.
                 </h3>
                 <p className="leading-relaxed text-[#555555]">
-                  PromptPixel uses Windows-native APIs for everything — capture,
-                  OCR, and speech recognition. No third-party services. No cloud
-                  uploads. No telemetry. No account required. The only thing
-                  that ever touches the network is the AI chat <em>you</em>{" "}
-                  paste into.
+                  PromptPixel uses Windows-native APIs for capture and a local
+                  stdio MCP server. No third-party services. No cloud uploads.
+                  No telemetry. No account required. The only thing that ever
+                  touches the network is the AI chat <em>you</em> push to.
+                  There&apos;s also an in-app audit log of every <span className="mono-tag text-[#0061aa]">look()</span>{" "}
+                  call so you can see exactly what got sent and when.
                 </p>
               </div>
             </div>
@@ -618,32 +632,36 @@ export default function PromptPixelPage() {
           <div className="space-y-4">
             {[
               {
+                q: "What is Vision MCP and why does it matter?",
+                a: "MCP (Model Context Protocol) is the standard Claude and other AI clients use to load external tools. PromptPixel ships its own MCP server that exposes a look() tool. Hit a hotkey on your screen and the AI calls look() — the image lands directly in its reply. No clipboard pasting, no manual upload, no \"see this image\" prep step. The AI sees what you see, on demand.",
+              },
+              {
+                q: "Which AI clients does it work with?",
+                a: "Auto-configured: Claude Code (CLI + VS Code extension), Claude Desktop (Mac/Windows), and Cursor — first launch writes the MCP server path into all three configs, no claude mcp add step. Manual setup (one-time, copy a path): Antigravity, Cline, Continue.dev, Goose, and any other MCP-aware client. Not supported: claude.ai web, ChatGPT, and Gemini — those don't load MCP servers. Browser-extension support for those is planned for a later release.",
+              },
+              {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you the full core workflow — hotkey-driven screenshot capture (fullscreen, region, low-res region, markup-then-send), one auto-type default prompt, capture history of 20, the markup editor (arrow / text / highlighter / blur), and all feedback options. Pro ($25 one-time) unlocks five power features: Prompt Picker (Ctrl+Alt+P), Auto-Save Backups, OCR text extraction (Ctrl+Alt+T), Voice to Prompt (Ctrl+Alt+V), and Multi-Target Hotkeys. Pro also raises the recent-captures cap to 50. Every fresh install gets a 14-day Pro trial, then settles into Free — no nag screen, nothing locks.",
+                a: "Free gets you the basic snipping flow — drag a region, image goes to your clipboard, paste with Ctrl+V into anything. Markup editor included, multi-monitor select included, history of 3. Pro ($25 one-time) unlocks the Vision MCP features: Look — Region (Ctrl+Shift+Alt+L), Look — Full Screen (Ctrl+Alt+L), Markup-to-AI auto-push, Pick a prompt (Ctrl+Alt+P), the MCP server itself, auto-save backups, configurable trigger phrases, and 50-item history. Every fresh install starts with a 14-day full Pro trial.",
               },
               {
                 q: "Is there a free trial of Pro?",
-                a: "Yes — every fresh install starts with a 14-day full Pro trial. You get every Pro feature unlocked for two weeks: Prompt Picker, OCR, Voice to Prompt, Multi-Target Hotkeys, and Auto-Save Backups. After 14 days, the app reverts to the Free tier and the Pro features show a one-time tray notice. No nag popups, no countdown badges, no time bombs — Free keeps working exactly as before. Buy a license whenever you want to unlock Pro again.",
-              },
-              {
-                q: "Does it actually work with ChatGPT, Claude, etc?",
-                a: "Yes. PromptPixel pastes wherever your cursor is, so it works in any AI chat that accepts an image upload — ChatGPT, Claude, Gemini, Perplexity, Copilot, Mistral, your local LLM web UI, anything. Click into the chat input, press the hotkey, the screenshot pastes and your prompt types right after.",
-              },
-              {
-                q: "Does PromptPixel send my screenshots anywhere?",
-                a: "Never. PromptPixel uses Windows-native APIs for capture, OCR, and voice. Nothing touches the network. No telemetry, no analytics, no account required. The only network call ever made is by the AI chat you paste into — and that's your call, not ours.",
+                a: "Yes — every fresh install starts with a 14-day full Pro trial. Every Look hotkey, the picker, the MCP server, auto-save backups, configurable trigger phrases, 50-item history — all unlocked, no credit card. After 14 days the app shows a one-time tray notice and reverts to Free; the basic capture-to-clipboard workflow keeps working forever. No nag popups, no countdown badges, no time bombs. Buy a license whenever you want to unlock Pro again.",
               },
               {
                 q: "What are the default hotkeys?",
-                a: "Free hotkeys: Ctrl+Alt+S for fullscreen capture, Ctrl+Shift+Alt+S for region capture, Ctrl+Shift+Alt+L for low-res region capture (downscaled for AI chats that struggle with large images), and Ctrl+Shift+Alt+E for capture-then-markup (drag a region, annotate with arrow/text/highlighter/blur, then send). Pro hotkeys: Ctrl+Alt+P for Prompt Picker, Ctrl+Alt+T for OCR, Ctrl+Alt+V for voice prompt, plus your own Multi-Target hotkeys. All are customizable in Settings.",
+                a: "Free: Ctrl+Alt+S for capture-to-clipboard. Pro: Ctrl+Shift+Alt+L for Look — Region (drag, AI sees it), Ctrl+Alt+L for Look — Full Screen (chosen monitor, AI sees it), Ctrl+Shift+Alt+E for Markup-to-AI (drag, annotate, AI sees the marked-up image), Ctrl+Alt+P for Pick a prompt (drag region, choose a saved prompt as the question). All five are remappable in Settings.",
+              },
+              {
+                q: "Does PromptPixel send my screenshots anywhere?",
+                a: "Never. The MCP server is a local stdio process — it talks to your AI client over a pipe on your own machine. Nothing leaves your PC except whatever your AI client itself sends to its provider, and that's your client's call, not ours. There's an in-app audit log in Settings → AI that logs every look() call (timestamp + image size) so you can see exactly what got delivered.",
               },
               {
                 q: "Which operating systems are supported?",
-                a: "Windows 10 and Windows 11 right now. macOS support is in active development — if you buy Pro on Windows, you'll get the Mac version free the moment it ships.",
+                a: "Windows 10 and Windows 11 right now. macOS support is in active development — Claude Desktop on Mac already loads the same kind of MCP config, so most of the work is the tray app and installer. If you buy Pro on Windows, you'll get the Mac version free the moment it ships.",
               },
               {
                 q: "Does it work offline?",
-                a: "The capture, OCR, and voice features work fully offline since they use built-in Windows APIs. Only the AI chat itself needs internet — and that's the AI provider's problem, not ours.",
+                a: "Capture, history, markup, and the MCP server all run fully offline (Windows APIs + a local stdio process). The AI itself needs internet — that's your AI provider's call, not ours. PromptPixel's only outbound network calls are: Polar.sh license validation when you activate a key, and GitHub Releases for the auto-updater check (once a day).",
               },
               {
                 q: "What if Pro doesn't work for me?",
@@ -651,11 +669,11 @@ export default function PromptPixelPage() {
               },
               {
                 q: "How does the perpetual license work?",
-                a: "Pro is a perpetual license, JetBrains-style. The $25 buys you the current version of PromptPixel — yours to keep, forever, no expiry. Updates and new versions are included for 12 months. After 12 months, your version keeps working with every feature intact; you just stop receiving new versions. If you want to keep getting updates, renew for $15/year. If you don't, your software keeps running and nothing changes for you.",
+                a: "Pro is a perpetual license, JetBrains-style. The $25 buys you the current version of PromptPixel — yours to keep, forever, no expiry. Updates and new versions are included for 12 months. After 12 months, your version keeps working with every feature intact; you just stop receiving new versions. Renew for $15/year if you want to keep getting updates. If you don't, the software you bought keeps running indefinitely.",
               },
               {
                 q: "What happens after 12 months if I don't renew?",
-                a: "Nothing breaks, nothing locks, nothing nags. Your current version of PromptPixel keeps working exactly as it did the day you bought it — every Pro feature, every hotkey, every saved prompt. The only thing you stop receiving is new versions. You can renew later if you want to catch up to the latest release, or stay on your current version indefinitely. Many customers will never renew and that's totally fine.",
+                a: "Nothing breaks, nothing locks, nothing nags. Your version keeps working exactly as it did the day you bought it — every Pro feature, every hotkey, every saved prompt, the bundled MCP server. The only thing you stop receiving is new versions. Renew later if you want to catch up; stay on your current version forever if you don't.",
               },
               {
                 q: "Is the $15/year a subscription?",
@@ -739,7 +757,7 @@ export default function PromptPixelPage() {
             </div>
           </div>
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#dbdbdb]/50 pt-8 text-[#999999] md:flex-row">
-            <div>© 2026 makobytes · v2.0.1-alpha · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-[#0061aa]">makologics</a></div>
+            <div>© 2026 makobytes · v3.0.4 · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-[#0061aa]">makologics</a></div>
             <div className="flex gap-4">
               <Link href="/privacy" className="transition hover:text-[#333333]">
                 privacy
