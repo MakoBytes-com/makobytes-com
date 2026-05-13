@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "makobot": {
+      "type": "http",
+      "url": "http://localhost:7777/mcp",
+      "headers": {
+        "Authorization": "Bearer jPB3tAUk-lbFYmrbiAGr6SXwdoL7cVeOh0wKZ1G6idI"
+      }
+    }
+  }
+}
