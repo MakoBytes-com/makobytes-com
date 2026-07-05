@@ -201,6 +201,61 @@ function AppCard({ app }: { app: MakoApp }) {
   );
 }
 
+// ───── hero: rotating 3D showcase of the app catalog ─────
+// Decorative (aria-hidden, non-interactive) — the real, clickable cards live
+// in the catalog section below. Animation is pure CSS (globals.css).
+function HeroAppCarousel() {
+  return (
+    <div
+      className="pointer-events-none relative flex items-center justify-center"
+      aria-hidden="true"
+    >
+      {/* soft navy halo behind the wheel */}
+      <div className="absolute h-80 w-80 rounded-full bg-[#0061aa]/10 blur-3xl" />
+      <div className="hero-carousel-stage">
+        <div className="hero-carousel-wheel">
+          {apps.map((app, i) => (
+            <div
+              key={app.slug}
+              className="hero-carousel-panel"
+              style={{ transform: `rotateY(${i * 120}deg) translateZ(240px)` }}
+            >
+              <div className="flex h-full flex-col rounded-xl border border-[#dbdbdb] bg-white p-7 shadow-[0_24px_70px_rgba(0,97,170,0.14)]">
+                <div className="mono-tag inline-flex w-fit items-center gap-1.5 rounded-full border border-[#10B981]/30 bg-[#10B981]/10 px-2.5 py-0.5 text-[#10B981]">
+                  <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-[#10B981]" />
+                  available now
+                </div>
+                <div className="mt-6 flex h-14 w-14 items-center justify-center rounded-xl border border-[#0061aa]/20 bg-[#e6f0f9]">
+                  <app.Icon className="h-7 w-7 text-[#0061aa]" />
+                </div>
+                <h3 className="mt-6 text-2xl font-bold text-[#333333]">
+                  {app.name}
+                </h3>
+                {app.price && (
+                  <div className="mono-tag mt-1 text-[#777777]">
+                    {app.price}
+                    {app.platform && (
+                      <span className="ml-1.5 text-[#999999]">
+                        · {app.platform}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <div className="mt-3 text-sm font-semibold text-[#0061aa]">
+                  {app.tagline}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-[#555555]">
+                  {app.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function MakoBytesHub() {
   return (
     <main className="relative min-h-screen bg-white text-[#333333]">
@@ -261,40 +316,16 @@ export default function MakoBytesHub() {
       {/* ───── HERO ───── */}
       <section
         id="hero"
-        className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 min-h-[600px] sm:min-h-[700px] lg:min-h-[820px]"
+        className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20"
       >
-        {/* Background hero video — liquid-chrome wave in brand silver/blue.
-            The file is a palindrome (forward + reversed appended) so the loop
-            point is seamless. A white scrim keeps the dark text legible on the
-            left; reduced-motion users get the poster still instead. */}
-        <div className="pointer-events-none absolute inset-0">
-          {/* React never writes the `muted` attribute into server-rendered
-              HTML (it only sets the DOM property on the client), but Chrome
-              and iOS Safari require the attribute to be present before they
-              allow autoplay — so the video ships as raw HTML. */}
-          <div
-            className="absolute inset-0 motion-reduce:hidden"
-            aria-hidden="true"
-            dangerouslySetInnerHTML={{
-              __html: `<video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.webp"><source src="/videos/hero-loop.webm" type="video/webm" /><source src="/videos/hero-loop.mp4" type="video/mp4" /></video>`,
-            }}
-          />
-          {/* Reduced-motion fallback — same frame, no motion. Plain <img> so it
-              shares the poster URL (and cache entry) with the video element. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/hero-poster.webp"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block"
-          />
-          {/* Legibility scrim — solid behind the text column, fading toward the wave */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/10" />
-          {/* Mobile-only extra fade so text stays readable at narrow widths */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/60 sm:hidden" />
-        </div>
+        {/* faint navy grid backdrop for texture */}
+        <div
+          className="pointer-events-none absolute inset-0 grid-overlay"
+          aria-hidden="true"
+        />
 
         <div className="relative mx-auto max-w-7xl px-6">
+          <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_auto]">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
@@ -345,6 +376,11 @@ export default function MakoBytesHub() {
                 one-time purchase
               </span>
             </div>
+          </div>
+
+          <div className="justify-self-center lg:justify-self-end lg:pr-4">
+            <HeroAppCarousel />
+          </div>
           </div>
         </div>
       </section>

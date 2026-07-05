@@ -2,7 +2,7 @@
 name: Build Progress
 description: Running log of completed and pending work
 type: project
-updated: 2026-04-10T02:08
+updated: 2026-07-05
 ---
 
 ## Done
@@ -54,6 +54,12 @@ updated: 2026-04-10T02:08
 - **Committed Spline → Whobee GLB swap**: Commit `396d329` created with interactive-3d-robot.tsx modified to load local `./whobee.glb` instead of Spline scene URL
 - **Verified partial build on live site**: UI changes (blue button, split layout) visible on production, confirming Vercel build completed, but old Spline robot still cached in browser (3D model not updated)
 - **Analyzed download tracking requirements**: Identified precondition — Download button is placeholder (`href="#download"`), no real .exe hosting yet. Evaluated 4 approaches: A (Vercel Analytics + GitHub, 30min free), B (Plausible/Umami, 1-2hr $0-9/mo), C (custom dashboard, 4-6hr), D (A now + C later). Recommended Option A as optimal for current stage.
+
+- **PixelCopy added to homepage catalog (2026-07-05)**: Replaced "App Three" placeholder card with live PixelCopy card — available status, "Capture your Windows screen like a pro." tagline, Free + Pro $8/mo, SquareDashed glyph (locked brand choice), external link to pixelcopy.app (same pattern as MakoBot card). Meta + OG descriptions updated to name all three apps. Commit `7a591a9`, verified live post-deploy.
+- **npm audit cleared (2026-07-05)**: `npm audit fix` resolved 2 moderate + 1 low advisories (js-yaml, brace-expansion, @babel/core — all dev tooling). Build verified clean. Commit `7cd44d0`.
+- **GitHub repo moved to MakoBytes-com org (noticed 2026-07-05)**: origin remote updated locally to `https://github.com/MakoBytes-com/makobytes-com.git`.
+
+- **Hero video background shipped (2026-07-05)**: Replaced static hero.webp with a Higgsfield-generated (Seedance 1.5 Pro, 48 credits for 2 candidates) liquid-chrome wave loop — silver/sapphire on bright white, brand palette. Palindrome encode (forward + reverse appended, apex frame deduped) makes the loop point invisible. Ships WebM 2.4MB + MP4 3.7MB + 45KB poster; video tag emitted as raw HTML because React won't render the `muted` attribute server-side and Chrome/iOS gate autoplay on it; reduced-motion users get the poster still. Also added immutable Cache-Control on /videos/* + /images/*. Commit `eb0c184`, verified live post-deploy (markup, asset 200s, security headers intact). Old hero.webp left in repo, now unreferenced.
 
 ## In Progress / Next Up
 
