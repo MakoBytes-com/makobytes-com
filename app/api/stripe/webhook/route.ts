@@ -37,10 +37,15 @@ export async function POST(req: NextRequest) {
 
   try {
     switch (event.type) {
-      case "checkout.session.completed": {
+      case "checkout.session.completed":
+      case "checkout.session.async_payment_succeeded": {
         const session = event.data.object as Stripe.Checkout.Session;
         if (session.metadata?.app !== "promptpixel") break; // another product's sale
-        if (session.payment_status !== "paid") break; // async methods settle via later events
+        // "paid" = normal card purchase. "no_payment_required" = $0 total
+        // (100%-off promo — how we run internal test purchases). "unpaid" =
+        // async method still settling; the async_payment_succeeded event
+        // re-enters here as "paid" when it lands.
+        if (session.payment_status !== "paid" && session.payment_status !== "no_payment_required") break;
 
         const email = session.customer_details?.email?.toLowerCase();
         const customerId = typeof session.customer === "string" ? session.customer : session.customer?.id;
