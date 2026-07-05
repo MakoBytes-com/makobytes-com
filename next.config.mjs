@@ -42,7 +42,17 @@ const nextConfig = {
     ],
   },
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    // Long-lived static assets get immutable caching — rename the file (or
+    // version the filename) instead of replacing content in place, or repeat
+    // visitors keep the stale copy for up to a year.
+    const IMMUTABLE_CACHE = [
+      { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+    ];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/videos/:path*", headers: IMMUTABLE_CACHE },
+      { source: "/images/:path*", headers: IMMUTABLE_CACHE },
+    ];
   },
 };
 
