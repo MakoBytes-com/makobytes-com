@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
   // AI crawlers are explicitly named with their own rules so the policy is
   // legible (rather than implicit via User-agent: *) — this site is a product
   // catalog, we want to be cited by AI assistants.
-  const SITE_DISALLOW = ["/admin", "/api"];
+  const SITE_DISALLOW = ["/admin", "/api", "/promptpixel/admin", "/promptpixel/welcome"];
 
   return {
     rules: [

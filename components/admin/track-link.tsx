@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, MouseEvent } from "react";
+import { sessionId } from "./session-id";
 
 /**
  * Lightweight wrapper around an <a> that fires an analytics event
@@ -32,6 +33,7 @@ export function TrackLink({
           page:
             typeof window !== "undefined" ? window.location.pathname : "/",
           meta,
+          sessionId: sessionId(),
         }),
         keepalive: true,
       }).catch(() => {});

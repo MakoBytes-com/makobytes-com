@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { sessionId } from "./session-id";
 
 /**
  * Drop this once into any page tree. On mount it fires a single
@@ -27,7 +28,12 @@ export function TrackPageView({
     fetch("/api/track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type, page: path }),
+      body: JSON.stringify({
+        type,
+        page: path,
+        sessionId: sessionId(),
+        referrer: typeof document !== "undefined" ? document.referrer : "",
+      }),
       keepalive: true,
     }).catch(() => {
       // Silent — analytics must never break the user experience

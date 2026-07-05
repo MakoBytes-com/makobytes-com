@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { recordEvent, type EventRecord } from "@/lib/admin/storage";
-import { randomBytes } from "crypto";
+import { randomBytes, createHash } from "crypto";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
+import { serverSupabase } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -102,6 +103,46 @@ export async function POST(req: NextRequest) {
     };
 
     await recordEvent(record);
+
+    // Dual-write raw rows to Supabase for the PromptPixel admin dash
+    // (pageviews → page_views, clicks → analytics_events). The KV counters
+    // above keep the original /admin dashboard working. Best-effort: a
+    // Supabase hiccup must never break tracking.
+    try {
+      if (!page.startsWith("/admin") && !page.startsWith("/promptpixel/admin")) {
+        const sessionRaw = typeof body.sessionId === "string" ? body.sessionId.slice(0, 40) : null;
+        const referrerRaw =
+          typeof body.referrer === "string" && body.referrer
+            ? String(body.referrer).slice(0, 300)
+            : ref?.slice(0, 300) || null;
+        const ip = getClientIp(req);
+        const day = new Date().toISOString().slice(0, 10);
+        const visitor = createHash("sha256").update(`${ip}|${ua ?? ""}|${day}`).digest("hex").slice(0, 16);
+        const country = req.headers.get("x-vercel-ip-country") ?? null;
+        const supabase = serverSupabase();
+
+        if (type.startsWith("pageview")) {
+          await supabase.from("page_views").insert({
+            path: page,
+            referrer: referrerRaw,
+            ua: ua?.slice(0, 300) ?? null,
+            country,
+            visitor,
+            session_id: sessionRaw,
+          });
+        } else {
+          await supabase.from("analytics_events").insert({
+            event_type: type,
+            path: page,
+            meta: meta ?? null,
+            visitor,
+            session_id: sessionRaw,
+          });
+        }
+      }
+    } catch (dbErr) {
+      console.error("[/api/track] supabase dual-write failed", dbErr);
+    }
   } catch (err) {
     console.error("[/api/track] failed", err);
   }

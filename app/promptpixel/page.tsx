@@ -562,7 +562,7 @@ export default function PromptPixelPage() {
                 </ul>
 
                 <TrackLink
-                  href="https://buy.polar.sh/polar_cl_E6KR5AWAR8BFjXmIIcO9JPaydeVcNXVhdOx4V4JO1yc"
+                  href="/promptpixel/buy"
                   type="click_buy"
                   meta={{ source: "pricing_card" }}
                   newTab
@@ -661,7 +661,7 @@ export default function PromptPixelPage() {
               },
               {
                 q: "Does it work offline?",
-                a: "Capture, history, markup, and the MCP server all run fully offline (Windows APIs + a local stdio process). The AI itself needs internet — that's your AI provider's call, not ours. PromptPixel's only outbound network calls are: Polar.sh license validation when you activate a key, and GitHub Releases for the auto-updater check (once a day).",
+                a: "Capture, history, markup, and the MCP server all run fully offline (Windows APIs + a local stdio process). The AI itself needs internet — that's your AI provider's call, not ours. PromptPixel's only outbound network calls are: license validation against makobytes.com when you activate a key, and GitHub Releases for the auto-updater check (once a day).",
               },
               {
                 q: "What if Pro doesn't work for me?",
