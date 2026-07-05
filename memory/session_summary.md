@@ -5,7 +5,9 @@ type: project
 updated: 2026-07-05
 ---
 
-## What happened (2026-07-05, LATEST — hero = rotating app cards, AWAITING RUSSELL'S GO)
+## What happened (2026-07-05, LATEST — hero = rotating app cards, SHIPPED)
+
+Russell approved the preview ("that looks good") → shipped to production as commit `d8b8e2e`, deploy verified live: carousel markup rendering on makobytes.com, old /videos/hero-loop.mp4 returns 404, homepage 200, all 6 security headers intact.
 
 Russell rejected the video-background direction entirely (chrome wave shipped as v1; workstation v2 previewed; 4 robot-developer candidates generated but declined). New direction from him: "just create animated cards of each app and have them rotate." Built a pure-CSS 3D card carousel in the hero — the 3 catalog apps (PromptPixel/MakoBot/PixelCopy) as cards on a Y-axis wheel at 120°, each holding face-front ~4.5s then turning (18s cycle, keyframes `hero-carousel-spin` in globals.css). Decorative/aria-hidden (real clickable cards remain in catalog section), reduced-motion shows a static card, faint `grid-overlay` texture behind, hero min-heights dropped for natural two-column layout (text left, carousel right, stacks on mobile). All video assets removed from working tree (v1 recoverable from commit `eb0c184`); zero video bytes shipped. Build clean. **Preview (NOT production): https://makobytes-48ew2ypxz-makoai-studio.vercel.app — waiting for Russell's word before commit+push.** Production still serves v1 chrome-wave video. ~182 Higgsfield credits used today (~447 remain — robot candidates: f43e4a37/a208c400/b91d55df/b2c19551 in library if ever wanted).
 

@@ -61,6 +61,8 @@ updated: 2026-07-05
 
 - **Hero video background shipped (2026-07-05)**: Replaced static hero.webp with a Higgsfield-generated (Seedance 1.5 Pro, 48 credits for 2 candidates) liquid-chrome wave loop — silver/sapphire on bright white, brand palette. Palindrome encode (forward + reverse appended, apex frame deduped) makes the loop point invisible. Ships WebM 2.4MB + MP4 3.7MB + 45KB poster; video tag emitted as raw HTML because React won't render the `muted` attribute server-side and Chrome/iOS gate autoplay on it; reduced-motion users get the poster still. Also added immutable Cache-Control on /videos/* + /images/*. Commit `eb0c184`, verified live post-deploy (markup, asset 200s, security headers intact). Old hero.webp left in repo, now unreferenced.
 
+- **Hero rotating app-card carousel shipped (2026-07-05)**: Replaced the hero video background (after Russell declined the workstation v2 + 4 robot-developer candidates) with a pure-CSS 3D carousel of the three real app cards (PromptPixel/MakoBot/PixelCopy) — 18s stepped rotation, reduced-motion static fallback, decorative/aria-hidden, grid-overlay backdrop. All hero video assets deleted (recoverable from `eb0c184`). Commit `d8b8e2e`, verified live post-deploy.
+
 ## In Progress / Next Up
 
 1. **Russell to answer precondition questions**: Where will PromptPixel.exe be hosted? (GitHub/S3/Vercel/own server) + Is a real installer ready now?
