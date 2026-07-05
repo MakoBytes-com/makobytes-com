@@ -19,6 +19,10 @@ export async function GET(req: NextRequest) {
       // One-time payments don't create a Customer by default; force it so
       // the admin dash and future refunds have a customer to point at.
       customer_creation: "always",
+      // Stripe Tax: price is tax-exclusive (product txcd_10202000, downloadable
+      // software). Tax is only actually charged in jurisdictions with an active
+      // registration in Stripe; elsewhere Stripe just monitors thresholds.
+      automatic_tax: { enabled: true },
       success_url: `${origin}/promptpixel/welcome`,
       cancel_url: `${origin}/promptpixel#pricing`,
       metadata: { app: "promptpixel" },

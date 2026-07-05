@@ -65,7 +65,7 @@ export default function PromptPixelPage() {
             url: "https://makobytes.com/promptpixel",
             applicationCategory: "ProductivityApplication",
             operatingSystem: "Windows 10, Windows 11",
-            softwareVersion: "3.0.4",
+            softwareVersion: "3.0.8",
             author: {
               "@type": "Organization",
               name: "MakoBytes",
@@ -153,7 +153,7 @@ export default function PromptPixelPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-[#dbdbdb] bg-[#f8f9fb] px-4 py-1.5">
               <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#10B981]" />
               <span className="mono-tag text-[#555555]">
-                v3.0.4 · windows · vision mcp
+                v3.0.8 · windows · vision mcp
               </span>
             </div>
 
@@ -543,6 +543,7 @@ export default function PromptPixelPage() {
                     "Auto-save backups (folder you pick)",
                     "Configurable trigger phrases",
                     "Capture history raised to 50",
+                    "One key, all your PCs — the license follows your email",
                     "Perpetual license — own this version forever",
                     "12 months of new versions + updates",
                     "Priority email support",
@@ -572,7 +573,10 @@ export default function PromptPixelPage() {
                   <ArrowRight className="h-5 w-5" />
                 </TrackLink>
                 <p className="mono-tag mt-3 text-center text-[#777777]">
-                  perpetual license · 12 months of updates
+                  perpetual license · 12 months of updates · secure Stripe checkout
+                </p>
+                <p className="mt-1 text-center text-[11px] text-[#999999]">
+                  Sales tax added at checkout where applicable.
                 </p>
                 <p className="mt-3 rounded-lg border border-[#dbdbdb] bg-white p-3 text-center text-[11px] leading-relaxed text-[#555555]">
                   When your update period ends, your version of PromptPixel
@@ -757,7 +761,7 @@ export default function PromptPixelPage() {
             </div>
           </div>
           <div className="mono-tag mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#dbdbdb]/50 pt-8 text-[#999999] md:flex-row">
-            <div>© 2026 makobytes · v3.0.4 · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-[#0061aa]">makologics</a></div>
+            <div>© 2026 makobytes · v3.0.8 · built by <a href="https://makologics.com" target="_blank" rel="noopener" className="transition hover:text-[#0061aa]">makologics</a></div>
             <div className="flex gap-4">
               <Link href="/privacy" className="transition hover:text-[#333333]">
                 privacy
