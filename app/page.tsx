@@ -10,21 +10,21 @@ import {
   Clock,
   Lock,
   Sparkles,
-  Wrench,
+  SquareDashed,
   Zap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MakoBytes — Lightweight Desktop Tools for People Who Live in AI",
   description:
-    "MakoBytes builds fast, private, one-time-purchase desktop apps for AI power users. PromptPixel, and more on the way. No subscriptions. No bloat. No BS.",
+    "MakoBytes builds fast, private desktop apps for AI power users. PromptPixel, MakoBot, PixelCopy, and more on the way. No subscriptions forced on you. No bloat. No BS.",
   alternates: { canonical: "https://makobytes.com" },
   openGraph: {
     type: "website",
     url: "https://makobytes.com",
     title: "MakoBytes — Lightweight Desktop Tools for AI Workflows",
     description:
-      "Fast. Private. One-time purchase. The MakoBytes app catalog.",
+      "Fast. Private. Yours to keep. The MakoBytes app catalog.",
     siteName: "MakoBytes",
   },
 };
@@ -93,13 +93,16 @@ const apps: MakoApp[] = [
     Icon: Brain,
   },
   {
-    slug: "coming-soon-2",
-    name: "App Three",
-    tagline: "In development.",
+    slug: "pixelcopy",
+    name: "PixelCopy",
+    tagline: "Capture your Windows screen like a pro.",
     description:
-      "Another lightweight AI workflow tool in the pipeline. Sign up to be the first to hear.",
-    status: "in-development",
-    Icon: Wrench,
+      "Region, scrolling, and fullscreen capture with screen recording, GIFs, annotations, OCR, and pin-to-screen. Every capture lands in a floating overlay, ready to mark up and share.",
+    status: "available",
+    price: "Free + Pro $8/mo",
+    platform: "Windows",
+    href: "https://pixelcopy.app",
+    Icon: SquareDashed,
   },
 ];
 
