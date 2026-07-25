@@ -435,6 +435,376 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   MAKOOS — the site as a running desktop.
+   Dark machined-navy shell; windows keep the precision "paper plate"
+   language so the OS chrome and the spec-sheet share one design system.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.os-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background-color: #04101d;
+  background-image: url("/images/wallpaper-forge.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* desktop icon */
+.os-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  width: 106px;
+  padding: 10px 6px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.os-icon:hover,
+.os-icon:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+  outline: none;
+}
+.os-icon-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #dce7f2;
+}
+.os-icon-label {
+  max-width: 98px;
+  text-align: center;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10.5px;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  word-break: break-word;
+}
+
+/* window */
+.os-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1px solid #b9c5d2;
+  background: #fbfcfe;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 40px 90px -30px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+}
+.os-window.os-max {
+  left: 8px !important;
+  top: 8px !important;
+  right: 8px;
+  bottom: 56px;
+  width: auto !important;
+}
+.os-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 6px 0 12px;
+  border-bottom: 1px solid #e0e6ed;
+  background: linear-gradient(180deg, #f7f9fc, #e9eef4);
+  cursor: grab;
+  touch-action: none;
+  flex-shrink: 0;
+}
+.os-titlebar:active {
+  cursor: grabbing;
+}
+.os-title {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4d5a68;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.os-winbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 26px;
+  border-radius: 7px;
+  color: #55606c;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.os-winbtn:hover {
+  background: rgba(38, 48, 59, 0.08);
+}
+.os-winbtn-close:hover {
+  background: #e11d48;
+  color: #ffffff;
+}
+.os-winbody {
+  overflow: auto;
+  overscroll-behavior: contain;
+  max-height: min(66vh, 640px);
+}
+.os-max .os-winbody {
+  max-height: none;
+  flex: 1;
+}
+
+/* taskbar */
+.os-taskbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 10px;
+  background: rgba(4, 16, 29, 0.82);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.os-task-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+.os-task-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.os-task-btn.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(102, 165, 219, 0.5);
+}
+.os-task-btn.is-min {
+  opacity: 0.6;
+}
+
+/* start menu */
+.os-startmenu {
+  position: fixed;
+  left: 10px;
+  bottom: 56px;
+  z-index: 70;
+  width: 320px;
+  max-width: calc(100vw - 20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(7, 22, 38, 0.95);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+  padding: 14px;
+  color: #e8eef5;
+}
+.os-menu-label {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(159, 195, 224, 0.75);
+  padding: 8px 10px 4px;
+}
+.os-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13.5px;
+  color: #e8eef5;
+  transition: background 0.12s ease;
+  text-align: left;
+}
+.os-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* boot screen */
+.os-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #04101d;
+  transition: opacity 0.45s ease;
+}
+.os-boot.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+.os-boot-line {
+  opacity: 0;
+  animation: boot-line 0.08s ease forwards;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  color: #9fc3e0;
+}
+@keyframes boot-line {
+  to {
+    opacity: 1;
+  }
+}
+.os-boot-bar {
+  height: 3px;
+  background: rgba(159, 195, 224, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.os-boot-bar > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #3387cf;
+  transform: translateX(-100%);
+  animation: boot-fill 1.15s cubic-bezier(0.6, 0.1, 0.3, 1) 0.25s forwards;
+}
+@keyframes boot-fill {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* mako.exe */
+.mako-swim {
+  position: fixed;
+  z-index: 75;
+  left: 0;
+  pointer-events: none;
+  animation: mako-cross 8.5s linear forwards;
+}
+.mako-swim > * {
+  animation: mako-bob 1.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+@keyframes mako-cross {
+  from {
+    transform: translateX(-30vw);
+  }
+  to {
+    transform: translateX(112vw);
+  }
+}
+@keyframes mako-bob {
+  from {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+  to {
+    transform: translateY(14px) rotate(2deg);
+  }
+}
+
+/* toast */
+.os-toast {
+  position: fixed;
+  right: 14px;
+  bottom: 62px;
+  z-index: 80;
+  display: flex;
+  gap: 10px;
+  width: 320px;
+  max-width: calc(100vw - 28px);
+  padding: 13px 14px;
+  border-radius: 13px;
+  border: 1px solid #c9d2dc;
+  background: #ffffff;
+  box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.55);
+  animation: toast-in 0.5s var(--ease-house);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* window-content spec rows (compact, used inside OS windows) */
+.os-specrow {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid #e4e9ef;
+}
+.os-specrow:last-child {
+  border-bottom: none;
+}
+
+/* mobile: windows become full-screen sheets above the app bar */
+@media (max-width: 1023px) {
+  .os-window {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0;
+    bottom: 48px;
+    width: auto !important;
+    border-radius: 0;
+    border: none;
+  }
+  .os-titlebar {
+    cursor: default;
+  }
+  .os-winbody {
+    max-height: none;
+    flex: 1;
+  }
+  .os-icon {
+    width: 82px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-boot {
+    display: none;
+  }
+  .mako-swim {
+    animation-duration: 0.01s;
+  }
+  .mako-swim > * {
+    animation: none;
+  }
+  .os-toast {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ticker-track {
     animation: none;
