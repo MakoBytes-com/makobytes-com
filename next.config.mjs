@@ -5,13 +5,13 @@
 // images) are explicitly allowed — they're already in images.remotePatterns.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://prod.spline.design https://images.unsplash.com https://*.googleusercontent.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live https://prod.spline.design wss://prod.spline.design",
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live https://prod.spline.design wss://prod.spline.design https://challenges.cloudflare.com",
   "media-src 'self'",
-  "frame-src 'self' https://prod.spline.design",
+  "frame-src 'self' https://prod.spline.design https://challenges.cloudflare.com",
   "form-action 'self'",
   "object-src 'none'",
   "base-uri 'self'",

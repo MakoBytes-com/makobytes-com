@@ -200,18 +200,21 @@ export default function SpecSheetPage() {
       {/* ───── NAV ───── */}
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-[#d7dee6]/70 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <a href="#top" className="flex items-center gap-3 whitespace-nowrap">
+          <a href="/" className="flex items-center gap-3 whitespace-nowrap">
             <BrandMark size={36} />
             <span className="leading-none">
               <span className="block font-display text-lg font-bold tracking-tight text-[#26303b]">
                 MakoBytes
               </span>
               <span className="mt-0.5 hidden font-mono text-[9px] uppercase tracking-[0.28em] text-[#6b7684] sm:block">
-                Desktop software works
+                Spec sheet — paper edition
               </span>
             </span>
           </a>
           <div className="hidden items-center gap-8 text-sm text-[#55606c] md:flex">
+            <a href="/" className="font-semibold text-[#0061aa] transition hover:text-[#004d88]">
+              ← MakoOS
+            </a>
             <a href="#catalog" className="transition hover:text-[#0061aa]">
               Catalog
             </a>
@@ -460,10 +463,10 @@ export default function SpecSheetPage() {
               <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                 <div className="relative order-2 mx-auto w-full max-w-[520px] pb-10 pr-2 lg:order-1 sm:pb-14">
                   <Image
-                    src="/images/plate-makobot.png"
-                    alt="Machined aluminum cube engraved with navy circuit traces, photographed on an engineering drawing"
-                    width={1264}
-                    height={848}
+                    src="/images/makobot-hero.jpg"
+                    alt="MakoBot — the little robot with a glowing circuit brain, surrounded by the AI tools it gives shared memory to"
+                    width={1280}
+                    height={720}
                     className="w-full rounded-xl border border-[#d3dae2]"
                   />
                   <div className="absolute -bottom-2 -right-2 sm:bottom-0 sm:right-0">
@@ -706,6 +709,9 @@ export default function SpecSheetPage() {
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-[#55606c]">
+              <a href="/" className="font-semibold text-[#0061aa] transition hover:text-[#004d88]">
+                ← MakoOS
+              </a>
               <a href="#catalog" className="transition hover:text-[#0061aa]">
                 Catalog
               </a>

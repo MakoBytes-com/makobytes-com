@@ -1,9 +1,17 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Script from "next/script";
 import { Check, Send } from "lucide-react";
 
-/** The working form inside contact.eml — posts to /api/contact (Resend). */
+declare global {
+  interface Window {
+    turnstile?: { reset: () => void };
+  }
+}
+
+/** The working form inside contact.eml — Turnstile-gated, posts to
+ *  /api/contact (Resend). */
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
@@ -28,10 +36,12 @@ export default function ContactForm() {
       } else {
         setStatus("error");
         setError(json.error || "Sending failed — email admin@makobytes.com directly.");
+        window.turnstile?.reset();
       }
     } catch {
       setStatus("error");
       setError("Network hiccup — try again, or email admin@makobytes.com directly.");
+      window.turnstile?.reset();
     }
   }
 
@@ -98,7 +108,16 @@ export default function ContactForm() {
         className="block w-full resize-none bg-white px-3 py-3 text-[13.5px] leading-relaxed text-[#26303b] outline-none placeholder:text-[#aab4bf]"
         placeholder="Support, sales, refunds, press — anything. Write like you'd write to a person, because one reads it."
       />
-      <div className="flex items-center justify-between gap-3 border-t border-[#e4e9ef] bg-[#f8fafc] px-3 py-2.5">
+      <div className="border-t border-[#e4e9ef] bg-[#f8fafc] px-3 pt-2.5">
+        <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />
+        <div
+          className="cf-turnstile"
+          data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          data-theme="light"
+          data-size="flexible"
+        />
+      </div>
+      <div className="flex items-center justify-between gap-3 bg-[#f8fafc] px-3 py-2.5">
         <button
           type="submit"
           disabled={status === "sending"}

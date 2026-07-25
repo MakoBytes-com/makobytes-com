@@ -73,6 +73,38 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Turnstile — the captcha gate. Fails closed: no secret, no sends.
+  const captcha = typeof b["cf-turnstile-response"] === "string" ? b["cf-turnstile-response"] : "";
+  const tsSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
+  if (!tsSecret) {
+    console.error("[contact] TURNSTILE_SECRET_KEY missing — refusing to send");
+    return NextResponse.json(
+      { ok: false, error: "Verification unavailable — email admin@makobytes.com directly." },
+      { status: 500 },
+    );
+  }
+  const ipForCaptcha =
+    req.headers.get("x-real-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "";
+  const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      secret: tsSecret,
+      response: captcha,
+      ...(ipForCaptcha ? { remoteip: ipForCaptcha } : {}),
+    }),
+  })
+    .then((r) => r.json())
+    .catch(() => ({ success: false }));
+  if (!verify.success) {
+    return NextResponse.json(
+      { ok: false, error: "Captcha check didn't pass — give it a second and try again." },
+      { status: 400 },
+    );
+  }
+
   const rl = getRatelimit();
   if (rl) {
     const ip =
