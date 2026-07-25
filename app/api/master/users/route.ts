@@ -1,12 +1,11 @@
 // Master CP user-summary pull endpoint. Verifies an inbound master JWT and
 // returns per-role user counts the fleet dashboard rolls up.
 //
-// This app's user table is `accounts` (PromptPixel licensing). It has no role
-// column — there is no admin/editor distinction — so admins/editors are
-// reported as 0. `active` maps to subscription_status = 'active'.
+// This site has no user system: PromptPixel (and its `accounts` licensing
+// table) was retired 2026-07-25, and the catalog pages have no signups. All
+// counts are legitimately 0 — not an error.
 
 import { NextResponse, type NextRequest } from "next/server";
-import { serverSupabase } from "@/lib/supabase";
 import { verifyMasterToken } from "@/lib/master-jwt";
 
 export const dynamic = "force-dynamic";
@@ -26,32 +25,9 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  try {
-    const supabase = serverSupabase();
-    const [totalRes, activeRes] = await Promise.all([
-      supabase.from("accounts").select("id", { count: "exact", head: true }),
-      supabase
-        .from("accounts")
-        .select("id", { count: "exact", head: true })
-        .eq("subscription_status", "active"),
-    ]);
-    if (totalRes.error) throw totalRes.error;
-    if (activeRes.error) throw activeRes.error;
-
-    return NextResponse.json({
-      ok: true,
-      counts: {
-        total: totalRes.count ?? 0,
-        active: activeRes.count ?? 0,
-        admins: 0, // no role column on `accounts`
-        editors: 0, // no role column on `accounts`
-      },
-      timestamp: new Date().toISOString(),
-    });
-  } catch (e) {
-    return NextResponse.json(
-      { ok: false, error: e instanceof Error ? e.message : "internal error" },
-      { status: 500 },
-    );
-  }
+  return NextResponse.json({
+    ok: true,
+    counts: { total: 0, active: 0, admins: 0, editors: 0 },
+    timestamp: new Date().toISOString(),
+  });
 }

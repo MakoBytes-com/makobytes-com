@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     template: "%s | MakoBytes",
   },
   description:
-    "MakoBytes builds fast, private, one-time-purchase desktop apps for people who live in AI workflows. PromptPixel and more on the way.",
+    "MakoBytes builds fast, private desktop apps for people who live in AI workflows. MakoBot, PixelCopy, and more on the way.",
   keywords: [
     "MakoBytes",
     "desktop apps",
     "AI tools",
     "productivity",
-    "PromptPixel",
-    "screenshot to prompt",
+    "PixelCopy",
+    "screen capture",
     "OCR",
     "ChatGPT workflow",
     "Claude workflow",

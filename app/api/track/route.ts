@@ -104,12 +104,12 @@ export async function POST(req: NextRequest) {
 
     await recordEvent(record);
 
-    // Dual-write raw rows to Supabase for the PromptPixel admin dash
-    // (pageviews → page_views, clicks → analytics_events). The KV counters
-    // above keep the original /admin dashboard working. Best-effort: a
+    // Dual-write raw rows to Supabase (pageviews → page_views, clicks →
+    // analytics_events) — the fleet portal's master endpoints read these. The
+    // KV counters above keep the /admin dashboard working. Best-effort: a
     // Supabase hiccup must never break tracking.
     try {
-      if (!page.startsWith("/admin") && !page.startsWith("/promptpixel/admin")) {
+      if (!page.startsWith("/admin")) {
         const sessionRaw = typeof body.sessionId === "string" ? body.sessionId.slice(0, 40) : null;
         const referrerRaw =
           typeof body.referrer === "string" && body.referrer

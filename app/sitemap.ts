@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 // Pinned to a real content-change date rather than `new Date()`, so search
 // engines don't see the timestamp tick on every crawl and infer phantom
 // changes. Bump this when adding/restructuring real public pages.
-const LAST_MODIFIED = new Date("2026-05-03T00:00:00Z");
+const LAST_MODIFIED = new Date("2026-07-25T00:00:00Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -12,12 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 1,
-    },
-    {
-      url: "https://makobytes.com/promptpixel",
-      lastModified: LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.9,
     },
     {
       url: "https://makobytes.com/privacy",

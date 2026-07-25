@@ -30,7 +30,7 @@ export default function TermsPage() {
           <span className="text-gradient">Terms of Service</span>
         </h1>
         <p className="mono-tag mb-12 text-[#999999]">
-          Last updated: April 9, 2026
+          Last updated: July 25, 2026
         </p>
 
         <div className="space-y-8 text-[#555555]">
@@ -44,40 +44,34 @@ export default function TermsPage() {
 
           <section>
             <h2 className="mb-4 text-xl font-bold text-[#333333]">
-              PromptPixel Free
+              Free Software
             </h2>
             <p className="leading-relaxed">
-              PromptPixel Free is provided at no cost for personal and commercial
-              use. It is provided &quot;as is&quot; without warranty of any kind.
-              MakoBytes is not liable for any damages arising from use of the
-              software.
+              Free MakoBytes apps are provided at no cost for personal and
+              commercial use. They are provided &quot;as is&quot; without
+              warranty of any kind. MakoBytes is not liable for any damages
+              arising from use of the software.
             </p>
           </section>
 
           <section>
             <h2 className="mb-4 text-xl font-bold text-[#333333]">
-              PromptPixel Pro — Perpetual License
+              Paid Products
             </h2>
             <p className="leading-relaxed">
-              A PromptPixel Pro purchase grants you a perpetual, non-exclusive,
-              non-transferable license to use the version of PromptPixel Pro
-              available at the time of purchase. Your license never expires and
-              the software will continue to function indefinitely.
-            </p>
-            <p className="mt-3 leading-relaxed">
-              Your purchase includes 12 months of updates and new versions from
-              the date of purchase. After 12 months, your current version
-              continues to work with all features. You may optionally renew
-              updates for $15/year to receive new versions. Renewal is never
-              required.
+              Paid MakoBytes products are sold on their own product sites (for
+              example, PixelCopy at pixelcopy.app). The license model, pricing,
+              and any subscription terms are stated plainly on each
+              product&apos;s site at the point of purchase, and those terms
+              govern that product.
             </p>
           </section>
 
           <section>
             <h2 className="mb-4 text-xl font-bold text-[#333333]">Refunds</h2>
             <p className="leading-relaxed">
-              PromptPixel Pro comes with a 30-day money-back guarantee. If you
-              are not satisfied, email{" "}
+              Paid products come with a 30-day money-back guarantee. If you are
+              not satisfied, email{" "}
               <a
                 href="mailto:admin@makobytes.com"
                 className="text-[#0061aa] transition hover:text-[#004d88]"

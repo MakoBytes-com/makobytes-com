@@ -16,7 +16,6 @@ import { kv } from "@vercel/kv";
 export const TRACKED_EVENTS = [
   "pageview",
   "pageview_home",
-  "pageview_promptpixel",
   "click_download",
   "click_buy",
   "click_app_card",

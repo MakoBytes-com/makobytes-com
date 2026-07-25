@@ -26,18 +26,18 @@ export async function GET(req: NextRequest) {
 
   try {
     const supabase = serverSupabase();
-    // accounts is this app's user/licensing table (PromptPixel). Head count
-    // only — no rows fetched.
-    const { count, error } = await supabase
-      .from("accounts")
+    // No user table anymore (PromptPixel `accounts` retired 2026-07-25).
+    // page_views doubles as the DB-reachability probe; head count only.
+    const { error } = await supabase
+      .from("page_views")
       .select("id", { count: "exact", head: true });
     if (error) throw error;
 
     return NextResponse.json({
       ok: true,
-      schema_rev: 1,
+      schema_rev: 2,
       plugin_versions: { admin: "1.0.0" },
-      user_count: count ?? 0,
+      user_count: 0,
       timestamp: new Date().toISOString(),
     });
   } catch (e) {

@@ -5,13 +5,13 @@
 // images) are explicitly allowed — they're already in images.remotePatterns.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://prod.spline.design https://images.unsplash.com https://*.googleusercontent.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live https://prod.spline.design wss://prod.spline.design https://challenges.cloudflare.com",
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live https://prod.spline.design wss://prod.spline.design",
   "media-src 'self'",
-  "frame-src 'self' https://prod.spline.design https://challenges.cloudflare.com",
+  "frame-src 'self' https://prod.spline.design",
   "form-action 'self'",
   "object-src 'none'",
   "base-uri 'self'",
@@ -40,6 +40,14 @@ const nextConfig = {
       { protocol: "https", hostname: "prod.spline.design" },
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
+  },
+  async redirects() {
+    // PromptPixel was retired 2026-07-25; PixelCopy (pixelcopy.app) is its
+    // successor. Old links and search results land on the successor product.
+    return [
+      { source: "/promptpixel", destination: "https://pixelcopy.app", permanent: true },
+      { source: "/promptpixel/:path*", destination: "https://pixelcopy.app", permanent: true },
+    ];
   },
   async headers() {
     // Long-lived static assets get immutable caching — rename the file (or

@@ -6,7 +6,7 @@ import { sessionId } from "./session-id";
 /**
  * Drop this once into any page tree. On mount it fires a single
  * /api/track call with type="pageview" and a per-route alias like
- * "pageview_promptpixel". Uses fetch with keepalive so the request
+ * "pageview_home". Uses fetch with keepalive so the request
  * doesn't get cancelled if the user navigates away mid-flight.
  */
 export function TrackPageView({

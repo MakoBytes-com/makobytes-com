@@ -39,25 +39,20 @@ export default async function AdminDashboard() {
   const configured = isStorageConfigured();
 
   const [
-    totalPvHome,
-    totalPvProduct,
-    todayPvHome,
-    todayPvProduct,
+    totalPageviews,
+    todayPageviews,
     totalDownloads,
     todayDownloads,
     totalBuys,
     todayBuys,
     totalAppCardClicks,
     todayAppCardClicks,
-    pvHomeTrend,
-    pvProductTrend,
+    pageviewsTrend,
     downloadsTrend,
     recentEvents,
   ] = await Promise.all([
     getTotal("pageview_home"),
-    getTotal("pageview_promptpixel"),
     getToday("pageview_home"),
-    getToday("pageview_promptpixel"),
     getTotal("click_download"),
     getToday("click_download"),
     getTotal("click_buy"),
@@ -65,22 +60,13 @@ export default async function AdminDashboard() {
     getTotal("click_app_card"),
     getToday("click_app_card"),
     getLastNDays("pageview_home", 14),
-    getLastNDays("pageview_promptpixel", 14),
     getLastNDays("click_download", 14),
     getRecentEvents(50),
   ]);
 
-  const totalPageviews = totalPvHome + totalPvProduct;
-  const todayPageviews = todayPvHome + todayPvProduct;
-  const pageviewsTrend = pvHomeTrend.map((d, i) => ({
-    ...d,
-    count: d.count + (pvProductTrend[i]?.count ?? 0),
-  }));
-
-  const productViews = await getTotal("pageview_promptpixel");
   const funnelStops = [
     { label: "Site visits", value: totalPageviews },
-    { label: "Product views", value: productViews },
+    { label: "App card clicks", value: totalAppCardClicks },
     { label: "Download clicks", value: totalDownloads },
     { label: "Buy clicks", value: totalBuys },
   ];
@@ -201,7 +187,7 @@ export default async function AdminDashboard() {
           <div className="mb-6">
             <div className="mono-tag mb-1 text-[#0061aa]">// funnel</div>
             <h3 className="text-lg font-bold text-[#333333]">
-              Visit → product → download → buy
+              Visit → app card → download → buy
             </h3>
           </div>
           <div className="space-y-3">

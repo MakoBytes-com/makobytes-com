@@ -3,7 +3,7 @@
 // Sentry-style summary without owning the raw rows.
 //
 // This app's error_events schema (verified against lib/errlog.ts insert and
-// /promptpixel/admin/errors read) is:
+// admin errors read) is:
 //   id, source, context, message, stack, meta, created_at
 // It has NO fingerprint / level / module / resolved_at columns (unlike the
 // Bulldog reference). So we synthesize:

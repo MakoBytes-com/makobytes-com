@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <span className="text-gradient">Privacy Policy</span>
         </h1>
         <p className="mono-tag mb-12 text-[#999999]">
-          Last updated: April 9, 2026
+          Last updated: July 25, 2026
         </p>
 
         <div className="space-y-8 text-[#555555]">
@@ -45,16 +45,15 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="mb-4 text-xl font-bold text-[#333333]">
-              PromptPixel Desktop App
+              MakoBytes Desktop Apps
             </h2>
             <p className="leading-relaxed">
-              PromptPixel runs 100% locally on your Windows PC. It uses
-              Windows-native APIs for screen capture, OCR, and speech
-              recognition. No screenshots, prompts, voice recordings, or any
-              other user data ever leave your machine. There is no telemetry, no
-              analytics, no cloud processing, and no account required. The only
-              network activity is initiated by the AI chat application you paste
-              into, which is controlled by that provider, not MakoBytes.
+              MakoBytes desktop apps run locally on your Windows PC using
+              Windows-native APIs. Your content stays on your machine unless
+              you explicitly send it somewhere yourself. Products with their
+              own websites (for example, PixelCopy at pixelcopy.app) publish
+              their own privacy policies covering any optional cloud features;
+              those policies govern that product.
             </p>
           </section>
 
@@ -78,11 +77,13 @@ export default function PrivacyPage() {
               Purchases and Payments
             </h2>
             <p className="leading-relaxed">
-              Payments are processed by our payment provider (Polar). MakoBytes
-              does not store credit card numbers or payment details. Your email
-              address is collected for license delivery and support purposes
-              only. We will never send you marketing emails unless you
-              explicitly opt in.
+              makobytes.com does not sell anything directly and does not
+              collect payment information. Paid products are purchased on
+              their own product sites (for example, PixelCopy at
+              pixelcopy.app), where payments are handled by that site&apos;s
+              payment processor. MakoBytes never stores credit card numbers.
+              We will never send you marketing emails unless you explicitly
+              opt in.
             </p>
           </section>
 
@@ -98,8 +99,8 @@ export default function PrivacyPage() {
               >
                 admin@makobytes.com
               </a>
-              . Since PromptPixel stores everything locally, there is nothing for
-              us to delete on our end for the desktop app.
+              . Since our desktop apps store everything locally, there is
+              typically nothing for us to delete on our end.
             </p>
           </section>
 

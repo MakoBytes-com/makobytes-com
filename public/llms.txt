@@ -1,11 +1,11 @@
 # MakoBytes
-> Lightweight, private, one-time-purchase desktop apps for AI power users. PromptPixel turns screenshots into AI prompts via hotkey; MakoBot is a local AI workbench with multi-model plug-ins. No subscriptions, no cloud, no BS.
+> Lightweight, private desktop apps for AI power users. PixelCopy is a pro screen-capture studio for Windows; MakoBot is a local AI workbench with multi-model plug-ins. No bloat, no BS.
 
-MakoBytes is a desktop software studio that builds privacy-first tools for people whose work runs through AI chats. Every product is a Windows desktop app sold under a perpetual license (JetBrains-style: own this version forever, optional 12 months of updates). Built and signed by Mako Logics LLC. Sister product family includes MakoBot (a separate desktop AI workbench at makobot.com).
+MakoBytes is a desktop software studio that builds privacy-first tools for people whose work runs through AI chats. Every product is a Windows desktop app; each product page states its pricing model plainly. Built and signed by Mako Logics LLC. Sister product family includes MakoBot (a separate desktop AI workbench at makobot.com).
 
 ## Apps
 
-- [PromptPixel](https://makobytes.com/promptpixel): Hotkey-driven Windows app that snaps a screenshot, pastes it into ChatGPT/Claude/Gemini/any AI chat, and auto-types your prompt alongside it. Free tier + Pro $25 perpetual.
+- [PixelCopy](https://pixelcopy.app): Professional Windows screen capture — region/scrolling/fullscreen capture, screen recording, GIFs, annotations, OCR, and pin-to-screen. Free tier + Pro $8/mo.
 - [MakoBot](https://makobot.com): Local AI Workbench with persistent memory across every AI tool, plus one-line plug-ins (@verify, @audit, @codereview, @designreview, @contractreview) that fan out to GPT/Claude/Gemini for second opinions. Free, Windows.
 
 ## Policies

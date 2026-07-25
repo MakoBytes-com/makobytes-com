@@ -5,7 +5,6 @@ import { TrackLink } from "@/components/admin/track-link";
 import {
   ArrowRight,
   Brain,
-  Camera,
   Clock,
   Lock,
   Sparkles,
@@ -16,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "MakoBytes — Lightweight Desktop Tools for People Who Live in AI",
   description:
-    "MakoBytes builds fast, private desktop apps for AI power users. PromptPixel, MakoBot, PixelCopy, and more on the way. No subscriptions forced on you. No bloat. No BS.",
+    "MakoBytes builds fast, private desktop apps for AI power users. MakoBot, PixelCopy, and more on the way. No subscriptions forced on you. No bloat. No BS.",
   alternates: { canonical: "https://makobytes.com" },
   openGraph: {
     type: "website",
@@ -67,18 +66,6 @@ type MakoApp = {
 };
 
 const apps: MakoApp[] = [
-  {
-    slug: "promptpixel",
-    name: "PromptPixel",
-    tagline: "One hotkey. Screenshot to AI.",
-    description:
-      "Press a key. PromptPixel snaps your screen, pastes it into ChatGPT, Claude, or any AI chat — and types your prompt alongside it. Hands-free.",
-    status: "available",
-    price: "Free + Pro $25",
-    platform: "Windows",
-    href: "/promptpixel",
-    Icon: Camera,
-  },
   {
     slug: "makobot",
     name: "MakoBot",
@@ -218,7 +205,7 @@ function HeroAppCarousel() {
             <div
               key={app.slug}
               className="hero-carousel-panel"
-              style={{ transform: `rotateY(${i * 120}deg) translateZ(240px)` }}
+              style={{ transform: `rotateY(${i * (360 / apps.length)}deg) translateZ(240px)` }}
             >
               <div className="flex h-full flex-col rounded-xl border border-[#dbdbdb] bg-white p-7 shadow-[0_24px_70px_rgba(0,97,170,0.14)]">
                 <div className="mono-tag inline-flex w-fit items-center gap-1.5 rounded-full border border-[#10B981]/30 bg-[#10B981]/10 px-2.5 py-0.5 text-[#10B981]">
@@ -303,12 +290,13 @@ export default function MakoBytesHub() {
             </a>
           </div>
           <TrackLink
-            href="/promptpixel"
+            href="https://pixelcopy.app"
             type="click_app_card"
-            meta={{ source: "nav", app: "promptpixel" }}
+            meta={{ source: "nav", app: "pixelcopy" }}
+            newTab
             className="inline-flex items-center px-5 py-2 rounded-lg bg-[#0061aa] hover:bg-[#004d88] text-white text-sm font-semibold transition-colors"
           >
-            PromptPixel — $25
+            PixelCopy — Free + Pro
           </TrackLink>
         </div>
       </nav>
@@ -463,18 +451,20 @@ export default function MakoBytesHub() {
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0061aa]/[0.08] blur-[150px]" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-6 text-5xl font-black tracking-tight text-[#333333] sm:text-6xl">
-            <span className="text-gradient">Start with PromptPixel.</span>
+            <span className="text-gradient">Start with PixelCopy.</span>
           </h2>
           <p className="mb-10 text-xl text-[#555555]">
-            Our first app. $25. Windows. Ships today.
+            Capture your Windows screen like a pro. Free to start.
           </p>
-          <Link
-            href="/promptpixel"
+          <a
+            href="https://pixelcopy.app"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-glow inline-flex items-center gap-2 rounded-xl px-10 py-5 text-lg font-bold"
           >
-            Explore PromptPixel
+            Explore PixelCopy
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -498,12 +488,14 @@ export default function MakoBytesHub() {
               <a href="#philosophy" className="transition hover:text-[#333333]">
                 Philosophy
               </a>
-              <Link
-                href="/promptpixel"
+              <a
+                href="https://pixelcopy.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="transition hover:text-[#333333]"
               >
-                PromptPixel
-              </Link>
+                PixelCopy
+              </a>
               <a
                 href="mailto:admin@makobytes.com"
                 className="transition hover:text-[#333333]"

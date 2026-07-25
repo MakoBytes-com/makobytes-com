@@ -9,7 +9,7 @@
 //
 // Column reality (verified against this repo's own code):
 //   page_views:       path, referrer, ua, country, visitor, session_id, created_at
-//                     (insert: app/api/track/route.ts; read: /promptpixel/admin/analytics)
+//                     (insert: app/api/track/route.ts)
 //   analytics_events: event_type, path, meta, visitor, session_id, created_at
 //                     (insert: app/api/track/route.ts)
 // There is no `name`/`data` column here (unlike the Bulldog reference), so

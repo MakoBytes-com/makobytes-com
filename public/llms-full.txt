@@ -2,46 +2,37 @@
 
 ## About MakoBytes
 
-MakoBytes is a Windows desktop software studio that builds lightweight, private, one-time-purchase tools for AI power users. We don't build SaaS, we don't run servers, we don't collect telemetry. Every product runs on the user's own machine.
+MakoBytes is a Windows desktop software studio that builds lightweight, private tools for AI power users. We don't build bloatware, we don't collect telemetry. Every product runs on the user's own machine.
 
 We're a small studio operated by Mako Logics LLC. All our software is digitally signed via Microsoft Azure Trusted Signing — no SmartScreen warnings, no unsigned binaries.
 
 ## Pricing philosophy
 
-Every MakoBytes paid app is sold under a perpetual license, JetBrains-style:
+No dark patterns, ever:
 
-- Buy once at the listed price.
-- Own that version forever — no expiry, no nag screens, no feature loss if you stop renewing.
-- Updates and new versions are included for 12 months from purchase.
-- After 12 months, your software keeps working with every feature intact. You can optionally renew updates for a yearly fee (typically $15/year) to keep getting new versions, or stay on your current version forever — your call.
+- Every product page states its pricing model plainly before you pay — free, one-time, or subscription.
+- Free tiers are genuinely usable, not crippled demos.
 - 30-day money-back guarantee on every paid product.
+- Cancel a subscription anytime; no retention mazes.
 
-This is the opposite of SaaS. Stop paying and your software still works.
+## PixelCopy — Capture your Windows screen like a pro
 
-## PromptPixel — Screenshot to AI in one keystroke
+URL: https://pixelcopy.app (dedicated product site)
+Pricing: Free tier + Pro $8/month
+Platform: Windows 10/11
 
-URL: https://makobytes.com/promptpixel
-Pricing: Free tier (forever) + Pro $25 perpetual
-Platform: Windows 10/11 (macOS coming later)
+What it does: PixelCopy is a professional screen-capture studio — region, scrolling, and fullscreen capture with screen recording (MP4/WebM), GIF recording, annotations, OCR text extraction, and pin-to-screen. Every capture lands in a floating overlay, ready to mark up and share.
 
-What it does: PromptPixel binds a global hotkey that captures the current screen, pastes the image directly into your AI chat input, and auto-types your prompt right after it. Hands-free, mouse-free AI workflows.
+Highlights:
+- Region / window / fullscreen / scrolling capture
+- Screen recording with pause/resume, plus GIF recording
+- Annotation editor: crop, arrows, text, counter, spotlight, blur/redaction
+- OCR text extraction to clipboard
+- History with retention controls
+- Custom hotkeys throughout
+- Pro adds cloud upload with share links (optional — capture itself is fully local)
 
-Free tier includes:
-- Custom hotkeys for fullscreen, region, low-res-region, and capture-then-markup capture
-- Markup editor (arrow, text, highlighter, blur for redaction)
-- Auto-typed default prompt after every paste
-- Capture feedback (sound, toast, optional confirm dialog)
-- Recent captures history (last 20)
-- 100% on-device — Windows-native APIs only, no cloud
-
-Pro adds five power features:
-- Prompt Picker (Ctrl+Alt+P) — popup library of saved prompts; pick one and it captures + pastes + types that prompt in one action
-- Auto-Save Backups — every screenshot saved as timestamped PNG to a folder of your choice
-- OCR text extraction (Ctrl+Alt+T) — drag a region, get just the extracted text on your clipboard (no image, no vision tokens)
-- Voice to Prompt (Ctrl+Alt+V) — speak your prompt; PromptPixel uses Windows Speech Recognition + captures the screen + types your spoken prompt
-- Multi-Target Hotkeys — bind extra hotkeys to specific saved prompts
-
-PromptPixel works with any AI chat that accepts image upload: ChatGPT, Claude, Gemini, Perplexity, Copilot, Mistral, local LLM web UIs, anything. It pastes wherever the cursor is.
+Full details, download, and current pricing: https://pixelcopy.app
 
 ## MakoBot — Local AI Workbench
 
@@ -61,9 +52,9 @@ Three pillars:
 ## Privacy and security
 
 Every MakoBytes desktop app:
-- Runs entirely on the user's machine via OS-native APIs
-- No telemetry, no analytics, no account signup
-- No data leaves the machine unless the user pastes it into an AI chat themselves
+- Runs on the user's machine via OS-native APIs
+- No telemetry, no hidden analytics
+- No data leaves the machine unless the user sends it somewhere themselves (or explicitly enables an optional cloud feature, e.g. PixelCopy cloud share links)
 - Code-signed by Mako Logics LLC via Microsoft Azure Trusted Signing
 
 The makobytes.com website itself collects basic anonymous analytics (page views, button clicks, referrer) for product decisions. No cookies for tracking, no third-party analytics services, no PII collection unless voluntarily provided (e.g., emailing us).
