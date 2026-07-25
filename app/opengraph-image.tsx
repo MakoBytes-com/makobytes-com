@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "MakoBytes — Lightweight desktop tools for AI power users. Fast, private, one-time-purchase.";
+  "MakoBytes — Lightweight desktop tools for AI power users. Fast, private, no BS.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -126,7 +126,7 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            Fast. Private. One-time purchase. No subscriptions.
+            Fast. Private. No BS. No bloat.
           </div>
         </div>
 

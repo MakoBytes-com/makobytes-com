@@ -257,7 +257,7 @@ export default function MakoBytesHub() {
             name: "MakoBytes",
             url: "https://makobytes.com",
             description:
-              "MakoBytes builds lightweight, private, one-time-purchase desktop tools for people who live in AI workflows.",
+              "MakoBytes builds lightweight, private desktop tools for people who live in AI workflows.",
             sameAs: [],
           }),
         }}
@@ -329,9 +329,9 @@ export default function MakoBytesHub() {
             </h1>
 
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#555555] sm:text-xl">
-              MakoBytes builds fast, private, one-time-purchase desktop apps that
-              plug into the way you already work. No subscriptions. No bloat. No
-              BS.
+              MakoBytes builds fast, private desktop apps that plug into the
+              way you already work. No subscriptions forced on you. No bloat.
+              No BS.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -357,11 +357,11 @@ export default function MakoBytesHub() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Zap className="h-3.5 w-3.5 text-[#0061aa]" />
-                under 40mb
+                lightweight
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5 text-[#0061aa]" />
-                one-time purchase
+                fair pricing
               </span>
             </div>
           </div>
@@ -425,8 +425,8 @@ export default function MakoBytesHub() {
               },
               {
                 Icon: Clock,
-                title: "Perpetual license, JetBrains-style.",
-                body: "Every MakoBytes app is sold under a perpetual license. Buy it once, own that version forever — no expiry, no nag screens, no feature loss. Updates are included for 12 months; optional $15/year after that if you want new versions. Stop renewing and your software keeps working. The way it should be.",
+                title: "Fair pricing. No dark patterns.",
+                body: "Free tiers you can actually use. Paid products state their price plainly — one-time or subscription — before you ever pay, with a 30-day money-back guarantee. Subscriptions cancel in one click and your files stay yours. The way it should be.",
               },
               {
                 Icon: Sparkles,

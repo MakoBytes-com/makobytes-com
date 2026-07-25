@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     url: "https://makobytes.com",
     title: "MakoBytes — Lightweight Desktop Tools for AI Power Users",
     description:
-      "Fast. Private. One-time purchase. The MakoBytes app catalog.",
+      "Fast. Private. No BS. The MakoBytes app catalog.",
     siteName: "MakoBytes",
     // images intentionally omitted — Next.js auto-resolves from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "MakoBytes — Lightweight Desktop Tools",
-    description: "Fast. Private. One-time purchase. No subscriptions.",
+    description: "Fast. Private. No BS. No bloat.",
     // images intentionally omitted — Next.js auto-resolves from app/opengraph-image.tsx
   },
   // icons intentionally omitted — Next.js auto-resolves from app/icon.tsx + app/apple-icon.tsx
