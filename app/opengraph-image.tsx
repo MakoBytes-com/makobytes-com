@@ -2,10 +2,13 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "MakoBytes — Lightweight desktop tools for AI power users. Fast, private, no BS.";
+  "MakoBytes — Desktop software, built like precision instruments. Fast, private, no BS.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+/* The OG card is a miniature engineering drawing: paper grid, navy ink,
+   a dimensioned headline, and the title block in the bottom-right —
+   same language as the site itself. */
 export default function OpengraphImage() {
   return new ImageResponse(
     (
@@ -14,149 +17,132 @@ export default function OpengraphImage() {
           width: "100%",
           height: "100%",
           background: "#ffffff",
+          backgroundImage:
+            "linear-gradient(rgba(0,97,170,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,97,170,0.05) 1px, transparent 1px), linear-gradient(rgba(0,97,170,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(0,97,170,0.10) 1px, transparent 1px)",
+          backgroundSize: "24px 24px, 24px 24px, 120px 120px, 120px 120px",
           display: "flex",
           flexDirection: "column",
-          padding: "72px 80px",
+          padding: "56px 64px",
           position: "relative",
           fontFamily: "Inter, system-ui, sans-serif",
         }}
       >
-        {/* subtle navy radial glow on the right */}
+        {/* drawing frame */}
         <div
           style={{
             position: "absolute",
-            right: -160,
-            top: -160,
-            width: 760,
-            height: 760,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(0, 97, 170, 0.18) 0%, rgba(0, 97, 170, 0) 65%)",
+            top: 28,
+            left: 28,
+            right: 28,
+            bottom: 28,
+            border: "2px solid #26303b",
             display: "flex",
           }}
         />
 
-        {/* logo + wordmark row */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 20,
-            zIndex: 1,
-          }}
-        >
+        {/* brand row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 8 }}>
           <div
             style={{
-              width: 78,
-              height: 78,
+              width: 64,
+              height: 64,
               borderRadius: "50%",
-              border: "5px solid #0061aa",
               background: "#ffffff",
+              border: "4px solid #0061aa",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              color: "#0061aa",
+              fontSize: 30,
+              fontWeight: 800,
             }}
           >
-            <div
-              style={{
-                fontSize: 50,
-                fontWeight: 900,
-                color: "#0061aa",
-                lineHeight: 1,
-                letterSpacing: "-0.04em",
-              }}
-            >
-              M
+            M
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ fontSize: 34, fontWeight: 800, color: "#26303b" }}>MakoBytes</div>
+            <div style={{ fontSize: 14, letterSpacing: 5, color: "#6b7684" }}>
+              DESKTOP SOFTWARE WORKS — SPEC SHEET Nº 001
             </div>
           </div>
-          <div
-            style={{
-              fontSize: 42,
-              fontWeight: 800,
-              color: "#333333",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            MakoBytes
-          </div>
         </div>
 
-        {/* spacer */}
-        <div style={{ flexGrow: 1, display: "flex" }} />
-
-        {/* big headline */}
+        {/* headline */}
         <div
           style={{
+            marginTop: 64,
             display: "flex",
             flexDirection: "column",
-            zIndex: 1,
+            fontSize: 84,
+            fontWeight: 800,
+            lineHeight: 1.02,
+            letterSpacing: -3,
+            color: "#111b26",
           }}
         >
-          <div
-            style={{
-              fontSize: 102,
-              fontWeight: 900,
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
-              color: "#0061aa",
-              display: "flex",
-            }}
-          >
-            Lightweight tools
-          </div>
-          <div
-            style={{
-              fontSize: 102,
-              fontWeight: 900,
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
-              color: "#0061aa",
-              marginTop: 8,
-              display: "flex",
-            }}
-          >
-            for AI power users.
-          </div>
-          <div
-            style={{
-              fontSize: 28,
-              fontWeight: 500,
-              color: "#555555",
-              marginTop: 32,
-              display: "flex",
-            }}
-          >
-            Fast. Private. No BS. No bloat.
-          </div>
+          <div style={{ display: "flex" }}>Software, built like</div>
+          <div style={{ display: "flex", color: "#0061aa" }}>precision instruments.</div>
         </div>
 
-        {/* spacer */}
-        <div style={{ flexGrow: 0.4, display: "flex" }} />
+        {/* spec chips */}
+        <div style={{ display: "flex", gap: 28, marginTop: 44 }}>
+          {["SIGNED BINARIES", "100% ON-DEVICE", "PIXELCOPY · MAKOBOT"].map((t) => (
+            <div key={t} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div
+                style={{
+                  width: 10,
+                  height: 10,
+                  background: "#0061aa",
+                  transform: "rotate(45deg)",
+                  display: "flex",
+                }}
+              />
+              <div style={{ fontSize: 17, letterSpacing: 3, color: "#4d5a68" }}>{t}</div>
+            </div>
+          ))}
+        </div>
 
-        {/* footer mono tag */}
+        {/* title block, bottom-right */}
         <div
           style={{
+            position: "absolute",
+            right: 28,
+            bottom: 28,
             display: "flex",
-            alignItems: "center",
-            gap: 14,
-            fontSize: 22,
-            color: "#777777",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            fontFamily: "ui-monospace, monospace",
-            zIndex: 1,
+            border: "2px solid #26303b",
+            borderRight: "none",
+            borderBottom: "none",
+            background: "#ffffff",
           }}
         >
-          <div
-            style={{
-              width: 10,
-              height: 10,
-              borderRadius: "50%",
-              background: "#10b981",
-              display: "flex",
-            }}
-          />
-          makobytes.com · desktop studio
+          {[
+            ["DRAWN BY", "MAKOBYTES"],
+            ["REV", "2026.07"],
+            ["SCALE", "1:1"],
+            ["STATUS", "RELEASED"],
+          ].map(([k, v], i) => (
+            <div
+              key={k}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "12px 20px",
+                borderLeft: i > 0 ? "1.5px solid #26303b" : "none",
+              }}
+            >
+              <div style={{ fontSize: 11, letterSpacing: 3, color: "#6b7684" }}>{k}</div>
+              <div
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  color: v === "RELEASED" ? "#10B981" : "#26303b",
+                  marginTop: 4,
+                }}
+              >
+                {v}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     ),
