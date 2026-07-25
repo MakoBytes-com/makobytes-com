@@ -145,29 +145,19 @@ const BOOT_LINES = [
 ];
 
 function MakoShark() {
+  // The circuit-mako from the wallpaper series, cut out by Higgsfield's
+  // background remover. The artwork faces LEFT, so the swim runs
+  // right-to-left (see @keyframes mako-cross).
   return (
-    <svg width="170" height="74" viewBox="0 0 170 74" aria-hidden="true">
-      <defs>
-        <linearGradient id="mk-steel" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#d7dee6" />
-          <stop offset="0.45" stopColor="#93a1b0" />
-          <stop offset="0.55" stopColor="#c7d0da" />
-          <stop offset="1" stopColor="#6e7c8c" />
-        </linearGradient>
-      </defs>
-      {/* body */}
-      <path
-        d="M4 40 C 30 18, 78 12, 112 24 L 122 8 L 126 26 C 144 30, 158 36, 166 41 C 154 46, 140 51, 124 53 L 128 66 L 112 55 C 80 62, 36 58, 12 46 L 22 41 Z"
-        fill="url(#mk-steel)"
-        stroke="#33414f"
-        strokeWidth="1.5"
-      />
-      {/* gills + eye in navy ink */}
-      <path d="M40 33 q 3 7 0 14 M47 32 q 3 8 0 16 M54 31 q 3 9 0 18" stroke="#003e6e" strokeWidth="1.6" fill="none" />
-      <circle cx="24" cy="35" r="2.4" fill="#0b1624" />
-      {/* pectoral fin */}
-      <path d="M74 48 L 86 70 L 96 52 Z" fill="#0061aa" stroke="#33414f" strokeWidth="1.2" />
-    </svg>
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src="/images/mako-sprite.png"
+      alt=""
+      width={260}
+      height={100}
+      style={{ height: "auto" }}
+      draggable={false}
+    />
   );
 }
 

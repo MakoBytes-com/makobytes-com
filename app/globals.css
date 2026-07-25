@@ -708,12 +708,13 @@
   animation: mako-bob 1.5s ease-in-out infinite alternate;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
+/* The circuit-mako artwork faces left, so it swims right → left. */
 @keyframes mako-cross {
   from {
-    transform: translateX(-30vw);
+    transform: translateX(108vw);
   }
   to {
-    transform: translateX(112vw);
+    transform: translateX(-32vw);
   }
 }
 @keyframes mako-bob {
