@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { TrackLink } from "@/components/admin/track-link";
+import ContactForm from "@/components/os/ContactForm";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -147,11 +148,11 @@ export function MakoBotContent() {
     <div>
       <div className="relative h-24 overflow-hidden border-b border-[#e0e6ed] sm:h-28">
         <Image
-          src="/images/plate-makobot.png"
-          alt="Machined aluminum cube engraved with navy circuit traces on an engineering drawing"
-          width={1264}
-          height={848}
-          className="w-full -translate-y-1/3 object-cover"
+          src="/images/makobot-hero.jpg"
+          alt="MakoBot — the little robot with a glowing circuit brain, surrounded by the AI tools it gives shared memory to"
+          width={1280}
+          height={720}
+          className="h-full w-full object-cover object-[center_32%]"
         />
         <span className="absolute right-3 top-3 rounded-full border border-[#10B981]/40 bg-white/90 px-2.5 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#10B981]">
           MB-02 · in production
@@ -345,27 +346,17 @@ export function WallpapersContent() {
   );
 }
 
-/* ── contact composer ── */
+/* ── contact composer (real form → /api/contact → Resend) ── */
 export function ContactContent() {
   return (
-    <div className="p-6">
-      <div className="overflow-hidden rounded-lg border border-[#dbe2ea]">
-        <div className="grid grid-cols-[64px_1fr] items-center gap-2 border-b border-[#e4e9ef] bg-[#f8fafc] px-3 py-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a95a1]">To</span>
-          <span className="font-mono text-[12.5px] text-[#26303b]">admin@makobytes.com</span>
-        </div>
-        <div className="grid grid-cols-[64px_1fr] items-center gap-2 border-b border-[#e4e9ef] bg-[#f8fafc] px-3 py-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#8a95a1]">Subject</span>
-          <span className="font-mono text-[12.5px] text-[#96a1ad]">Support, sales, refunds, press — anything</span>
-        </div>
-        <div className="bg-white px-3 py-4 text-[13.5px] leading-relaxed text-[#4d5a68]">
-          A human reads every message — usually the one who wrote the code.
-          No ticket numbers, no &quot;your call is important to us.&quot;
-        </div>
-      </div>
-      <a href="mailto:admin@makobytes.com" className="btn-machined mt-4 px-5 py-2.5 text-sm font-semibold">
-        Open in your mail app
-      </a>
+    <div className="relative p-6">
+      <ContactForm />
+      <p className="mt-3 text-[11.5px] text-[#8a95a1]">
+        Prefer your own mail app?{" "}
+        <a href="mailto:admin@makobytes.com" className="font-semibold text-[#0061aa] underline-offset-4 hover:underline">
+          admin@makobytes.com
+        </a>
+      </p>
     </div>
   );
 }
