@@ -54,15 +54,6 @@ export function WelcomeContent() {
       <div className="mt-5 border-t border-[#e4e9ef] pt-4 font-mono text-[10.5px] uppercase tracking-[0.16em] text-[#8a95a1]">
         Signed binaries · 100% on-device · Windows 10–11 · Est. 2026
       </div>
-      <p className="mt-3 text-[12.5px] text-[#8a95a1]">
-        Prefer paper?{" "}
-        <button
-          data-os-open="sheet"
-          className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
-        >
-          Open the spec sheet →
-        </button>
-      </p>
     </div>
   );
 }
@@ -292,10 +283,6 @@ export function ReadmeContent() {
       </p>
       <div className="mt-4 border-t border-[#e4e9ef] pt-3 font-mono text-[11px] text-[#8a95a1]">
         rev 2026.07 · machined in Texas ·{" "}
-        <button data-os-open="sheet" className="text-[#0061aa] hover:underline">
-          spec-sheet
-        </button>{" "}
-        ·{" "}
         <button data-os-open="privacy" className="text-[#0061aa] hover:underline">
           privacy.txt
         </button>{" "}
@@ -346,18 +333,6 @@ export function WallpapersContent() {
         ))}
       </div>
     </div>
-  );
-}
-
-/* ── spec-sheet viewer — the paper edition, framed in a window ── */
-export function SheetContent() {
-  return (
-    <iframe
-      src="/sheet/doc"
-      title="MakoBytes spec sheet — paper edition"
-      className="sheet-iframe"
-      loading="lazy"
-    />
   );
 }
 

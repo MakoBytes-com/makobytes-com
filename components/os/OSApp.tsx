@@ -7,7 +7,6 @@ import {
   PixelCopyContent,
   PrivacyContent,
   ReadmeContent,
-  SheetContent,
   TermsContent,
   WallpapersContent,
   WelcomeContent,
@@ -15,7 +14,7 @@ import {
 
 /**
  * The whole site is one OS. Every route renders this shell; document
- * routes (/sheet, /privacy, /terms) just boot the desktop with that
+ * routes (/privacy, /terms) just boot the desktop with that
  * window already open, so the URL still works for search engines,
  * bookmarks, and legal links — it's simply framed in MakoOS.
  */
@@ -44,7 +43,6 @@ export default function OSApp({
           readme: <ReadmeContent />,
           wallpapers: <WallpapersContent />,
           contact: <ContactContent />,
-          sheet: <SheetContent />,
           privacy: <PrivacyContent />,
           terms: <TermsContent />,
         }}

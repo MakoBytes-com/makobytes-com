@@ -15,9 +15,7 @@ const csp = [
   "form-action 'self'",
   "object-src 'none'",
   "base-uri 'self'",
-  // 'self' (not 'none'): MakoOS frames its own /sheet/doc in the
-  // spec-sheet viewer window. External framing stays blocked.
-  "frame-ancestors 'self'",
+  "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -48,6 +46,8 @@ const nextConfig = {
     // successor. Old links and search results land on the successor product.
     return [
       { source: "/promptpixel", destination: "https://pixelcopy.app", permanent: true },
+      { source: "/sheet", destination: "/", permanent: true },
+      { source: "/sheet/:path*", destination: "/", permanent: true },
       { source: "/promptpixel/:path*", destination: "https://pixelcopy.app", permanent: true },
     ];
   },

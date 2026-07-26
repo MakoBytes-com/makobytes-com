@@ -14,12 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://makobytes.com/sheet",
-      lastModified: LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: "https://makobytes.com/privacy",
       lastModified: LAST_MODIFIED,
       changeFrequency: "yearly",

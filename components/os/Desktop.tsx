@@ -40,7 +40,6 @@ export type WinId =
   | "readme"
   | "wallpapers"
   | "contact"
-  | "sheet"
   | "privacy"
   | "terms";
 
@@ -128,15 +127,6 @@ const DEFS: WinDef[] = [
     icon: <Mail className="h-6 w-6" aria-hidden="true" />,
   },
   {
-    id: "sheet",
-    title: "spec-sheet — paper edition",
-    label: "spec-sheet",
-    w: 1120,
-    x: 120,
-    y: 40,
-    icon: <FileText className="h-6 w-6" aria-hidden="true" />,
-  },
-  {
     id: "privacy",
     title: "privacy.txt",
     label: "privacy.txt",
@@ -173,20 +163,13 @@ function buildInitial(initialOpen?: WinId): Record<WinId, WinState> {
     readme: closed("readme"),
     wallpapers: closed("wallpapers"),
     contact: closed("contact"),
-    sheet: closed("sheet"),
     privacy: closed("privacy"),
     terms: closed("terms"),
   };
   if (initialOpen && initialOpen !== "welcome") {
-    // Document routes (/sheet, /privacy, /terms): the desktop opens with
-    // just that document front and center. The sheet viewer starts
-    // maximized — it's a full drawing, give it the whole bench.
-    base[initialOpen] = {
-      ...base[initialOpen],
-      open: true,
-      z: 1,
-      max: initialOpen === "sheet",
-    };
+    // Document routes (/privacy, /terms): the desktop opens with just
+    // that document front and center.
+    base[initialOpen] = { ...base[initialOpen], open: true, z: 1 };
     return base;
   }
   // Home: the working desk — products behind, welcome on top.
@@ -553,7 +536,7 @@ export default function Desktop({
               );
             })}
             <div className="os-menu-label">Documents</div>
-            {(["sheet", "readme", "certificate", "wallpapers", "contact", "privacy", "terms"] as WinId[]).map(
+            {(["readme", "certificate", "wallpapers", "contact", "privacy", "terms"] as WinId[]).map(
               (id) => {
                 const d = DEFS.find((x) => x.id === id)!;
                 return (
