@@ -754,6 +754,23 @@
   }
 }
 
+/* spec-sheet viewer iframe — fills the window it lives in */
+.sheet-iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  height: min(66vh, 640px);
+  background: #ffffff;
+}
+.os-max .sheet-iframe {
+  height: 100%;
+}
+@media (max-width: 1023px) {
+  .sheet-iframe {
+    height: 100%;
+  }
+}
+
 /* window-content spec rows (compact, used inside OS windows) */
 .os-specrow {
   display: grid;

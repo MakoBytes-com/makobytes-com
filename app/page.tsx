@@ -1,15 +1,5 @@
 import type { Metadata } from "next";
-import { TrackPageView } from "@/components/admin/track-pageview";
-import Desktop from "@/components/os/Desktop";
-import {
-  CertificateContent,
-  ContactContent,
-  MakoBotContent,
-  PixelCopyContent,
-  ReadmeContent,
-  WallpapersContent,
-  WelcomeContent,
-} from "@/components/os/window-contents";
+import OSApp from "@/components/os/OSApp";
 
 export const metadata: Metadata = {
   title: "MakoBytes — a Desktop Software Studio, Running on Your Screen",
@@ -28,7 +18,6 @@ export const metadata: Metadata = {
 export default function MakoOSHome() {
   return (
     <>
-      <TrackPageView type="pageview_home" page="/" />
       {/* JSON-LD: Organization + the two products */}
       <script
         type="application/ld+json"
@@ -63,17 +52,7 @@ export default function MakoOSHome() {
           }),
         }}
       />
-      <Desktop
-        contents={{
-          welcome: <WelcomeContent />,
-          pixelcopy: <PixelCopyContent />,
-          makobot: <MakoBotContent />,
-          certificate: <CertificateContent />,
-          readme: <ReadmeContent />,
-          wallpapers: <WallpapersContent />,
-          contact: <ContactContent />,
-        }}
-      />
+      <OSApp trackType="pageview_home" trackPage="/" />
     </>
   );
 }

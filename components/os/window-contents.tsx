@@ -56,9 +56,12 @@ export function WelcomeContent() {
       </div>
       <p className="mt-3 text-[12.5px] text-[#8a95a1]">
         Prefer paper?{" "}
-        <a href="/sheet" className="font-semibold text-[#0061aa] underline-offset-4 hover:underline">
-          Read the spec sheet →
-        </a>
+        <button
+          data-os-open="sheet"
+          className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+        >
+          Open the spec sheet →
+        </button>
       </p>
     </div>
   );
@@ -289,17 +292,17 @@ export function ReadmeContent() {
       </p>
       <div className="mt-4 border-t border-[#e4e9ef] pt-3 font-mono text-[11px] text-[#8a95a1]">
         rev 2026.07 · machined in Texas ·{" "}
-        <a href="/sheet" className="text-[#0061aa] hover:underline">
-          /sheet
-        </a>{" "}
+        <button data-os-open="sheet" className="text-[#0061aa] hover:underline">
+          spec-sheet
+        </button>{" "}
         ·{" "}
-        <a href="/privacy" className="text-[#0061aa] hover:underline">
-          /privacy
-        </a>{" "}
+        <button data-os-open="privacy" className="text-[#0061aa] hover:underline">
+          privacy.txt
+        </button>{" "}
         ·{" "}
-        <a href="/terms" className="text-[#0061aa] hover:underline">
-          /terms
-        </a>
+        <button data-os-open="terms" className="text-[#0061aa] hover:underline">
+          terms.txt
+        </button>
       </div>
     </div>
   );
@@ -341,6 +344,215 @@ export function WallpapersContent() {
             </figcaption>
           </figure>
         ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── spec-sheet viewer — the paper edition, framed in a window ── */
+export function SheetContent() {
+  return (
+    <iframe
+      src="/sheet/doc"
+      title="MakoBytes spec sheet — paper edition"
+      className="sheet-iframe"
+      loading="lazy"
+    />
+  );
+}
+
+/* ── document windows: the legal .txt files ── */
+function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="border-b border-[#e4e9ef] py-4 first:pt-0 last:border-b-0 last:pb-0">
+      <h2 className="font-display text-[16px] font-bold text-[#111b26]">{title}</h2>
+      <div className="mt-1.5 text-[13.5px] leading-relaxed text-[#4d5a68]">{children}</div>
+    </section>
+  );
+}
+
+export function PrivacyContent() {
+  return (
+    <div className="p-6">
+      <div className="spec-label">// privacy.txt</div>
+      <h1 className="mt-2 font-display text-2xl font-bold tracking-tight text-[#111b26]">
+        Privacy Policy
+      </h1>
+      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a95a1]">
+        Last updated: July 25, 2026
+      </p>
+      <div className="mt-5">
+        <DocSection title="Overview">
+          <p>
+            MakoBytes builds desktop software that runs entirely on your
+            machine. We believe your data is yours. This policy explains what
+            little data we do collect and how we handle it.
+          </p>
+        </DocSection>
+        <DocSection title="MakoBytes Desktop Apps">
+          <p>
+            MakoBytes desktop apps run locally on your Windows PC using
+            Windows-native APIs. Your content stays on your machine unless you
+            explicitly send it somewhere yourself. Products with their own
+            websites (for example, PixelCopy at pixelcopy.app) publish their
+            own privacy policies covering any optional cloud features; those
+            policies govern that product.
+          </p>
+        </DocSection>
+        <DocSection title="MakoBytes Website (makobytes.com)">
+          <p>
+            Our website collects basic, anonymous analytics to understand how
+            visitors use the site — page views, button clicks, and referrer
+            information. We do not use third-party analytics services. Data is
+            stored in a private database and is never shared with or sold to
+            third parties. We do not use cookies for tracking. We do not
+            collect personally identifiable information through the website
+            unless you voluntarily provide it (for example, through the
+            contact form or by emailing us).
+          </p>
+        </DocSection>
+        <DocSection title="Contact Form">
+          <p>
+            When you use the contact form, we receive the name, email address,
+            and message you type — nothing else — and use them only to reply
+            to you. The form is protected by Cloudflare Turnstile, which may
+            process technical signals (such as your IP address) to tell humans
+            from bots, under{" "}
+            <a
+              href="https://www.cloudflare.com/privacypolicy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+            >
+              Cloudflare&apos;s privacy policy
+            </a>
+            . Messages are delivered by our email provider (Resend) and
+            retained only as ordinary correspondence.
+          </p>
+        </DocSection>
+        <DocSection title="Purchases and Payments">
+          <p>
+            makobytes.com does not sell anything directly and does not collect
+            payment information. Paid products are purchased on their own
+            product sites (for example, PixelCopy at pixelcopy.app), where
+            payments are handled by that site&apos;s payment processor.
+            MakoBytes never stores credit card numbers. We will never send you
+            marketing emails unless you explicitly opt in.
+          </p>
+        </DocSection>
+        <DocSection title="Your Rights">
+          <p>
+            You can request deletion of any data we hold about you by emailing{" "}
+            <a
+              href="mailto:admin@makobytes.com"
+              className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+            >
+              admin@makobytes.com
+            </a>
+            . Since our desktop apps store everything locally, there is
+            typically nothing for us to delete on our end.
+          </p>
+        </DocSection>
+        <DocSection title="Contact">
+          <p>
+            Questions about this policy? Email{" "}
+            <a
+              href="mailto:admin@makobytes.com"
+              className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+            >
+              admin@makobytes.com
+            </a>
+            , or open <button data-os-open="contact" className="font-semibold text-[#0061aa] underline-offset-4 hover:underline">contact.eml</button>.
+          </p>
+        </DocSection>
+      </div>
+    </div>
+  );
+}
+
+export function TermsContent() {
+  return (
+    <div className="p-6">
+      <div className="spec-label">// terms.txt</div>
+      <h1 className="mt-2 font-display text-2xl font-bold tracking-tight text-[#111b26]">
+        Terms of Service
+      </h1>
+      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a95a1]">
+        Last updated: July 25, 2026
+      </p>
+      <div className="mt-5">
+        <DocSection title="Agreement">
+          <p>
+            By using MakoBytes software or visiting makobytes.com, you agree to
+            these terms. If you do not agree, do not use our products.
+          </p>
+        </DocSection>
+        <DocSection title="Free Software">
+          <p>
+            Free MakoBytes apps are provided at no cost for personal and
+            commercial use. They are provided &quot;as is&quot; without
+            warranty of any kind. MakoBytes is not liable for any damages
+            arising from use of the software.
+          </p>
+        </DocSection>
+        <DocSection title="Paid Products">
+          <p>
+            Paid MakoBytes products are sold on their own product sites (for
+            example, PixelCopy at pixelcopy.app). The license model, pricing,
+            and any subscription terms are stated plainly on each
+            product&apos;s site at the point of purchase, and those terms
+            govern that product.
+          </p>
+        </DocSection>
+        <DocSection title="Refunds">
+          <p>
+            Paid products come with a 30-day money-back guarantee. If you are
+            not satisfied, email{" "}
+            <a
+              href="mailto:admin@makobytes.com"
+              className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+            >
+              admin@makobytes.com
+            </a>{" "}
+            within 30 days of purchase for a full refund. No forms, no
+            questions.
+          </p>
+        </DocSection>
+        <DocSection title="Restrictions">
+          <p>
+            You may not redistribute, resell, sublicense, or reverse-engineer
+            MakoBytes software. One license is valid for one user. If you need
+            multiple licenses for a team, contact us.
+          </p>
+        </DocSection>
+        <DocSection title="Limitation of Liability">
+          <p>
+            MakoBytes software is provided &quot;as is.&quot; To the maximum
+            extent permitted by law, MakoBytes shall not be liable for any
+            indirect, incidental, special, consequential, or punitive damages
+            arising from use of the software. Total liability shall not exceed
+            the amount paid for the software.
+          </p>
+        </DocSection>
+        <DocSection title="Changes">
+          <p>
+            We may update these terms from time to time. Continued use of
+            MakoBytes products after changes constitutes acceptance of the
+            updated terms.
+          </p>
+        </DocSection>
+        <DocSection title="Contact">
+          <p>
+            Questions? Email{" "}
+            <a
+              href="mailto:admin@makobytes.com"
+              className="font-semibold text-[#0061aa] underline-offset-4 hover:underline"
+            >
+              admin@makobytes.com
+            </a>
+            , or open <button data-os-open="contact" className="font-semibold text-[#0061aa] underline-offset-4 hover:underline">contact.eml</button>.
+          </p>
+        </DocSection>
       </div>
     </div>
   );

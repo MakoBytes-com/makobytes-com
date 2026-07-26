@@ -15,7 +15,9 @@ const csp = [
   "form-action 'self'",
   "object-src 'none'",
   "base-uri 'self'",
-  "frame-ancestors 'none'",
+  // 'self' (not 'none'): MakoOS frames its own /sheet/doc in the
+  // spec-sheet viewer window. External framing stays blocked.
+  "frame-ancestors 'self'",
   "upgrade-insecure-requests",
 ].join("; ");
 

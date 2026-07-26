@@ -39,7 +39,10 @@ export type WinId =
   | "certificate"
   | "readme"
   | "wallpapers"
-  | "contact";
+  | "contact"
+  | "sheet"
+  | "privacy"
+  | "terms";
 
 type WinState = {
   open: boolean;
@@ -124,17 +127,74 @@ const DEFS: WinDef[] = [
     y: 130,
     icon: <Mail className="h-6 w-6" aria-hidden="true" />,
   },
+  {
+    id: "sheet",
+    title: "spec-sheet — paper edition",
+    label: "spec-sheet",
+    w: 1120,
+    x: 120,
+    y: 40,
+    icon: <FileText className="h-6 w-6" aria-hidden="true" />,
+  },
+  {
+    id: "privacy",
+    title: "privacy.txt",
+    label: "privacy.txt",
+    w: 700,
+    x: 300,
+    y: 60,
+    icon: <FileText className="h-6 w-6" aria-hidden="true" />,
+  },
+  {
+    id: "terms",
+    title: "terms.txt",
+    label: "terms.txt",
+    w: 700,
+    x: 340,
+    y: 90,
+    icon: <FileText className="h-6 w-6" aria-hidden="true" />,
+  },
 ];
 
-const INITIAL: Record<WinId, WinState> = {
-  pixelcopy: { open: true, min: false, max: false, x: 430, y: 110, z: 1 },
-  makobot: { open: true, min: false, max: false, x: 660, y: 170, z: 2 },
-  welcome: { open: true, min: false, max: false, x: 148, y: 72, z: 3 },
-  certificate: { open: false, min: false, max: false, x: 320, y: 150, z: 0 },
-  readme: { open: false, min: false, max: false, x: 250, y: 100, z: 0 },
-  wallpapers: { open: false, min: false, max: false, x: 380, y: 190, z: 0 },
-  contact: { open: false, min: false, max: false, x: 500, y: 130, z: 0 },
-};
+/** Windows that don't get a desktop icon (welcome opens itself; the
+ *  legal .txt docs live in the start menu, like a real OS). */
+const NO_DESKTOP_ICON: WinId[] = ["welcome", "privacy", "terms"];
+
+function buildInitial(initialOpen?: WinId): Record<WinId, WinState> {
+  const closed = (id: WinId): WinState => {
+    const d = DEFS.find((x) => x.id === id)!;
+    return { open: false, min: false, max: false, x: d.x, y: d.y, z: 0 };
+  };
+  const base: Record<WinId, WinState> = {
+    pixelcopy: closed("pixelcopy"),
+    makobot: closed("makobot"),
+    welcome: closed("welcome"),
+    certificate: closed("certificate"),
+    readme: closed("readme"),
+    wallpapers: closed("wallpapers"),
+    contact: closed("contact"),
+    sheet: closed("sheet"),
+    privacy: closed("privacy"),
+    terms: closed("terms"),
+  };
+  if (initialOpen && initialOpen !== "welcome") {
+    // Document routes (/sheet, /privacy, /terms): the desktop opens with
+    // just that document front and center. The sheet viewer starts
+    // maximized — it's a full drawing, give it the whole bench.
+    base[initialOpen] = {
+      ...base[initialOpen],
+      open: true,
+      z: 1,
+      max: initialOpen === "sheet",
+    };
+    return base;
+  }
+  // Home: the working desk — products behind, welcome on top.
+  base.pixelcopy = { ...base.pixelcopy, open: true, z: 1 };
+  base.makobot = { ...base.makobot, open: true, z: 2 };
+  base.welcome = { ...base.welcome, open: true, z: 3 };
+  return base;
+}
 
 const BOOT_LINES = [
   "MAKOBYTES FIRMWARE 26.07 — TEXAS",
@@ -163,10 +223,12 @@ function MakoShark() {
 
 export default function Desktop({
   contents,
+  initialOpen,
 }: {
   contents: Record<WinId, ReactNode>;
+  initialOpen?: WinId;
 }) {
-  const [wins, setWins] = useState<Record<WinId, WinState>>(INITIAL);
+  const [wins, setWins] = useState<Record<WinId, WinState>>(() => buildInitial(initialOpen));
   const [zTop, setZTop] = useState(3);
   const [startOpen, setStartOpen] = useState(false);
   const [bootDone, setBootDone] = useState(false);
@@ -359,7 +421,7 @@ export default function Desktop({
     <div className="os-root" onClick={onRootClick}>
       {/* ── desktop icons ── */}
       <div className="absolute left-3 top-3 z-[5] grid grid-cols-4 gap-1 sm:left-5 sm:top-5 lg:grid-cols-1">
-        {DEFS.filter((d) => d.id !== "welcome").map((d) => (
+        {DEFS.filter((d) => !NO_DESKTOP_ICON.includes(d.id)).map((d) => (
           <button key={d.id} className="os-icon" onClick={() => openWin(d.id)}>
             <span className="os-icon-plate">{d.icon}</span>
             <span className="os-icon-label">{d.label}</span>
@@ -491,28 +553,18 @@ export default function Desktop({
               );
             })}
             <div className="os-menu-label">Documents</div>
-            {(["readme", "certificate", "wallpapers", "contact"] as WinId[]).map((id) => {
-              const d = DEFS.find((x) => x.id === id)!;
-              return (
-                <button key={id} className="os-menu-item" onClick={() => openWin(id)}>
-                  <span className="text-[#66a5db] [&>svg]:h-4 [&>svg]:w-4">{d.icon}</span>
-                  {d.label}
-                </button>
-              );
-            })}
+            {(["sheet", "readme", "certificate", "wallpapers", "contact", "privacy", "terms"] as WinId[]).map(
+              (id) => {
+                const d = DEFS.find((x) => x.id === id)!;
+                return (
+                  <button key={id} className="os-menu-item" onClick={() => openWin(id)}>
+                    <span className="text-[#66a5db] [&>svg]:h-4 [&>svg]:w-4">{d.icon}</span>
+                    {d.label}
+                  </button>
+                );
+              },
+            )}
             <div className="os-menu-label">Elsewhere</div>
-            <a className="os-menu-item" href="/sheet">
-              <FileText className="h-4 w-4 text-[#66a5db]" aria-hidden="true" />
-              the paper spec sheet
-            </a>
-            <a className="os-menu-item" href="/privacy">
-              <FileText className="h-4 w-4 text-[#66a5db]" aria-hidden="true" />
-              privacy.txt
-            </a>
-            <a className="os-menu-item" href="/terms">
-              <FileText className="h-4 w-4 text-[#66a5db]" aria-hidden="true" />
-              terms.txt
-            </a>
             <a
               className="os-menu-item"
               href="https://makologics.com"
