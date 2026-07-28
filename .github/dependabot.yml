@@ -8,6 +8,36 @@ updates:
       time: "08:00"
       timezone: America/Chicago
     open-pull-requests-limit: 5
+    ignore:
+      # brace-expansion GHSA-mh99-v99m-4gvg (high, DoS) — PARKED DELIBERATELY.
+      # Reaches us ONLY through the ESLint toolchain (dev-only). The usual fix,
+      # an override to ^5.0.8, takes `npm audit` to 0 and then CRASHES eslint:
+      # eslint-plugin-import / jsx-a11y / react still nest minimatch@3, which
+      # does require("brace-expansion") expecting a callable, and 5.x exports an
+      # object ("TypeError: expand is not a function"). Verified by testing it
+      # on makobytes-com and utilities-plus-showcase, not assumed. There is no
+      # patched 1.x line, so it cannot be version-bumped away.
+      # LIFT WHEN: eslint-config-next supports ESLint 10 (drops minimatch@3).
+      - dependency-name: brace-expansion
+      # ESLint 10 CRASHES with eslint-config-next 16 — eslint-plugin-react blows
+      # up inside usedPropTypes against ESLint 10's rule API:
+      #   "TypeError: contextOrFilename.getFilename is not a function"
+      # A crashed linter reports ZERO problems, which is indistinguishable from
+      # a clean pass — this shipped unnoticed on four repos. Tested 2026-07-28.
+      # LIFT WHEN: eslint-config-next ships ESLint 10 support. Re-test with
+      # `npx eslint .` before merging — a green install proves nothing here.
+      - dependency-name: eslint
+        update-types:
+          - version-update:semver-major
+      # TypeScript 7 is the native/Go compiler. It does not expose the JS
+      # compiler API that Next.js uses for its built-in typecheck, and
+      # typescript-eslint still pins peer typescript <6.1.0. Not flipping an
+      # experimental Next flag in production for a devDependency bump.
+      # LIFT WHEN: Next.js supports the TS 7 compiler on a stable path AND
+      # typescript-eslint widens its peer range. Then delete this block.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
     groups:
       minor-and-patch:
         update-types:
