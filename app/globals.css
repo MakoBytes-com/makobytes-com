@@ -1,6 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind 4 replaces the three @tailwind directives with one import.
+   @config keeps the existing tailwind.config.ts authoritative rather than
+   porting the whole theme to CSS @theme in the same change — one risky
+   thing at a time, and the theme is where a silent visual regression
+   would hide. */
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/*
+  Tailwind 4 changed the DEFAULT border colour from gray-200 to currentColor, so
+  any element with a bare `border` and no explicit colour inherits its text
+  colour instead of the light grey it had in v3.
+
+  Honest note: this shim was added on a hunch that it explained a 1% pixel diff
+  on the home page. It did not — the diff turned out to be a ~3px vertical text
+  shift, unrelated. It is kept anyway because it IS Tailwind's documented v3->v4
+  compatibility shim, it matches what makoai-portal already does, and it guards
+  the next bare `border` someone writes. It is not load-bearing today.
+
+  Droppable once every border in the codebase names its colour explicitly.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    MAKOBYTES — "PRECISION INSTRUMENTS"
