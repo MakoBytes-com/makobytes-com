@@ -20,3 +20,5 @@ next-env.d.ts
 .mcp.json.*
 .cursor/mcp.json
 .cursor/mcp.json.*
+# local scratch, backups and lock files - never committed
+*.tsbuildinfo
