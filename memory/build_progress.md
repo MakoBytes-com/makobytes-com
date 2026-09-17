@@ -2,10 +2,12 @@
 name: Build Progress
 description: Running log of completed and pending work
 type: project
-updated: 2026-07-05
+updated: 2026-09-16
 ---
 
 ## Done
+
+- **2026-09-16 — Contact email migrated Resend → Cloudflare Email Service.** Resend account no longer contained makobytes.com, so contact sends were 403ing silently. New `lib/mail.ts` (ported from makoanswer, incl. `MAIL_FALLBACK_FROM` retry on `sending_disabled`); contact route now stores every accepted submission in Supabase `contact_submissions` (RLS on, anon revoked) BEFORE emailing, so a mail outage can never lose one again. Pre-migration submissions during the Resend outage were never stored anywhere — unrecoverable (site traffic is low: 12 page views in prior 14 days). `resend` npm package removed; RESEND_API_KEY removed from local env + Vercel (prod+preview); CLOUDFLARE_ACCOUNT_ID/CLOUDFLARE_EMAIL_TOKEN added to both. Stale DNS deleted from makobytes.com zone: `resend._domainkey` TXT, `send` MX + SPF (Resend/SES), and orphan `default._domainkey`. Probe send from contact@makobytes.com queued OK (message_id issued).
 
 - Designed and implemented PromptPixel.ahk (AutoHotkey v2 script)
 - Integrated screenshot capture with Win32 API calls
