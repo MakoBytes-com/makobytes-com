@@ -2,10 +2,22 @@
 name: Session Summary
 description: Latest session state for resuming work
 type: project
-updated: 2026-07-05
+updated: 2026-09-16
 ---
 
-## What happened (2026-07-05, LATEST — hero = rotating app cards, SHIPPED)
+## What happened (2026-09-16, LATEST — contact email Resend → Cloudflare, SHIPPED)
+
+Contact-form email was silently failing: the Resend account no longer contained makobytes.com, so every send 403ed and submissions reached nobody. Because the old route only emailed (no DB), submissions during the outage are unrecoverable — exposure is small (12 page views in the prior 14 days, error_events empty, no contact analytics events ever tracked).
+
+Shipped as commit `fe57e16`, deploy Ready, live-verified (homepage 200, 6/6 security headers, contact route validating + captcha-gating):
+- **lib/mail.ts** — Cloudflare Email Service sender (fleet standard), ported from makoanswer incl. the `MAIL_FALLBACK_FROM` retry on `sending_disabled`.
+- **DB-first persistence** — new Supabase table `contact_submissions` (RLS on, anon revoked — verified 42501 with the real anon key). Route stores the submission BEFORE emailing and records `email_sent`/`email_error` per row; a sender only gets an error if BOTH the DB and the email fail. Insert/update shapes tested against production and cleaned up.
+- **Env** — RESEND_API_KEY removed from `.env.local`, `.env.production.local`, and Vercel (prod + preview); CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_EMAIL_TOKEN added everywhere. `resend` npm package uninstalled.
+- **DNS (makobytes.com zone)** — deleted stale `resend._domainkey` TXT, `send` MX + SPF (Resend/Amazon SES), and orphan `default._domainkey` (Email Service uses only cf2024-1 + cf-bounce, confirmed vs handpenned.com's zone).
+- **Probe send** from contact@makobytes.com to delivery-probe@invalid-check.makobytes.com queued OK (message_id issued). admin@makobytes.com confirmed forwarding to admin@makologics.com.
+- On Russell's to-do list: rotate the April-2026 Supabase org PAT (dashboard-only; no API for token management).
+
+## Previous session (2026-07-05 — hero = rotating app cards, SHIPPED)
 
 Russell approved the preview ("that looks good") → shipped to production as commit `d8b8e2e`, deploy verified live: carousel markup rendering on makobytes.com, old /videos/hero-loop.mp4 returns 404, homepage 200, all 6 security headers intact.
 
