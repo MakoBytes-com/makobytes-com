@@ -354,7 +354,7 @@ export function PrivacyContent() {
         Privacy Policy
       </h1>
       <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8a95a1]">
-        Last updated: July 25, 2026
+        Last updated: September 21, 2026
       </p>
       <div className="mt-5">
         <DocSection title="Overview">
@@ -401,8 +401,10 @@ export function PrivacyContent() {
             >
               Cloudflare&apos;s privacy policy
             </a>
-            . Messages are delivered by our email provider (Resend) and
-            retained only as ordinary correspondence.
+            . Your submission is saved to our private database first, so that a
+            message is never lost if email delivery fails, and is then sent to
+            us by Cloudflare Email Service. We retain submissions only as
+            ordinary correspondence.
           </p>
         </DocSection>
         <DocSection title="Purchases and Payments">
@@ -533,7 +535,7 @@ export function TermsContent() {
   );
 }
 
-/* ── contact composer (real form → /api/contact → Resend) ── */
+/* ── contact composer (real form → /api/contact → Cloudflare Email Service) ── */
 export function ContactContent() {
   return (
     <div className="relative p-6">

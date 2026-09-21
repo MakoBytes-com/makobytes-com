@@ -11,7 +11,7 @@ declare global {
 }
 
 /** The working form inside contact.eml — Turnstile-gated, posts to
- *  /api/contact (Resend). */
+ *  /api/contact (Cloudflare Email Service). */
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
