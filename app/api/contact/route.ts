@@ -23,7 +23,12 @@ export const dynamic = "force-dynamic";
  *   lesson learned from the makoai.studio black-hole incident).
  */
 
-const TO = "admin@makologics.com";
+// Preview deployments set CONTACT_TO to preview-sink@makologics.com, which has
+// no mailbox (Graph resolves it as ErrorInvalidUser), so a test submission on a
+// preview URL is rejected at the gateway instead of landing in the real
+// monitored inbox. The var is deliberately unset in production and development,
+// which keeps the default below and leaves live behaviour unchanged.
+const TO = process.env.CONTACT_TO || "admin@makologics.com";
 const FROM = "MakoBytes Contact <contact@makobytes.com>";
 
 let ratelimit: Ratelimit | null | undefined;
