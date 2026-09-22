@@ -20,5 +20,16 @@ next-env.d.ts
 .mcp.json.*
 .cursor/mcp.json
 .cursor/mcp.json.*
-# local scratch, backups and lock files - never committed
+# local scratch and backups - never committed
+# (package-lock.json IS committed, on purpose: without it GitHub's dependency
+#  graph resolves package.json alone and Dependabot reports a clean repo it
+#  never actually scanned.)
 *.tsbuildinfo
+*.bak
+
+# Secrets. .env*.local above only covers .env.local / .env.production.local --
+# a bare .env or .env.production was still committable.
+.env
+.env.*
+!.env.example
+!.env.local.example
