@@ -2,3 +2,23 @@
 
 - **session_summary.md** — Latest session state and immediate next steps
 - **build_progress.md** — Running log of all completed features, blockers, and roadmap
+- [active skills](active_skills.md) — Skills loaded and in-use for the makobytes.com / PromptPixel build
+- [admin dashboard](admin_dashboard.md) — How the makobytes.com admin dashboard works (built 2026-04-09 in commit 1d39acd)
+- [build progress](build_progress.md)
+- [Never run `vercel deploy --prod` from a tmp folder that only has `.vercel/project.json`](feedback_never_deploy_from_tmp_link.md) — A `vercel link` tmp folder is fine for env operations (env add/rm/ls), but `vercel deploy` from there uploads an empty project and takes the site down.
+- [feedback no purple](feedback_no_purple.md) — Russell dislikes purple/violet — avoid it in designs for this project (and probably globally)
+- [feedback project closure playbook](feedback_project_closure_playbook.md) — How Russell wants project closures handled — backup-first, then cloud, then local. Includes "delete vs empty-for-reuse" branch and CLI gotchas hit on [retire…
+- [feedback skip local dev test](feedback_skip_local_dev_test.md) — Russell prefers I skip the localhost dev-server visual-test step and push directly once the production build is clean
+- [feedback verify build with tail not grep](feedback_verify_build_with_tail_not_grep.md) — When checking `npm run build`, never grep-filter the output — use `tail -N` so you actually see error lines. Grep with a fixed pattern can hide errors that d…
+- [pixelcopy on makobytes](pixelcopy-on-makobytes.md) — PixelCopy shipped as the third catalog card on makobytes.com (2026-07-05); brand-copy tension with the subscription pricing is still open
+- [preview contact mail sink](preview-contact-mail-sink.md) — Preview deploys mail the contact form to preview-sink@makologics.com via CONTACT_TO; preview has NO database/KV since 2026-09-24, so its API routes 500 by design
+- [product pricing model](product_pricing_model.md) — Real PromptPixel pricing as of 2026-04-09. NOT lifetime updates.
+- [product promptpixel real](product_promptpixel_real.md) — The actual PromptPixel app from app screenshots (2026-04-09). Replaces all prior assumptions.
+- [makobytes-com — Vercel breach response (2026-04-29)](project_breach_response.md) — Full rotation of all 10 sensitive env vars on makobytes-com Vercel project after the April 2026 incident. New Upstash KV, new OAuth secret, new AUTH_SECRET. …
+- [project hero direction](project_hero_direction.md) — 2026-04-09 pivot from 3D robot to talking robot explainer video in the hero
+- [project overview](project_overview.md) — What makobytes.com is and what it's being built for
+- [project site structure](project_site_structure.md) — makobytes.com is a multi-app hub, not a single product site. PromptPixel is the first product.
+- [project type](project_type.md) — Whether makobytes.com is a client or portfolio project for risk calibration
+- [session summary](session_summary.md) — Latest session state for resuming work
+- [supabase and vercel access](supabase-and-vercel-access.md) — How to get SQL/DDL access to makobytes' Supabase project and API access to its Vercel project — the obvious credential locations are the wrong ones
+- [vercel preview env corruption repair](vercel-preview-env-corruption-repair.md) — makobytes preview env WAS hit by the 2026-07-28 ciphertext bug; repaired 2026-09-21, plus the forensic trick and two false-positive traps
