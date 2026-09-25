@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, MouseEvent } from "react";
+import { ReactNode } from "react";
 import { sessionId } from "./session-id";
 
 /**
@@ -22,7 +22,7 @@ export function TrackLink({
   meta?: Record<string, string>;
   newTab?: boolean;
 }) {
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = () => {
     // Fire-and-forget tracking; navigation continues normally
     try {
       fetch("/api/track", {

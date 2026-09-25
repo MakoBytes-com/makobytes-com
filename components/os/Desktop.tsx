@@ -212,7 +212,7 @@ export default function Desktop({
   initialOpen?: WinId;
 }) {
   const [wins, setWins] = useState<Record<WinId, WinState>>(() => buildInitial(initialOpen));
-  const [zTop, setZTop] = useState(3);
+  const [, setZTop] = useState(3);
   const [startOpen, setStartOpen] = useState(false);
   const [bootDone, setBootDone] = useState(false);
   const [toast, setToast] = useState(false);

@@ -1,8 +1,7 @@
-// Content Security Policy — shipped Report-Only first so violations log to
-// DevTools without breaking the site. Flip the header key below from
-// "Content-Security-Policy" to "Content-Security-Policy" once
-// the audit confirms a clean console. Spline (3D scene) and Unsplash (hero
-// images) are explicitly allowed — they're already in images.remotePatterns.
+// Content Security Policy — enforcing. It shipped Report-Only first and was
+// flipped once the audit confirmed a clean console; add an allow rule here
+// before loading anything from a new origin. Spline (3D scene) and Unsplash
+// (hero images) are explicitly allowed — they're already in images.remotePatterns.
 const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vercel.live https://prod.spline.design https://challenges.cloudflare.com",
@@ -42,9 +41,21 @@ const nextConfig = {
     ],
   },
   async redirects() {
+    // www redirects to the apex here rather than in Vercel's domain settings:
+    // a domain-level redirect is answered before this config runs, so it went
+    // out with Vercel's short default HSTS (no includeSubDomains, no preload).
+    // Done here, headers() below applies to the 308 as well. It must stay
+    // first so www requests never hit the path redirects below on www.
+    //
     // PromptPixel was retired 2026-07-25; PixelCopy (pixelcopy.app) is its
     // successor. Old links and search results land on the successor product.
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.makobytes.com" }],
+        destination: "https://makobytes.com/:path*",
+        permanent: true,
+      },
       { source: "/promptpixel", destination: "https://pixelcopy.app", permanent: true },
       { source: "/sheet", destination: "/", permanent: true },
       { source: "/sheet/:path*", destination: "/", permanent: true },
