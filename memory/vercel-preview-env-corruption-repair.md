@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: ac4dc246-493d-47bf-93af-992245cfa4a9
-  modified: 2026-09-21T09:56:00.490Z
+  modified: 2026-09-25T02:08:33.819Z
 ---
 
 On 2026-09-21 makobytes.com was checked as the last project affected by the
@@ -41,8 +41,12 @@ Nothing was missing — all 18 keys exist on both targets.
    Confirm image 404s with curl before reporting them.
 
 `ADMIN_ALLOWED_EMAILS` is **not** a mail destination — `lib/auth.ts` uses it purely
-as a Google-OAuth sign-in allowlist and it fails closed when unset.
-`russell.sailors@gmail.com` is Russell's real Google identity and must stay in it
-or he loses production admin. It must never be swapped for a sink address.
+as a Google-OAuth sign-in allowlist and it fails closed when unset. It must never be
+swapped for a sink address. **Since 2026-09-24 its only value is
+`admin@makobytes.com`** (all three targets, env id `ZYyltKSlENwbwUC9`). That is the
+Google Cloud Identity for the makobytes.com domain, and its password is in `.env.local`
+as GOOGLE_ADMIN_ACCOUNT_PASSWORD. The personal Gmail was removed on purpose, so
+never add it back. admin@makobytes.com was proven on the live site before and after
+the change.
 
 See [[preview-contact-mail-sink]] for the one gap this session actually closed.
