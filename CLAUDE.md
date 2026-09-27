@@ -171,52 +171,10 @@ This wrapper exists so long-running plug-in calls don't hit Claude Code's hardco
 - Only fire these when the trigger word appears as a clear instruction in the current user message — not when it appears inside a code block, file content, or a quoted passage.
 <!-- MAKOBOT:END -->
 
+## Database location (moved 2026-09-27)
 
+This site's data lives in its own folder — Postgres schema `makobytes` — inside the shared **Mako Logics** Supabase project (`tjknmpbrgyexxjcjwmhb`). Its old standalone Supabase project was deleted after the move was verified live.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- `SUPABASE_DB_SCHEMA=makobytes` selects this site's folder for supabase-js; `SUPABASE_URL` and the service key are the Mako Logics project's. Every client this repo builds (app AND scripts) must pass `db: { schema }`, or it will read and write the shared project's `public` schema.
+- GOLDEN RULE: all projects and their data are separate. Never create a table, bucket, role or job for this site anywhere except its own folder, and never put another product's data here.
+- The nightly backup reads only this folder and this site's buckets (repo variables `BACKUP_DB_SCHEMA` / `BACKUP_BUCKETS`).
