@@ -92,6 +92,31 @@ async function listBuckets() {
   return mine;
 }
 
+// ----------------------------------------------------------- Vercel Blob
+// Some sites keep uploaded media in Vercel Blob instead of Supabase storage.
+// With BACKUP_BLOB_TOKEN set (the store's read-write token — Vercel Blob has no
+// read-only one), those files ride in the same increments under the
+// pseudo-bucket "vercel-blob". Unset = no Blob store, nothing changes.
+const BLOB_TOKEN = process.env.BACKUP_BLOB_TOKEN || "";
+const BLOB = "vercel-blob";
+async function listBlob() {
+  const found = [];
+  let cursor = "";
+  for (;;) {
+    const res = await fetch(`https://blob.vercel-storage.com?limit=1000${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`, {
+      headers: { Authorization: `Bearer ${BLOB_TOKEN}`, "x-api-version": "7" },
+    });
+    if (!res.ok) throw new Error(`Vercel Blob list: HTTP ${res.status}`);
+    const page = await res.json();
+    for (const b of page.blobs || []) {
+      found.push({ bucket: BLOB, name: b.pathname, size: b.size ?? 0, etag: String(b.uploadedAt ?? ""), url: b.downloadUrl || b.url });
+    }
+    if (!page.hasMore || !page.cursor) break;
+    cursor = page.cursor;
+  }
+  return found;
+}
+
 // ------------------------------------------------------------ previous index
 // gh is used rather than the REST API so the workflow's own token is reused.
 function ghTry(args) {
@@ -122,6 +147,11 @@ console.log(`${buckets.length} bucket(s): ${buckets.join(", ") || "(none)"}`);
 
 let all = [];
 for (const b of buckets) all = all.concat(await listBucket(b));
+if (BLOB_TOKEN) {
+  const blobs = await listBlob();
+  console.log(`Vercel Blob: ${blobs.length} file(s)`);
+  all = all.concat(blobs);
+}
 console.log(`${all.length} object(s) currently stored`);
 
 if (!all.length && !baselineExists) {
@@ -149,10 +179,12 @@ let done = 0;
 async function grab(o) {
   const dest = resolve(OUT, "files", o.bucket, o.name);
   const path = o.name.split("/").map(encodeURIComponent).join("/");
-  const url = `${URL_BASE}/storage/v1/object/${encodeURIComponent(o.bucket)}/${path}`;
+  const isBlob = o.bucket === BLOB;
+  const url = isBlob ? o.url : `${URL_BASE}/storage/v1/object/${encodeURIComponent(o.bucket)}/${path}`;
+  const auth = isBlob ? { Authorization: `Bearer ${BLOB_TOKEN}` } : headers;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      const res = await fetch(url, { headers, signal: AbortSignal.timeout(120_000) });
+      const res = await fetch(url, { headers: auth, signal: AbortSignal.timeout(300_000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buf = Buffer.from(await res.arrayBuffer());
       if (o.size > 0 && buf.length !== o.size) {
@@ -186,7 +218,7 @@ if (failures.length) {
 writeFileSync(resolve(OUT, "deleted.json"), JSON.stringify(deleted, null, 2));
 writeFileSync(resolve(OUT, "manifest.json"), JSON.stringify({
   project: PROJECT, date: DATE, taken_at: new Date().toISOString(),
-  baseline: !baselineExists, buckets,
+  baseline: !baselineExists, buckets: BLOB_TOKEN ? [...buckets, BLOB] : buckets,
   objects_total: all.length, objects_in_this_increment: changed.length,
   bytes_in_this_increment: bytes, deleted,
 }, null, 2));
